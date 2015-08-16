@@ -2,11 +2,13 @@ language: node_js
 branches:
   only:
     - master
+    - develop
 node_js:
   - "0.12.0"
 before_install:
-  - npm install -g grunt-cli istanbul jasmine-node coveralls
+  - npm install -g bower grunt grunt-cli istanbul coveralls karma karma-cli
 script:
   - npm test --verbose
 after_success:
   - cat ./coverage/lcov.info | coveralls && rm -rf ./coverage
+

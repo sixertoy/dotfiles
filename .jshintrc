@@ -6,7 +6,7 @@
     "noarg": true,
     "immed": true,
     "undef": true,
-    "maxparams": 3,
+    "maxparams": 4,
     "forin": false,
     "curly": false,
     "strict": true,
