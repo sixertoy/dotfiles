@@ -1,0 +1,16 @@
+benchmarks/
+build/
+docs/
+docs_deprecated/
+grunt/
+node_modules/
+scripts/
+spec/
+coverage/
+.editorconfig
+.gitattributes
+.jshintrc
+.travis.yml
+Gruntfile.js
+tasks.json
+npm-debug.log

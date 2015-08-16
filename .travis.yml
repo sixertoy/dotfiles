@@ -1,0 +1,12 @@
+language: node_js
+branches:
+  only:
+    - master
+node_js:
+  - "0.12.0"
+before_install:
+  - npm install -g grunt-cli istanbul jasmine-node coveralls
+script:
+  - npm test --verbose
+after_success:
+  - cat ./coverage/lcov.info | coveralls && rm -rf ./coverage
