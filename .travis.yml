@@ -4,7 +4,7 @@ branches:
     - master
     - develop
 node_js:
-  - "0.12.0"
+  - "0.12"
 before_install:
   - npm install -g bower grunt grunt-cli istanbul coveralls karma karma-cli
 script:
