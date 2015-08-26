@@ -1,4 +1,8 @@
-scripts/
+spec
+tests
+build
+scripts
+coverage
 .csslintrc
 .editorconfig
 .gitattributes
