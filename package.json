@@ -1,0 +1,23 @@
+{
+  "name": "dotfiles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sixertoy/dotfiles.git"
+  },
+  "author": "Matthieu Lassalvy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sixertoy/dotfiles/issues"
+  },
+  "homepage": "https://github.com/sixertoy/dotfiles#readme",
+  "devDependencies": {},
+  "scripts": {
+    "docs": "sh ./scripts/docs.sh"
+  }
+}
