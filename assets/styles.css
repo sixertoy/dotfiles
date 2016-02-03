@@ -1,0 +1,52 @@
+body {
+    background: #F1F1F1;
+}
+.markdown-body {
+    padding: 30px;
+    margin: 0 auto;
+    min-width: 200px;
+    max-width: 790px;
+    background: #FFF;
+}
+.markdown-body h2 {
+    border: 0;
+    color: #FFF;
+    padding-top: 100px;
+    padding-left: 30px;
+    padding-bottom: 50px;
+    background: #0e9abf;
+}
+.markdown-body h4 {
+    color: #333;
+}
+.markdown-body hr {
+    height: 1px;
+}
+#summary {
+    top: 8px;
+    left: 50%;
+    color: #333;
+    width: 200px;
+    padding: 15px;
+    font-size: 12px;
+    position: fixed;
+    background: #FFF;
+    line-height: 1.6;
+    margin-left: 430px;
+    font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+#summary ul {
+    padding: 0;
+    padding-left: 10px;
+    list-style-type: none;
+}
+#summary ul li a {
+    font-weight: bold;
+    text-decoration: none;
+}
+#summary ul li ul li a {
+    font-weight: normal;
+}
+#summary ul li ul li a:hover {
+    font-weight: underline;
+}

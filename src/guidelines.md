@@ -4,11 +4,11 @@
 [II. References](#references)
 [III. Good Practices](#good_practices)
 
-## I. Philosophy
+#### I. Philosophy
 
 > "All code in any code-base should look like a single person typed it.<br>No matter how many people contributed."<br><br>[*IdiomaticJS*](https://github.com/rwaldron/idiomatic.js/)
 
-## II. References
+#### II. References
 
 - [**Google Styles Guide** - Google](https://google.github.io/styleguide/javascriptguide.xml)
 - [**Douglas Crockford Code Conventions** - Creator of JSON Format](http://javascript.crockford.com/code.html)
@@ -16,7 +16,7 @@
 - [**IdiomaticJS** - A large community of contributors](https://github.com/rwaldron/idiomatic.js)
 - [**Airbnb ES5 Guide**](https://github.com/airbnb/javascript/tree/master/es5)
 
-## III. Good Practices
+#### III. Good Practices
 
 [1. Naming Conventions](#naming_conventions)
 [2. Formatting](#formatting)
@@ -26,10 +26,8 @@
 [6. JSHint](#jshint)
 [7. Miscellaneous](#miscellaneous)
 
-----------
-
 <a name="naming_conventions"></a>
-### 1. Naming Conventions
+## Naming Conventions
 
 [1.1 Reserved Word](#naming_reserved)
 [1.2 Variables](#naming_variables)
@@ -39,7 +37,7 @@
 <a name="naming_reserved"></a>
 #### 1.1 Reserved Words
 
-- All variables, properties, class names **should be descriptive**, human readable
+- All variables, properties, class names **should be descriptive** & human readable
 - **Don't use [reserved words](http://es5.github.io/#x7.6.1) as keys.**<br>It can cause issues in some browsers
 
 *Good*
@@ -61,7 +59,7 @@ var superman = {
 <a name="naming_variables"></a>
 #### 1.2 Variables, Properties & Functions
 
-- **Single character variables and uncommon abbreviations should be avoided.**
+- **Single character variables and uncommons abbreviations should be avoided.**
 - Use lowerCamelCase
 - Use a leading underscore ```_``` when naming private properties.
 
@@ -113,10 +111,8 @@ function MyClass() {}
 MyClass.mySingletonConstantVar;
 ```
 
-----------
-
 <a name="formatting"></a>
-### 2. Formatting
+## Formatting
 
 [2.1 Encoding](#format_encoding)
 [2.2 Whitespace](#format_whitespace)
@@ -265,10 +261,8 @@ while (true)
 while(true) return 'this is bad';
 ```
 
-----------
-
 <a name="comments"></a>
-### 3. Comments
+## Comments
 
 > Generally use line comments. Save block comments for formal documentation.<br>Be generous with comments. It is useful to leave information that will be read at a later time by people (possibly your future self) who will need to understand what you have done and why
 
@@ -332,10 +326,8 @@ function (param1, param2) {
 }
 ```
 
-----------
-
 <a name="declarations"></a>
-### 4. Declarations
+## Declarations
 
 [4.1 Object / Array / String](#declarations_array)
 
@@ -449,7 +441,7 @@ var total = subtotal + +myInput.value;
 - Keep your functions short. A good function fits on a slide that the people in the last row of a big room can comfortably read. So don't count on them having perfect vision and limit yourself to ~15 lines of code per function.
 - **Return early from functions.** To avoid deep nesting of if-statements, always return a function's value as early as possible.
 - ECMA-262 defines a block as a list of statements. A function declaration is not a statement.
-- **All functions should be declared before they are used. **
+- **All functions should be declared before they are used.**
 - Inner functions should follow the var statement. This helps make it clear what variables are included in its scope.
 - If a function literal is anonymous, there should be one space between the word function and the ```(```. If the space is omitted, then it can appear that the function's name is function, which is an incorrect reading.
 - There should be no space between the name of a function and the ```(``` of its parameter list. There should be one space between the ```)``` and the ```{``` that begins the statement body. The body itself is indented four spaces. The ```}``` is aligned with the line containing the beginning of the declaration of the function.
@@ -525,15 +517,16 @@ setTimeout(function() {
 ```
 
 <a name="declarations_class"></a>
-#### 4.9 Class
+#### 4.6 Class
 
-- **Use immediately-Invoked Function Expression (IIFE).** Even each file executes in its own module scope, it will be safer in a team work to adopt the safer way to develop. Work with global variables.
-- When saving a reference to ```this``` use ```self```
+- **Use immediately-Invoked Function Expression (IIFE).** Even each file executes in its own module scope, it will be safer in a team work to adopt the safer way to develop.
+- When you need to save a reference to ```this``` to resolve scope issues use ```self```
 
 ```javascript
 (function(){
 	'use strict';
 	var MyClass = function(){
+        var self = this;
 	};
 	module.exports = MyClass;
 }());
@@ -654,10 +647,8 @@ $(this).trigger('listingUpdated', listing.id);
 $(this).trigger('listingUpdated', { listingId : listing.id });
 ```
 
-----------
-
 <a name="manipulate"></a>
-### 5.  Manipulate Types / Bitwise
+## Manipulate Types / Bitwise
 
 - **Bitwise ```~``` ```^``` ```<<``` ```>>``` operators are fastest but not comprehensive by all. Comment it as possible when it used**
 
@@ -750,15 +741,11 @@ function trigger() {
 }
 ```
 
-----------
-
 <a name="jshint"></a>
-### 6. JSHint
-
-----------
+## JSHint
 
 <a name="miscellaneous"></a>
-### 7. Miscellaneous
+## Miscellaneous
 
 - Use Strict Mode. It will helps you to debug ad apply this rules
 ```javascript

@@ -10,5 +10,6 @@ mdown --input "./src/**/*.md" --output "./build/" --header "./assets/md_header.h
 
 # @see https://www.npmjs.com/package/generate-github-markdown-css
 cp ./assets/github-markdown.css ./build/github-markdown.css
+cp ./assets/styles.css ./build/styles.css
 
 exit 0
