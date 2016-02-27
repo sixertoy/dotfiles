@@ -1,4 +1,4 @@
-# Wemap Guidelines for JavaScript [ES5](http://es5.github.io)
+# Guidelines for JavaScript [ES5](http://es5.github.io)
 
 [I. Philosophy](#philoshophy)
 [II. References](#references)
