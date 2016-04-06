@@ -16,7 +16,7 @@
  *
  * Installation:
  * copy this file under '<project_name>/.git/hooks/'
- * renamed it 'commit-msg'
+ * make it executable 'chmod +x .git/hooks/commit-msg'
  *
  */
 (function () {
