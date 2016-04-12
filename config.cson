@@ -33,7 +33,7 @@
     fortran:
       disabled: true
     general:
-      _analyticsUserId: "7c7ddc75-05fb-46cb-9ab9-b1dea93fb372"
+      _analyticsUserId: ""
     gherkin:
       disabled: true
     go:
@@ -130,7 +130,7 @@
     tabLength: 4
     tabType: "soft"
   "exception-reporting":
-    userId: "9e7fd608-530a-a52e-a49c-907957471241"
+    userId: ""
   "git-diff":
     showIconsInEditorGutter: true
   "imdone-atom":
