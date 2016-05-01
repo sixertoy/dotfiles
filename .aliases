@@ -1,0 +1,52 @@
+# Detect which `ls` flavor is in use
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+	colorflag="--color"
+else # OS X `ls`
+	colorflag="-G"
+fi
+
+# --------------------------------
+#
+# Aliases
+# https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
+#
+
+# List all files and hidden files
+alias ll='ls -lA'
+
+# List only directories
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
+# Show disk space left
+alias lds='df -h'
+
+# My local ip
+alias ip='ipconfig getifaddr en0'
+
+# OS X has no `md5sum`, so use `md5` as a fallback
+command -v md5sum > /dev/null || alias md5sum="md5"
+
+# OS X has no `sha1sum`, so use `shasum` as a fallback
+command -v sha1sum > /dev/null || alias sha1sum="shasum"
+
+# Show/hide hidden files in Finder
+alias show='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
+alias hide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
+alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Lock session
+alias afk='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
+
+# Mute/Pump volume
+alias stfu="osascript -e 'set volume output muted true'"
+alias pumpitup="osascript -e 'set volume 7'"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec $SHELL -l"
+

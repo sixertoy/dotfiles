@@ -1,0 +1,104 @@
+# ----------------------------
+#
+# Functions
+# https://github.com/mathiasbynens/dotfiles/blob/master/.functions
+#
+# brew install tree
+# brew install https://raw.githubusercontent.com/icholy/ttygif/master/ttygif.rb
+#
+
+function mkd() {
+	mkdir -p "$@" && cd "$_";
+}
+
+# Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
+function targz() {
+    local tmpFile="${@%/}.tar";
+    tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
+
+    size=$(
+        stat -f"%z" "${tmpFile}" 2> /dev/null; # OS X `stat`
+        stat -c"%s" "${tmpFile}" 2> /dev/null # GNU `stat`
+    );
+
+    local cmd="";
+    if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
+        # the .tar file is smaller than 50 MB and Zopfli is available; use it
+        cmd="zopfli";
+    else
+        if hash pigz 2> /dev/null; then
+            cmd="pigz";
+        else
+            cmd="gzip";
+        fi;
+    fi;
+
+    echo "Compressing .tar using \`${cmd}\`…";
+    "${cmd}" -v "${tmpFile}" || return 1;
+    [ -f "${tmpFile}" ] && rm "${tmpFile}";
+    echo "${tmpFile}.gz created successfully.";
+}
+
+function fs() {
+    if du -b /dev/null > /dev/null 2>&1; then
+        local arg=-sbh;
+    else
+        local arg=-sh;
+    fi
+    if [[ -n "$@" ]]; then
+        du $arg -- "$@";
+    else
+        du $arg .[^.]* ./*;
+    fi;
+}
+
+# Use Git’s colored diff when available
+hash git &>/dev/null;
+if [ $? -eq 0 ]; then
+    function diff() {
+        git diff --no-index --color-words "$@";
+    }
+fi;
+
+# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
+# the `.git` directory, listing directories first. The output gets piped into
+# `less` with options to preserve color and line numbers, unless the output is
+# small enough for one screen.
+function tre() {
+    tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+}
+
+# -----------------------------------
+#
+# GIT Functions
+#
+function git-bname {
+  git branch --no-color 2> /dev/null | sed -e '/^[^​*]/d' -e 's/*​ \(.*\)/(\1)/'
+}
+
+function git-desc {
+  branch=$(git rev-parse --abbrev-ref HEAD)
+    if [ -z "$1" ]; then
+      git-br
+    else
+      git config branch.$branch.description $1
+  fi
+}
+
+function git-user {
+  git config user.name
+}
+
+function git-br {
+  branches=$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')
+  for branch in $branches; do
+    desc=$(git config branch.$branch.description)
+    if [ $branch == $(git rev-parse --abbrev-ref HEAD) ]; then
+      branch="* \033[0;32m$branch\033[0m"
+     else
+       branch="  $branch"
+     fi
+     echo -e "$branch \033[0;36m$desc\033[0m"
+  done
+}
+
