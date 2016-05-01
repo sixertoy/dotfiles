@@ -1,0 +1,32 @@
+[core]
+	editor = atom --wait
+	autocrlf = input
+	encoding = utf8
+[alias]
+	mg = merge
+	br = branch
+	ci = commit
+	ci-v = commit
+	ci = commit
+	push-v = push --no-verify
+	st = status
+	rb = rebase
+	rbi = rebase -i
+	co = checkout
+	llog = log -1
+	cr = cherry-pick
+	ca = !git add -A . && git commit
+	ca-v = !git add -A . && git commit --no-verify
+[push]
+	default = simple
+[user]
+	name = xxxx
+	email = xxxxxxxx
+[color]
+	ui = true
+[gui]
+	encoding = utf-8
+[log]
+	date=short
+[format]
+	pretty = %C(green)%ad %C(yellow)%an %C(red)%h\n\t%Creset%s
