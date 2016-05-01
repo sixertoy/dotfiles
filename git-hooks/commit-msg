@@ -8,15 +8,14 @@
  * - A '#' at message begining
  * - Uppercase chars afer '#'
  * - Digit chars afer uppercase chars
- * - A message describing 'what or why' instead of 'how'
- * EX: #WEEMM-456: is a valid test message
+ * EX: #TASK-456: is a valid test message
  *
  * Regex Online Tester Link
  * @see https://regex101.com/r/gH8aW8/1
  *
  * Installation:
  * copy this file under '<project_name>/.git/hooks/'
- * make it executable 'chmod +x .git/hooks/commit-msg'
+ * renamed it 'commit-msg'
  *
  */
 (function () {
@@ -28,7 +27,7 @@
         // constants
         END_LINE = '\n',
         MAX_LENGTH = 100,
-        JIRA_PATTERN = /(\#[A-Z]+-[0-9]+)\s(.*)/g,
+        JIRA_PATTERN = /#(\[A-Z]+-[0-9]+)\s(.*)/g,
         // messages
         INVALID_HEAD = 'INVALID COMMIT MSG: ',
         COMMIT_MESSAGE_FILE = 'COMMIT_EDITMSG',
@@ -38,13 +37,28 @@
         // variables
         commitMsg, commitMsgFile,
 
+        // https://github.com/chalk/ansi-styles/blob/master/index.js
+        // https://gist.github.com/sixertoy/f26c7177e84bbef9308c96da54325f66
+        __getColor = function (msg, code) {
+            return '\u001b[' + code + 'm' + msg + '\u001b[39m';
+        },
+        _red = function (msg) {
+            return __getColor(msg, 31);
+        },
+        _white = function (msg) {
+            return __getColor(msg, 37);
+        },
+        _yellow = function (msg) {
+            return __getColor(msg, 33);
+        },
+
         /**
          *
          * Log error in console
          *
          */
         error = function () {
-            var msg = INVALID_HEAD;
+            var msg = _red(INVALID_HEAD);
             msg += util.format.apply(null, arguments);
             console.error(msg);
             return -1;
@@ -61,18 +75,24 @@
          *
          */
         _validateMessage = function (message) {
-            var match, msg;
+            var match, msg,
+                indexof = message.indexOf('#');
+            if (indexof !== -1 && indexof !== 0) {
+                message = ('#' + message);
+            }
             // check message length
             if (message.length > MAX_LENGTH) {
-                msg = END_LINE + TOO_LONG + END_LINE;
-                msg += '>  ' + MAX_LENGTH;
+                msg = _yellow(TOO_LONG);
+                msg += END_LINE;
+                msg += _white('>  ' + MAX_LENGTH);
                 return error(msg);
             }
             // check message pattern
             match = JIRA_PATTERN.exec(message);
             if (!match) {
-                msg = END_LINE + NOT_MATCH + END_LINE;
-                msg += '>  ' + message;
+                msg = _yellow(NOT_MATCH);
+                msg += END_LINE;
+                msg += _white('>  ' + message);
                 return error(msg);
             }
             return 1;
@@ -85,7 +105,9 @@
          *
          */
         _getfirstLineFromBuffer = function (buffer) {
-            var firstLine = buffer.toString().split(END_LINE).shift();
+            var firstLine = buffer.toString()
+                .split(END_LINE)
+                .shift();
             return firstLine;
         },
 
@@ -128,11 +150,12 @@
         if (isMessageValid < 0) {
             _writeLogFileError(commitMsgFile, commitMsg, function () {
                 process.exit(1);
+
             });
         }
     });
 
     // publish for testing
-    exports.validateMessage = _validateMessage;
+    // exports.validateMessage = _validateMessage;
 
 }());
