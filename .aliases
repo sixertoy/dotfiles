@@ -12,7 +12,7 @@ fi
 #
 
 # List all files and hidden files
-alias ll='ls -lA'
+alias ll='ls -lAsh'
 
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
