@@ -5,6 +5,10 @@
     softWrap: true
     softWrapAtPreferredLineLength: true
     softWrapHangingIndent: 100
+  linter:
+    showErrorPanel: false
+    showErrorTabProject: false
+    statusIconScope: "File"
   minimap:
     plugins:
       "git-diff": true
