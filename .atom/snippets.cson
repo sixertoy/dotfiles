@@ -18,4 +18,15 @@
 # This file uses CoffeeScript Object Notation (CSON).
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
-# https://atom.io/docs/latest/using-atom-basic-customization#cson
+# http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+'.jsx':
+  'this.props.facade':
+    'prefix': 'facade'
+    'body': 'this.props.facade'
+  'facade.getStore':
+    'prefix': 'getStore'
+    'body': 'this.props.facade.getStore("${1:storeName}")'
+  'facade.getAction':
+    'prefix': 'getAction'
+    'body': 'this.props.facade.getAction("${1:actionName}")'
