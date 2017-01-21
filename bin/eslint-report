@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# ########################################
+#
+start_time=`date +%s`
+
+OUTPUT_FOLDER=./reports
+DIST_FOLDER=./dist/reports/eslint
+GRAPH_REPORTER=./node_modules/eslint-graph-reporter/index.js
+
+# ----------------
+# export graph
+#
+echo '\033[1;32mExporting report as graph\033[m'
+eslint 'src/*.js*' 'src/**/*.js*' --no-color -f $GRAPH_REPORTER -o $DIST_FOLDER/graph.html
+
+# ----------------
+# write a log file
+#
+echo '\033[1;32mExporting log file with no warnings\033[m'
+eslint 'src/*.js*' 'src/**/*.js*' --no-color --quiet -f stylish -o $OUTPUT_FOLDER/eslint-report.log
+
+# ----------------
+# write an HTML file
+#
+echo '\033[1;32mExporting HTML file\033[m'
+eslint 'src/*.js*' 'src/**/*.js*' -f html -o $DIST_FOLDER/$(date +%Y%m%d).html
+
+end_time=`date +%s`
+echo '\033[90m'
+echo executed in `expr $end_time - $start_time` s.
+echo '\033[m\n'
+exit 0
