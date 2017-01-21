@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+
+# ########################################
+#
+# Description
+# --------
+#
+# git hook to run a command before `git commit`, lint new added files
+#
+# Usage
+# --------
+# npm install husky --save-dev
+# chmod 755 bin/hooks/pre-commit
+#
+
+function get_file_name {
+  FILE=$1
+  echo "${FILE%%.*}"
+}
+
+function get_file_extension {
+  FILE=$1
+  echo "${FILE#*.}"
+}
+
+## From a git status
+## Returns added (A), modified (M), untracked (??) filenames
+function git_changed_files {
+  echo $(git status -s | grep -E '[AM??]+\s.+?\.(js|jsx)$' | cut -c3-)
+}
+
+# -------------------------------
+#
+## ESLint
+## Run lint over changed files, if any
+#
+echo -e  "PreCommit Hook started\n"
+FILES=$(git_changed_files);
+
+## pass elint
+if [ ! -z "${FILES}" ]
+then
+  echo -e "Run ESLint for files: ${FILES}\n"
+  ERRORS=$(eslint --quiet --color --config .eslintrc.json $FILES);
+fi
+
+if [ ! -z "${ERRORS}" ]
+then
+  # exit with error if elint errors
+  printf "${ERRORS}"
+  exit 1
+fi
+
+# -------------------------------
+#
+## Mocha Tests Units
+## Tests JS files if a `.spec.js` file exists
+#
+for ENTRY in $FILES
+do
+  # get file extension
+  EXTENSION=$(get_file_extension $ENTRY)
+  if [ "${EXTENSION}" == "js" ]
+  then
+    FILE=$(echo ${ENTRY} | rev | cut -c3- | rev)
+    FILE="${FILE}spec.js"
+  elif [ "${EXTENSION}" == "jsx" ]
+  then
+    FILE=$(echo ${ENTRY} | rev | cut -c4- | rev)
+    FILE="${FILE}spec.jsx"
+  elif [ "${EXTENSION}" == "spec.js" ]
+  then
+    FILE="$ENTRY"
+  fi
+  # check if a spec file exists
+  if [ -f "${FILE}" ]; then
+    # concat all spec files to be tested
+    MOCHA_FILES="${FILE} ${MOCHA_FILES}"
+  fi
+done
+
+if [ ! -z "${MOCHA_FILES}" ]
+then
+  # run mocha tests files
+  echo -e "Run tests for files: ${MOCHA_FILES}\n"
+  MOCHA_LOGS=$(mocha $MOCHA_FILES --bail --colors --reporter=dot)
+fi
+
+# exit with error if specs errors
+ERRORS=$(echo $MOCHA_LOGS | grep 'failing')
+if [ ! -z "${ERRORS}" ]; then
+  echo "$MOCHA_LOGS"
+  exit 1
+fi
+
+exit 0
