@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# ########################################
+#
+# DESCRIPION
+# --------
+#
+# Compile Javascript documentation HTML pages with JSDoc
+# Output folder: <project>/docs
+#
+# Learn more about JSDoc configuration
+# @see http://usejsdoc.org
+#
+#
+# ########################################
+#
+# REQUIREMENTS
+# --------
+# ```bash
+# chmod +x ./bin/generate_documentation
+# ```
+#
+# ########################################
+#
+# USAGE
+# --------
+# ```bash
+# ./bin/generate_documentation
+# ```
+#
+
+node_modules/.bin/jsdoc --configure .jsdoc.json --verbose
