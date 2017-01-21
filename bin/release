@@ -1,0 +1,112 @@
+#!/bin/bash
+
+# ########################################
+#
+# Description
+# --------
+#
+# This script will use `npm version` to bump current application version (semver)
+#
+# 1/ Exit with errors if changes are not yet committed
+# 2/ Upgrade `package.json` version property
+# 3/ Generate a changelog file based on git commit's message
+# between previous <patch|minor|major> version and new version described in file `version.txt`
+# 4/ Commit version changes and all changelog file
+#
+# ########################################
+#
+# Usage
+# --------
+#
+# ```bash
+# npm run release (major|minor|patch|premajor|preminor|prepatch|prerelease)
+# ```
+#
+
+# Check if there's some unstaged/uncommitted changes
+# Will not upgrade version
+if [ -n "$(git status --porcelain)" ]; then
+  echo -e "\033[1;31mPlease commit your changes before upgrading application version.\n\033[m";
+  exit 0;
+fi
+
+# Flag if npm use patch|minor|major or preXXXX
+IS_RELEASE='0'
+# Github owner account
+VENDOR_NAME=sixertoy
+# Github project's name
+PROJECT_NAME=xxxx
+
+# @see https://docs.npmjs.com/cli/version
+# using one of these values below
+# (major|minor|patch|premajor|preminor|prepatch)
+SEMVER_TYPE=$1
+
+# SHORTCUTS
+# `npm run release <start(prepatch)|continue(prerelease)|stop(patch)>`
+if [[ $SEMVER_TYPE == 'start' ]]; then
+  SEMVER_TYPE='prepatch'
+fi
+
+if [[ $SEMVER_TYPE == 'continue' ]]; then
+  SEMVER_TYPE='prerelease'
+fi
+
+if [[ $SEMVER_TYPE == 'stop' ]]; then
+  SEMVER_TYPE='patch'
+fi
+
+# If semver version is not defined
+if [ -z $SEMVER_TYPE ]; then
+  echo '\033[1;31mMissing semver type argument.\n\033[m'
+  exit 0;
+fi
+
+# Load current project's version
+# Written with this script when using command `npm version patch|minor|major)
+VERSION=$(head -n 1 ./VERSION)
+
+if [[ $SEMVER_TYPE == 'patch' || $SEMVER_TYPE == 'minor' || $SEMVER_TYPE == 'major' ]]; then
+  # Write current version release in a file
+  IS_RELEASE='1'
+fi
+
+# ---------------------
+#
+# Update Application version using `npm version` command
+# Will not create a git's tag if it's a pre-release
+#
+# Get new package version
+# Always cut pre-release version number
+#
+PACKAGE_VERSION=$(npm version $SEMVER_TYPE)
+
+if [ $IS_RELEASE == '1' ]; then
+  SHORT_PACKAGE_VERSION=$PACKAGE_VERSION
+else
+  INDEX=$(echo $PACKAGE_VERSION | awk 'match($0,"-"){print RSTART}')
+  INDEX=$(($INDEX-1))
+  SHORT_PACKAGE_VERSION=$(echo $PACKAGE_VERSION | cut -c 1-${INDEX})
+  git tag -d $PACKAGE_VERSION
+fi
+
+# Markdown changelog file
+FILENAME=changelogs/release_$SHORT_PACKAGE_VERSION.md
+
+# Using git log to write content into changelog file
+git --no-pager log --reverse --pretty=format:'[**%h**](http://github.com/'$VENDOR_NAME'/'$PROJECT_NAME'/commit/%H) *%ad*<br>%B' $VERSION.. > $FILENAME
+
+# Prepend title to changelog file
+echo "### Changelogs $PACKAGE_VERSION<br>\n\n$(cat $FILENAME)" > $FILENAME
+
+# If is a new release (patch|minor|major)
+# Write down new version in file
+if [ $IS_RELEASE == '1' ]; then
+  echo $PACKAGE_VERSION > ./version.txt
+fi
+
+# amend changes to current version commit made by command `npm version`
+git add -A .
+git commit --amend --no-edit
+
+exit 0
