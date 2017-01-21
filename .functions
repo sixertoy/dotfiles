@@ -1,33 +1,49 @@
-# ----------------------------
-#
-# Functions
-# https://github.com/mathiasbynens/dotfiles/blob/master/.functions
-#
-# brew install tree
-#
+#!/usr/bin/env bash
 
-function calc() {
-	local result="";
-	result="$(printf "scale=10;$*\n" | bc --mathlib | tr -d '\\\n')";
-	#                       └─ default (when `--mathlib` is used) is 20
-	#
-	if [[ "$result" == *.* ]]; then
-		# improve the output for decimal numbers
-		printf "$result" |
-		sed -e 's/^\./0./'        `# add "0" for cases like ".5"` \
-		    -e 's/^-\./-0./'      `# add "0" for cases like "-.5"`\
-		    -e 's/0*$//;s/\.$//';  # remove trailing zeros
-	else
-		printf "$result";
-	fi;
-	printf "\n";
-}
+# ------------------------------------------------
+#
+# OS
+#
+# ------------------------------------------------
 
+#
+# Create a new directory and enter it
+#
 function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
 
+#
+# Determine size of a file or total size of a directory
+#
+function fs() {
+	if du -b /dev/null > /dev/null 2>&1; then
+		local arg=-sbh;
+	else
+		local arg=-sh;
+	fi
+	if [[ -n "$@" ]]; then
+		du $arg -- "$@";
+	else
+		du $arg .[^.]* ./*;
+	fi;
+}
+
+#
+# brew install https://raw.githubusercontent.com/icholy/ttygif/master/ttygif.rb
+#
+# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
+# the `.git` directory, listing directories first. The output gets piped into
+# `less` with options to preserve color and line numbers, unless the output is
+# small enough for one screen.
+#
+function tre() {
+    tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+}
+
+#
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
+#
 function targz() {
     local tmpFile="${@%/}.tar";
     tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
@@ -55,66 +71,58 @@ function targz() {
     echo "${tmpFile}.gz created successfully.";
 }
 
-function fs() {
-    if du -b /dev/null > /dev/null 2>&1; then
-        local arg=-sbh;
-    else
-        local arg=-sh;
-    fi
-    if [[ -n "$@" ]]; then
-        du $arg -- "$@";
-    else
-        du $arg .[^.]* ./*;
-    fi;
-}
-
-# Use Git’s colored diff when available
-hash git &>/dev/null;
-if [ $? -eq 0 ]; then
-    function diff() {
-        git diff --no-index --color-words "$@";
-    }
-fi;
-
-# `tre` is a shorthand for `tree` with hidden files and color enabled, ignoring
-# the `.git` directory, listing directories first. The output gets piped into
-# `less` with options to preserve color and line numbers, unless the output is
-# small enough for one screen.
-function tre() {
-    tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
-}
-
-# -----------------------------------
+# ------------------------------------------------
 #
 # GIT Functions
 #
-function git-bname {
-  git branch --no-color 2> /dev/null | sed -e '/^[^​*]/d' -e 's/*​ \(.*\)/(\1)/'
+# ------------------------------------------------
+
+#
+# Show current branch name
+#
+
+function gitbrname() {
+  BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+  echo $BRANCH_NAME
 }
 
-function git-desc {
-  branch=$(git rev-parse --abbrev-ref HEAD)
-    if [ -z "$1" ]; then
-      git-br
-    else
-      git config branch.$branch.description $1
+#
+# Show currents commits to be pushed
+#
+
+function pendings() {
+  PENDING=$(git log origin/$(git rev-parse --abbrev-ref HEAD)..)
+  if [ ! -z '$PENDING' ]; then
+    echo -e '\033[0;33mNo commits waiting to be pushed\033[0m'
+  else
+    echo $PENDING
   fi
 }
 
-function git-user {
-  git config user.name
-}
+#
+# Show local git branches colored with description and last commit
+# current branch is prefixed by '*'
+#
 
-function git-br {
-  branches=$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')
-  for branch in $branches; do
-    desc=$(git config branch.$branch.description)
-    if [ $branch == $(git rev-parse --abbrev-ref HEAD) ]; then
-      branch="* \033[0;32m$branch\033[0m"
-     else
-       branch="  $branch"
-     fi
-     echo -e "$branch \033[0;36m$desc\033[0m"
+function br() {
+  BRANCHES=$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')
+  for BRANCH in $BRANCHES; do
+    DESC=$(git config branch.$BRANCH.description)
+    LOG=$(git log --oneline $BRANCH -1)
+    if [ $BRANCH == $(git rev-parse --abbrev-ref HEAD) ]; then
+      BRANCH="\033[0;32m* $BRANCH\033[0m"
+    else
+      BRANCH="\033[0;33m $BRANCH\033[0m"
+    fi
+    echo -e "$BRANCH   \033[0;36m$DESC\033[0m\n   $LOG"
   done
 }
 
+
+#
+# Delete a remote branch or a tag
+#
+
+function delremote() {
+  git push --delete origin $1
+}
