@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# ########################################
+#
+# Colors in bash
+# http://stackoverflow.com/a/28938235
+#
+# Examples:
+#
+# npm run changelog v<previous_git_tag_version>
+#
+
+# Variables
+PACKAGE_VERSION=$1
+GIT_TAG_VERSION=$2
+# Github owner account
+VENDOR_NAME=sixertoy
+# Github project's name
+PROJECT_NAME=xxxxx
+
+if [ -z $GIT_TAG_VERSION ]; then
+  echo -e '\033[1;31mMissing commit hash/tag version argument\n\033[m'
+  exit 1;
+fi
+
+if [ -z $PACKAGE_VERSION ]; then
+  echo -e '\033[1;31mMissing package version argument\n\033[m'
+  exit 1;
+fi
+
+# Output filename
+FILENAME=changelogs/release_v$PACKAGE_VERSION.md
+
+git --no-pager log --reverse --pretty=format:'[**%h**](http://github.com/'$VENDOR_NAME'/'$PROJECT_NAME'/commit/%H) *%ad*<br>%B' $GIT_TAG_VERSION.. > $FILENAME
+echo "### Changelogs $PACKAGE_VERSION<br>\n\n$(cat $FILENAME)" > $FILENAME
+
+exit 0;
