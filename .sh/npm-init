@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Check if git directory exists
+# if not exists will create and init a new local repository
+if [ ! -d "$DIRECTORY" ]; then
+  git init
+fi
+
+# Copy main files from user's home folder
+cp ~/.jshintrc .
+cp ~/.gitignore .
+cp ~/.babel.json .
+cp ~/.stylelintrc .
+cp ~/.editorconfig .
+cp ~/.jsbeautifyrc .
+cp ~/.eslintrc.json .
+
+# Creat low level directories for a simple project
+mkdir bin
+mkdir src
+mkdir dist
+mkdir temp
+mkdir .kiss
+
+# Create low level files for a project
+touch .env
+touch README.md
+
+# Init repository with NPM packager
+npm init
+
+exit 0
