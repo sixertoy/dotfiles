@@ -1,0 +1,52 @@
+#!/bin/sh
+
+# ########################################
+#
+# DESCRIPION
+# --------
+#
+# Will compress all SASS files in `src/styles` with `src/styles/main.scss` as entry point
+# to `temp/pre-compiled-main.css` and using NPM's autoprefixer to output `temp/compiled-main.css`
+#
+#
+# ########################################
+#
+# REQUIREMENTS
+# --------
+# ```bash
+# sudo gem install sass
+# ```
+#
+#
+# ########################################
+#
+# USAGE
+# --------
+# ```bash
+# ./bin/compile-styles
+# ```
+#
+
+# Variable from webpack at application build
+STATIC_PATH='$staticPath/'
+
+# Inject variables into temporary file
+# Usually compiled with from webpack at build
+# Create a new pre-compile file
+echo "\$staticPath: \"$STATIC_PATH\";"|cat - src/styles/main.scss > src/styles/pre-compile-main.scss
+
+# Compile SASS file
+echo '\033[32mCompiling SASS file to temp/pre-compile-main.css\033[m'
+sass --sourcemap=none --style=expanded src/styles/pre-compile-main.scss temp/pre-compile-main.css
+
+# Autoprefixer for CSS rules
+echo '\033[32mAutoprefixin CSS file to temp/compile-main.css\n\033[m'
+./node_modules/.bin/autoprefixer-cli temp/pre-compile-main.css -o temp/compiled-main.css
+
+# -------------------------------------------
+#
+# CLEAN
+#
+# Delete pre-compile main file
+rm src/temp/pre-compile-main.scss
+rm src/styles/pre-compile-main.scss
