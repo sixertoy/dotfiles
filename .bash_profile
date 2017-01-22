@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#
 # ----------------------------
 #
 # Default Environment Path
@@ -17,6 +16,19 @@ PATH="$HOME/.npm-packages/bin:$PATH"
 # add current user executables bin folder to $PATH
 PATH="$HOME/bin:$PATH"
 
+# ------------------------------------------------
+#
+# Node Version Manager
+# @see https://github.com/creationix/nvm#manual-install
+#
+export NVM_DIR="$HOME/.nvm"
+# This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# Load NVM completion
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+#
+# ------------------------------------------------
+
 # Add NPM to $NODE_PATH variables
 # NODE_PATH="$NPM_PACKAGES_PATH/lib/node_modules:$NODE_PATH"
 
@@ -24,11 +36,9 @@ PATH="$HOME/bin:$PATH"
 # export EDITOR='subl -w'
 
 # Load the shell dotfiles
-for file in ~/.{bash_completion,aliases,functions,gitprompt,gitcompletion,extra}; do
+for file in ~/.{bash_completion,aliases,functions,gitprompt,gitcompletion,extras}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
-
-# source "~/.extras";
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
