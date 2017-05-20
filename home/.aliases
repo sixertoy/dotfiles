@@ -32,6 +32,11 @@ fi;
 # ----------------------------------------------------
 
 #
+# Remove with confirmation
+#
+alias rm="rm -i"
+
+#
 # Always use color output for `ls`
 #
 alias ls="command ls ${colorflag}"
