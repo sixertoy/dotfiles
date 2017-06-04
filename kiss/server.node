@@ -1,58 +1,36 @@
 /* global process, require, __dirname, console */
-(function() {
+// touch .env
+// npm i -D dotenv express express-livereload compression body-parser
+require('dotenv').load();
 
-    'use strict';
+const port = process.env.PORT || 9080,
+  debug = process.env.DEBUG || false,
+  // requires
+  path = require('path'),
+  express = require('express'),
+  bodyParser = require('body-parser'),
+  compression = require('compression'),
+  server = express(),
+  paths = {
+    www: path.join(__dirname, 'public')
+  };
 
-    // touch .env
-    // npm i -D dotenv express express-livereload compression body-parser
-    require('dotenv').load();
+// gzip compression
+server.use(compression());
+// Parsing application/json
+server.use(bodyParser.json());
+// Parsing application/x-www-form-urlencoded
+server.use(bodyParser.urlencoded({
+  extended: true
+}));
+// Express server is used to serve static ressouces
+server.use('/', express.static(paths.www));
 
-    var port = process.env.PORT || 9080,
-        debug = process.env.DEBUG || false,
-        livereloadPort = process.env.LIVERELOAD_PORT || false,
-        // requires
-        path = require('path'),
-        express = require('express'),
-        bodyParser = require('body-parser'),
-        compression = require('compression'),
-        livereload = require('express-livereload'),
-        server = express(),
-        paths = {
-            www: path.join(__dirname)
-        };
-
-    // livereload
-    if (livereloadPort) {
-        livereload(server, {
-            watchDir: paths.www,
-            port: livereloadPort,
-            exclusions: ['git/', '.svn/'],
-            exts: ['html', 'css', 'js', 'png', 'gif', 'jpg', 'svg', 'woff', 'eot', 'ttf', 'woff2']
-        });
-    }
-
-    // gzip compression
-    server.use(compression());
-    // Parsing application/json
-    server.use(bodyParser.json());
-    // Parsing application/x-www-form-urlencoded
-    server.use(bodyParser.urlencoded({
-        extended: true
-    }));
-    // Express server is used to serve static ressouces
-    server.use('/', express.static(paths.www));
-
-    server.listen(port, function() {
-        if (!debug) {
-            return true;
-        }
-        var msg = 'Application now running under http://localhost:%d\n';
-        process.stdout.write(msg, port);
-        if (livereloadPort) {
-            msg = 'Livereload is running on port %d\n';
-            process.stdout.write(msg, livereloadPort);
-        }
-        return true;
-    });
-
-}());
+server.listen(port, () => {
+  if (!debug) {
+    return true;
+  }
+  const msg = 'Application now running under http://localhost:%d\n';
+  process.stdout.write(msg, port);
+  return true;
+});
