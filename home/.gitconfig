@@ -47,7 +47,7 @@
 [tag]
   sort = version:refname
 [user]
-	name = xxxxx
-	email = xxxxx@xxxxx
+  name = xxxxx
+  email = xxxxx@xxxxx
 [status]
   showUntrackedFiles = all
