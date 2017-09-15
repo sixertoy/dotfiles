@@ -1,46 +1,53 @@
 [alias]
-	st = status
-	co = checkout
-	br = branch
-	rbi = rebase -i
-	amend = commit --amend
-	aamend = commit --amend --no-edit
-	rewind = reset HEAD~1
-	cancel-rewind = reset HEAD@{1}
-	unstage = reset HEAD --
-	desc = branch --edit-description
-	infos = remote show origin
-	tree = log --decorate --graph
-	changed = show --name-status
-	undo = checkout --
-	whoami = config --get user.name
-	llog = log -1
-	cr = cherry-pick
-	mg = merge --no-ff
-	plr = pull --rebase
+  st = status
+  br = branch -v
+  ci = commit
+  co = checkout
+  aadd = add -p
+  rbi = rebase -i
+  cr = cherry-pick
+  mg = merge --no-ff
+  plr = pull --rebase
+  cclean = clean -i -d
+  sstash = stash save -u
+  push-force = push --force-with-lease
+  amend = commit --amend
+  aamend = commit --amend --no-edit
+  undo = checkout --
+  rewind = reset HEAD~1
+  unstage = reset HEAD --
+  cancel-rewind = reset HEAD@{1}
+  llog = log -1
+  changed = show --name-status
+  tree = log --decorate --graph
+  infos = remote show origin
+  whoami = config --get user.name
+  desc = branch --edit-description
 [color]
-	ui = true
+  ui = true
 [core]
-	editor = atom --wait
-	autocrlf = input
-	encoding = utf8
-	whitespace = -trailing-space
-	excludesFile = /Usr/matthieu/.gitignore
+  encoding = utf8
+  autocrlf = input
+  editor = subl -w
+  whitespace = -trailing-space
+  excludesfile = /Users/xxxxx/.gitignore
 [diff]
-	mnemonicPrefix = true
+  mnemonicPrefix = true
 [format]
-	pretty = %C(green)%ad %an %C(yellow)%h\n%Creset%B
+  pretty = %C(green)%ad %an %C(yellow)%h\n%Creset%B
 [gui]
-	encoding = utf-8
+  encoding = utf-8
 [log]
-	date = format:%a %v %T
+  date = format:%a %v %T
 [pull]
-	rebase = preserve
+  rebase = preserve
 [push]
-	default = simple
-	follwTags = true
+  default = simple
+  follwTags = true
 [tag]
-	sort = version:refname
+  sort = version:refname
 [user]
-	name = xxxx
-	email = xxxxxxxx
+	name = xxxxx
+	email = xxxxx@xxxxx
+[status]
+  showUntrackedFiles = all
