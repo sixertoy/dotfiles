@@ -8,13 +8,57 @@
  * If you are unfamiliar with Less, you can read more about it here:
  * http://lesscss.org
  */
-atom-text-editor::shadow {
-  @my-invisible-color: rgb(50, 50, 50);
+
+
+/*
+ * Examples
+ * (To see them, uncomment and save)
+ */
+
+// style the background color of the tree view
+.tree-view {
+  // background-color: whitesmoke;
+}
+
+// style the background and foreground colors on the atom-text-editor-element itself
+atom-text-editor {
+  // color: white;
+  // background-color: hsl(180, 24%, 12%);
+}
+
+// style UI elements inside atom-text-editor
+atom-text-editor .cursor {
+  // border-color: red;
+}
+
+
+// **************************************************************
+// **************************************************************
+//
+// CUSTOM
+//
+// **************************************************************
+// **************************************************************
+
+atom-text-editor.editor {
+  @my-invisible-color: #3B4048;
   .wrap-guide {
     background-color: @my-invisible-color;
   }
-  .indent-guide,
-  .invisible-character {
-    color: @my-invisible-color;
-  }
+}
+
+// --------------------------------------------------------
+//
+// FIRA CODE
+//
+// --------------------------------------------------------
+atom-text-editor {
+  // color: white;
+  // background-color: hsl(180, 24%, 12%);
+  text-rendering: optimizeLegibility;
+}
+
+atom-text-editor.editor .syntax--string.syntax--quoted,
+atom-text-editor.editor .syntax--string.syntax--regexp {
+  -webkit-font-feature-settings: "liga" off, "calt" off;
 }
