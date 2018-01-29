@@ -1,0 +1,42 @@
+#!/bin/bash
+
+echo "┌────────────────────────────────────────────────┐"
+echo "│                                                │"
+echo "│                NODE PROJECT INIT               │"
+echo "│                                                │"
+echo "└────────────────────────────────────────────────┘"
+
+# Init GIT Project
+git init
+sleep 2
+
+# Create default directories
+mkdir bin
+mkdir src
+mkdir dist
+mkdir .scripts
+
+# Copy .editorconfig file from ~/home directory
+cp ~/.editorconfig .
+
+# Create .gitignore file
+curl https://www.gitignore.io/api/osx,node,macos --output .gitignore
+sleep 2
+
+# Create default files
+touch index.js
+touch README.md
+touch .eslintignore
+
+# Create default ESLint config file
+echo -e "{\"extends\":\"airbnb\"}" > .eslintrc.json
+
+# Init NPM Project
+npm init
+sleep 2
+
+# Install AIRBNB ESLint
+(
+  export PKG=eslint-config-airbnb;
+  npm info "$PKG@latest" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG@latest"
+)
