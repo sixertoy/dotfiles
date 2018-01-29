@@ -3,16 +3,17 @@
     disabledPackages: [
       "whitespace"
     ]
-    projectHome: "/Users/matthieu/www"
   editor:
     fontFamily: "Fira Code"
+    preferredLineLength: 100
     showIndentGuide: true
     showInvisibles: true
     softWrap: true
     softWrapAtPreferredLineLength: true
-    softWrapHangingIndent: 80
   "linter-ui-default":
+    panelHeight: 160
     showPanel: true
+    showTooltip: false
   minimap:
     plugins:
       "git-diff": true
