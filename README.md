@@ -1,5 +1,5 @@
 # dotfiles
-:sparkling_heart: .files
+:sparkling_heart: :sparkling_heart: :sparkling_heart: .files
 
 
 
