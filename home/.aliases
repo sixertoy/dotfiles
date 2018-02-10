@@ -47,6 +47,11 @@ alias ls="command ls ${colorflag}"
 alias ll='ls -laF ${colorflag}'
 
 #
+# Table all files and hidden files
+# 
+alias lw='ls -AF ${colorflag}'
+
+#
 # List all files in a tree
 #
 alias ltree='tree -a -L 1'
