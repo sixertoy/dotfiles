@@ -126,3 +126,9 @@ function br() {
 function delremote() {
   git push --delete origin $1
 }
+
+# gitignore.io
+# @see https://www.gitignore.io/docs
+function gi() {
+  curl -L -s https://www.gitignore.io/api/$@ ;
+}
