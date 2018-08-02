@@ -174,17 +174,11 @@ function init-gitignore() {
   curl -L -s https://www.gitignore.io/api/windows,linux,osx,macos,node > .gitignore
 }
 
-function init-prettier() {
+function init-linter() {
   (
-    yarn add prettier prettier-eslint prettier-stylelint --dev --exact
-    yarn add stylelint-config-standard pretty-quick husky --dev --exact
-  )
-}
-
-function init-eslint() {
-  (
-    # ESLint with AIRBNB config
     npx install-peerdeps --dev eslint-config-airbnb
+    yarn add prettier prettier-eslint prettier-eslint-cli prettier-stylelint --dev --exact
+    yarn add stylelint-config-standard husky --dev --exact
   )
 }
 
@@ -194,8 +188,7 @@ function init-project() {
   npm init
   mkdir .kiss
   mkdir -p .scripts/hooks
-  init-eslint
-  init-prettier
+  init-linter
 }
 
 function search() {
