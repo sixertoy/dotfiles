@@ -90,7 +90,7 @@ function gitbrname() {
 # Show currents commits to be pushed
 #
 
-function pendings() {
+function git-pendings() {
   PENDING=$(git log origin/$(git rev-parse --abbrev-ref HEAD)..)
   if [ ! -z '$PENDING' ]; then
     echo -e '\033[0;33mNo commits waiting to be pushed\033[0m'
@@ -118,8 +118,47 @@ function br() {
   done
 }
 
-function delremote() {
+function git-delremote() {
   git push --delete origin $1
+}
+
+function git-bisect () {
+  if [ -z "$1" ]; then
+    echo "Missing argument for bad commit"
+    return
+  fi
+  if test "$#" -ne 2; then
+    GOOD_COMMIT='HEAD'
+    BAD_COMMIT=$1
+  else
+    GOOD_COMMIT=$1
+    BAD_COMMIT=$2
+  fi
+  ERROR=$(git cat-file -e $GOOD_COMMIT^{commit} 2>&1)
+  if [ -n "$ERROR" ]; then
+    echo -e "\033[31mArgument #1 is not a valid commit\033[0m $GOOD_COMMIT"
+    return
+  fi
+  ERROR=$(git cat-file -e $BAD_COMMIT^{commit} 2>&1)
+  if [ -n "$ERROR" ]; then
+    echo -e "\033[31mArgument #2 is not a valid commit\033[0m $BAD_COMMIT"
+    return
+  fi
+  git bisect start
+  git bisect bad $GOOD_COMMIT
+  git bisect good $BAD_COMMIT
+}
+
+function git-bisect-nok () {
+  git bisect bad
+}
+
+function git-bisect-ok () {
+  git bisect good
+}
+
+function git-bisect-stop () {
+  git bisect reset
 }
 
 
@@ -160,12 +199,28 @@ function apache-restart() {
 #
 # ------------------------------------------------
 
-function killnode() {
-  killall node
-}
-
-function killmongo() {
-  killall mongod
+function init-dotfiles() {
+  DOTFILES_BASE=raw.githubusercontent.com/sixertoy/dotfiles/master
+  # ----- Precommit Script
+  # add to package.json in scripts section
+  # { "precommit": "sh ./.scripts/hooks/precommit.sh" }
+  FILE_NAME=precommit.sh
+  FILE_URL=https://$DOTFILES_BASE/scripts-hooks/precommit.sh
+  mkdir -p ./.scripts/hooks
+  curl -o ./.scripts/hooks/$FILE_NAME $FILE_URL
+  chmod +x ./.scripts/hooks/$FILE_NAME
+  # ----- ESLint config
+  FILE_NAME=.eslintrc.json
+  FILE_URL=https://$DOTFILES_BASE/home/.eslintrc.json
+  curl -o ./$FILE_NAME $FILE_URL
+  # ----- StyleLint config
+  FILE_NAME=.stylelintrc.json
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # ----- Prettier config
+  FILE_NAME=.prettierrc.json
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
 }
 
 # gitignore.io
@@ -175,22 +230,39 @@ function init-gitignore() {
 }
 
 function init-linter() {
-  (
-    npx install-peerdeps --dev eslint-config-airbnb
-    yarn add prettier prettier-eslint prettier-eslint-cli prettier-stylelint --dev --exact
-    yarn add stylelint-config-standard husky --dev --exact
-  )
+  yarn add babel-eslint
+  # AirBNB ESLint
+  npx install-peerdeps eslint-config-airbnb eslint-config-prettier --dev --exact
+  # StyleLint
+  yarn add stylelint stylelint-config-standard stylelint-order stylelint-scss --dev --exact
+  # Prettier
+  yarn add  prettier prettier-eslint prettier-eslint-cli prettier-stylelint husky --dev --exact
+}
+
+function init-react() {
+  if [ -z "$1" ]; then
+    echo "Missing argument for init-react command"
+    return
+  fi
+  create-react-app $1
+  cd $1
+  init-project
+  # Install React dependencies
+  yarn add prop-types --save --exact
 }
 
 function init-project() {
+  mkdir -p .kiss
+  mkdir -p src/app
+  mkdir -p src/scss
+  mkdir -p src/static
+  mkdir -p .scripts/hooks
   git init
   init-gitignore
-  npm init
-  mkdir .kiss
-  mkdir -p .scripts/hooks
   init-linter
+  init-dotfiles
 }
 
 function search() {
-  open /Applications/Opera.app/ "http://www.google.com/search?q= $1";
+  open /Applications/Opera.app/ "http://www.google.com/search?q=$1";
 }
