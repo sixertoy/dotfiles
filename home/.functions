@@ -230,9 +230,9 @@ function init-gitignore() {
 }
 
 function init-linter() {
-  yarn add babel-eslint
   # AirBNB ESLint
   npx install-peerdeps eslint-config-airbnb eslint-config-prettier --dev --exact
+  yarn add babel-eslint --dev --exact
   # StyleLint
   yarn add stylelint stylelint-config-standard stylelint-order stylelint-scss --dev --exact
   # Prettier
