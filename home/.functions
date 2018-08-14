@@ -118,6 +118,12 @@ function br() {
   done
 }
 
+function git-tree () {
+  # NOTE see ~/.gitconfig `git tree`
+  git log --graph --all --full-history --color \
+    --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
+}
+
 function git-delremote() {
   git push --delete origin $1
 }
@@ -160,6 +166,10 @@ function git-bisect-ok () {
 function git-bisect-stop () {
   git bisect reset
 }
+
+# function gitzip () {
+# svn checkout http://github.com/sixertoy/scss-core/trunk/src
+# }
 
 
 # ------------------------------------------------
