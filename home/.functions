@@ -107,14 +107,20 @@ function git-pendings() {
 function br() {
   BRANCHES=$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')
   for BRANCH in $BRANCHES; do
+    # recupere la description de la branche
     DESC=$(git config branch.$BRANCH.description)
-    LOG=$(git log --oneline $BRANCH -1)
+    # recupere le dernier commit de la branche
+    DATE=$(git log --format=%cd --date=local $BRANCH -1)
+    LOG=$(git log --oneline --color $BRANCH -1)
+    # <-------
+    # ajoute une étoile * devant la branche en cours
     if [ $BRANCH == $(git rev-parse --abbrev-ref HEAD) ]; then
       BRANCH="\033[0;32m* $BRANCH\033[0m"
     else
-      BRANCH="\033[0;33m $BRANCH\033[0m"
+      BRANCH="\033[0;31m $BRANCH\033[0m"
     fi
-    echo -e "$BRANCH   \033[0;36m$DESC\033[0m\n   $LOG"
+    # ------->
+    echo -e "$BRANCH   \033[0;36m$DESC\033[0m\n   $DATE\n   $LOG"
   done
 }
 
