@@ -30,7 +30,7 @@
   # show files changed with status
   changed = show --name-status
   # show logs as tree
-  tree = log --graph --all --full-history --color \
+  tree = log --graph --full-history --color \
   --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
   # show branch origin informations
   infos = remote show origin
@@ -69,7 +69,7 @@
 [tag]
   sort = version:refname
 [user]
-  name = xxxxxxx
-  email = xxxxxxx
+  name = sixertoy
+  email = sixertoy.github@gmail.com
 [status]
   showUntrackedFiles = all
