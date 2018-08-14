@@ -117,10 +117,12 @@ function br() {
     if [ $BRANCH == $(git rev-parse --abbrev-ref HEAD) ]; then
       BRANCH="\033[0;32m* $BRANCH\033[0m"
     else
-      BRANCH="\033[0;31m $BRANCH\033[0m"
+      BRANCH="\033[0;94m $BRANCH\033[0m"
     fi
     # ------->
-    echo -e "$BRANCH   \033[0;36m$DESC\033[0m\n   $DATE\n   $LOG"
+    DESC="\033[0;36m$DESC\033[0m"
+    DATE="\033[0;90m$DATE\033[0m"
+    echo -e "$BRANCH   $DESC\n   $DATE\n   $LOG"
   done
 }
 
