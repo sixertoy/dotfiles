@@ -10,19 +10,41 @@
   plr = pull --rebase
   cclean = clean -i -d
   sstash = stash save -u
-  push-force = push --force-with-lease
+  # push avec force mais si il y a eu des changements sur le distant
+  pushf = push --force-with-lease
+  pforce = push --force-with-lease
+  push-f = push --force-with-lease
+  # edite la description du dernier commit
   amend = commit --amend
+  # edite le dernier commit sans editer sa description
   aamend = commit --amend --no-edit
+  # annule le dernier ajout dans le stage
   undo = checkout --
+  # cancel du dernier commit
   rewind = reset HEAD~1
-  unstage = reset HEAD --
+  # cancel du cancel du dernier commit
   cancel-rewind = reset HEAD@{1}
+  # annule les derniers ajout dans le stage
+  unstage = reset HEAD --
   llog = log -1
+  # show files changed with status
   changed = show --name-status
-  tree = log --decorate --graph
+  # show logs as tree
+  tree = log --graph --all --full-history --color \
+  --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
+  # show branch origin informations
   infos = remote show origin
+  # show user name
   whoami = config --get user.name
   desc = branch --edit-description
+  # show commit files and stats (delete/add)
+  cis = show --stat --oneline
+  # show logs for a single file
+  logf = log -p
+  # show git tag with annotation
+  atag = tag -l -n
+  # update submodules
+  pullsub = submodule update --init --recursive
 [color]
   ui = true
 [core]
@@ -43,11 +65,11 @@
   rebase = preserve
 [push]
   default = simple
-  follwTags = true
+  followTags = true
 [tag]
   sort = version:refname
 [user]
-  name = xxxxx
-  email = xxxxx@xxxxx
+  name = xxxxxxx
+  email = xxxxxxx
 [status]
   showUntrackedFiles = all
