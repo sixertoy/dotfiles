@@ -3,7 +3,6 @@
   "tabWidth": 2,
   "useTabs": false,
   "printWidth": 80,
-  "parser": "babylon",
   "singleQuote": true,
   "arrowParens": "avoid",
   "trailingComma": "es5",
