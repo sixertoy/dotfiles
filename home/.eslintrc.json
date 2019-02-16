@@ -1,39 +1,84 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "prettier"],
+  "parser": "babel-eslint",
+  "settings": {
+    "react": {
+      "version": "16.6.0"
+    }
+  },
   "env": {
+    "jest": true,
     "node": true,
     "mocha": true,
-    "browser": true
+    "browser": true,
+    "jasmine": true
+  },
+  "globals": {
+    "fixture": true
   },
   "rules": {
     "indent": [2, 2],
     "padded-blocks": 0,
-    "max-len": [2, 100, { "ignoreTemplateLiterals": true }],
-    "comma-dangle": [2, "never"],
-    "space-before-function-paren": [2, {
+    "max-len": [2, 100],
+    "comma-dangle": [2, "always-multiline"],
+    "space-before-function-paren": [
+      2,
+      {
         "anonymous": "always",
         "named": "always",
         "asyncArrow": "ignore"
-    }],
-    "no-underscore-dangle": [2, {
-      "allowAfterThis": true,
-      "allowAfterSuper": true
-    }],
-    "import/no-extraneous-dependencies": [2, {
-      "devDependencies": [
-        "**/*.spec.js"
-      ]
-    }],
-    "react/jsx-closing-bracket-location": [2, {
-      "nonEmpty": "after-props",
-      "selfClosing": "after-props"
-    }],
-    "react/jsx-filename-extension": [2, {
-      "extensions": [".js", ".jsx"]
-    }],
-    "react/jsx-first-prop-new-line": [2, "never"],
-    "react/forbid-prop-types": [1, {
-      "forbid": ["any"]
-    }]
+      }
+    ],
+    "no-underscore-dangle": [
+      2,
+      {
+        "allowAfterThis": true,
+        "allowAfterSuper": true
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      2,
+      {
+        "devDependencies": ["**/*.spec.js"]
+      }
+    ],
+    "react/jsx-closing-bracket-location": [
+      2,
+      {
+        "nonEmpty": "after-props",
+        "selfClosing": "after-props"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/jsx-first-prop-new-line": [2, "multiline-multiprop"],
+    "react/jsx-max-props-per-line": [
+      2,
+      {
+        "maximum": 1,
+        "when": "always"
+      }
+    ],
+    "react/forbid-prop-types": [
+      1,
+      {
+        "forbid": ["any"]
+      }
+    ],
+    "react/jsx-one-expression-per-line": [0, { "allow": "literal" }],
+    "sort-keys": [1, "asc", { "caseSensitive": true, "natural": false }],
+    "sort-vars": [1, { "ignoreCase": true }],
+    "sort-imports": [
+      0,
+      {
+        "ignoreCase": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "single", "multiple"]
+      }
+    ]
   }
 }
