@@ -4,9 +4,12 @@ build
 scripts
 coverage
 .csslintrc
+.stylelintrc
 .editorconfig
+.eslintrc
 .gitattributes
 .gitignore
 .jshintrc
+.prettierrc
 .coveralls.yml
 .travis.yml
