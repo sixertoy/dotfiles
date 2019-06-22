@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+
+# ------------------------------------
+#
+#
+# Docker alias and function
+#
+# https://kartar.net/2014/03/useful-docker-bash-functions-and-aliases/
+#
+#
+# List all running containers
+# > returns a list of containers withd ids
+# `docker ps`
+#
+# List all containers running and stopped
+# > returns a list of containers withd ids
+# `docker ps -a`
+#
+# Delete a container
+# `docker rm <container_id>`
+#
+# ------------------------------------
+
+alias dk='docker'
+alias dkm='docker-machine'
+alias dk-prune='docker system prune'
+
+# list all images
+alias dk-ls-images="docker image ls"
+
+# list all containers
+alias dk-ls-container="docker container ls"
+
+# Get container IP
+alias dk-ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+
+# rebuild current image
+dkc-build () {
+  docker-compose build
+}
+
+# stop all containers
+dk-stop-container () {
+  docker stop $(docker ps -a -q)
+}
+# remove all containers - filtering exited
+dk-rm-container () {
+  docker rm $(docker ps -q -f status=exited)
+}
+
+# remove all containers - no filter
+dk-rm-all-containers () {
+  docker rm $(docker ps -a -q)
+}
+
+# remove all images - no filter
+dk-rm-all-images () {
+  docker rmi $(docker images -q)
+}
+
+# remove all images - no filter
+dk-rm-alls () {
+  docker stop $(docker ps -a -q)
+  docker system prune
+  docker rm $(docker ps -a -q)
+  docker rmi $(docker images -q)
+}
+
+dk-prune-containers() {
+  # stop all containers
+  dk stop $(docker ps -a -q);
+  # remove all containers
+  dk rm $(docker ps -a -q);
+}
+
+# Build current Dockerfile
+dbuild() {
+  echo "Build Docker image '$1'"
+  docker build -t $1 .
+}
+
+# Run a new container in Shell mode
+drun() {
+  echo "Run container '$1' on port '$2'"
+  echo "Port variable should match Docker exposed port"
+  docker run -p 3000:$2 -e \"NODE_ENV=development\"  -i -t $1
+}
+
+# Bash into last running container
+dk-bash-last() {
+  CNAME=$(docker ps -l -q)
+  echo "Bash into container '$CNAME' as root"
+  docker exec -i -t -u root $CNAME /bin/bash
+}
+
+# Bash into last running container
+dk-bash-container() {
+  echo "Bash into container '$1' as root"
+  docker exec -itu root $1 /bin/bash
+}
+
+# ------------------------------------
+#
+# Utils / Misc
+#
+# ------------------------------------
+# Show Docker related aliases
+dk-aliases() {
+  echo "Available Docker aliases"
+  alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort;
+}
