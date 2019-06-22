@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # --------------------------------
 #
 # Aliases
@@ -36,6 +38,11 @@ fi;
 #
 alias rm="rm -i"
 
+# Show Disc Usage informations
+#
+#
+alias lds="df -h"
+
 #
 # Always use color output for `ls`
 #
@@ -48,7 +55,7 @@ alias ll='ls -laF ${colorflag}'
 
 #
 # Table all files and hidden files
-# 
+#
 alias lw='ls -AF ${colorflag}'
 
 #
@@ -60,11 +67,6 @@ alias ltree='tree -a -L 1'
 # List only directories
 #
 alias dir="ls -lF ${colorflag} | grep --color=never '^d'"
-
-#
-# Show disk space left
-#
-alias disk='df -h'
 
 # ----------------------------------------------------
 #
@@ -92,8 +94,9 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 #
 # View HTTP traffic
 #
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias httpdump="sudo tcpdump -A -s0 -ien0 port 80"
+# alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+# alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # ----------------------------------------------------
 #
@@ -112,10 +115,19 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias showdot='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
 alias hidedot='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
 
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
 #
 # Reload the shell (i.e. invoke as a login shell)
 #
 alias reload="exec $SHELL -l"
+
+#
+# Move files/folder with interactive mode to default
+#
+alias move="mv -i"
 
 #
 # Lock screen while away
@@ -147,3 +159,8 @@ alias showdesktop='defaults write com.apple.finder CreateDesktop -bool true && k
 # Get week number
 #
 alias week='date +%V'
+
+alias killnode='killall node'
+
+[ -n "$PS1" ] && source ~/.aliases_ssh;
+[ -n "$PS1" ] && source ~/.aliases_docker;
