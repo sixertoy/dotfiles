@@ -162,5 +162,4 @@ alias week='date +%V'
 
 alias killnode='killall node'
 
-[ -n "$PS1" ] && source ~/.aliases_ssh;
 [ -n "$PS1" ] && source ~/.aliases_docker;
