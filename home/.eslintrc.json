@@ -1,11 +1,6 @@
 {
-  "extends": ["airbnb", "prettier"],
-  "parser": "babel-eslint",
-  "settings": {
-    "react": {
-      "version": "16.6.0"
-    }
-  },
+  "extends": ["react-app", "airbnb", "prettier", "prettier/react"],
+  "plugins": ["sort-destructure-keys"],
   "env": {
     "jest": true,
     "node": true,
@@ -17,67 +12,55 @@
     "fixture": true
   },
   "rules": {
-    "indent": [2, 2],
-    "padded-blocks": 0,
-    "max-len": [2, 100],
-    "comma-dangle": [2, "always-multiline"],
-    "space-before-function-paren": [
-      2,
+    "no-undef": [2, { "typeof": true }],
+    "jsx-a11y/label-has-for": 0,
+    "import/order": [
+      "error",
       {
-        "anonymous": "always",
-        "named": "always",
-        "asyncArrow": "ignore"
-      }
-    ],
-    "no-underscore-dangle": [
-      2,
-      {
-        "allowAfterThis": true,
-        "allowAfterSuper": true
+        "groups": [
+          ["builtin", "external"],
+          ["internal", "parent", "sibling", "index"]
+        ],
+        "newlines-between": "always"
       }
     ],
     "import/no-extraneous-dependencies": [
-      2,
+      "error",
       {
-        "devDependencies": ["**/*.spec.js"]
+        "devDependencies": [
+          "**/*.test.js",
+          "**/*.spec.js",
+          "**/*.stories.js",
+          "rollup*"
+        ]
       }
     ],
-    "react/jsx-closing-bracket-location": [
-      2,
-      {
-        "nonEmpty": "after-props",
-        "selfClosing": "after-props"
-      }
-    ],
+    "react/forbid-prop-types": [2, { "forbid": ["any"] }],
+    "react/prop-types": [2, { "skipUndeclared": false }],
     "react/jsx-filename-extension": [
       2,
       {
         "extensions": [".js", ".jsx"]
       }
     ],
-    "react/jsx-first-prop-new-line": [2, "multiline-multiprop"],
-    "react/jsx-max-props-per-line": [
+    "sort-destructure-keys/sort-destructure-keys": [
       2,
       {
-        "maximum": 1,
-        "when": "always"
+        "caseSensitive": false
       }
     ],
-    "react/forbid-prop-types": [
-      1,
+    "sort-keys": [
+      2,
+      "asc",
       {
-        "forbid": ["any"]
+        "caseSensitive": true,
+        "natural": false
       }
     ],
-    "react/jsx-one-expression-per-line": [0, { "allow": "literal" }],
-    "sort-keys": [1, "asc", { "caseSensitive": true, "natural": false }],
-    "sort-vars": [1, { "ignoreCase": true }],
-    "sort-imports": [
-      0,
+    "sort-vars": [
+      2,
       {
-        "ignoreCase": false,
-        "ignoreMemberSort": false,
-        "memberSyntaxSortOrder": ["none", "all", "single", "multiple"]
+        "ignoreCase": true
       }
     ]
   }
