@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+function init-dotfiles() {
+  DOTFILES_BASE=raw.githubusercontent.com/sixertoy/dotfiles/master
+  # ----- Precommit Script
+  # add to package.json in scripts section
+  # { "precommit": "sh ./.scripts/hooks/precommit.sh" }
+  FILE_NAME=precommit.sh
+  FILE_URL=https://$DOTFILES_BASE/scripts-hooks/precommit.sh
+  mkdir -p ./.scripts/hooks
+  curl -o ./.scripts/hooks/$FILE_NAME $FILE_URL
+  chmod +x ./.scripts/hooks/$FILE_NAME
+  # ----- ESLint config
+  FILE_NAME=.eslintrc.json
+  FILE_URL=https://$DOTFILES_BASE/home/.eslintrc.json
+  curl -o ./$FILE_NAME $FILE_URL
+  # ----- StyleLint config
+  FILE_NAME=.stylelintrc.json
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # ----- Prettier config
+  FILE_NAME=.prettierrc.json
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # ----- Editor config
+  FILE_NAME=.editorconfig
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # ----- Yarn config
+  FILE_NAME=.yarnrc
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # ----- Prettier Ignore
+  FILE_NAME=.prettierignore
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # ----- ESLint Ignore
+  FILE_NAME=.eslintignore
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+}
+
+# gitignore.io
+# @see https://www.gitignore.io/docs
+function init-gitignore() {
+  curl -L -s https://www.gitignore.io/api/windows,linux,osx,macos,node > .gitignore
+}
+
+function init-linter() {
+  npx install-peerdeps --dev eslint-config-airbnb
+  npx install-peerdeps  --dev eslint-config-prettier
+  # yarn add --dev husky
+}
+
+function init-react() {
+  if [ -z "$1" ]; then
+    echo "Missing project's name"
+    return
+  fi
+  nvm use 9.10
+  npx create-react-app $1
+  cd $1;
+  mkdir -p .kiss src/app src/scss src/static.scripts/hooks
+  yarn add prop-types --save --exact
+}
+
+function init-project() {
+  mkdir -p .kiss
+  mkdir -p src/app
+  mkdir -p src/scss
+  mkdir -p src/static
+  mkdir -p .scripts/hooks
+  git init
+  yarn init
+  init-gitignore
+  init-linter
+  init-dotfiles
+}

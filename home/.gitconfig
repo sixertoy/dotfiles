@@ -10,10 +10,8 @@
   plr = pull --rebase
   cclean = clean -i -d
   sstash = stash save -u
-  # push avec force mais si il y a eu des changements sur le distant
+  # secured push force
   pushf = push --force-with-lease
-  pforce = push --force-with-lease
-  push-f = push --force-with-lease
   # edite la description du dernier commit
   amend = commit --amend
   # edite le dernier commit sans editer sa description
@@ -36,6 +34,7 @@
   infos = remote show origin
   # show user name
   whoami = config --get user.name
+  # ajout une description a une branche
   desc = branch --edit-description
   # show commit files and stats (delete/add)
   cis = show --stat --oneline
@@ -43,8 +42,12 @@
   logf = log -p
   # show git tag with annotation
   atag = tag -l -n
-  # update submodules
+  # show submodules status
+  stsub = git submodule status --recursive
+  # update all submodules
   pullsub = submodule update --init --recursive
+  # pull all submodules
+  pushsub = submodule foreach git push -u origin master
 [color]
   ui = true
 [core]
@@ -67,7 +70,8 @@
   default = simple
   followTags = true
 [tag]
-  sort = version:refname
+  sort=-creatordate
+  # sort = version:refname
 [user]
   name = sixertoy
   email = sixertoy.github@gmail.com

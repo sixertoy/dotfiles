@@ -18,12 +18,22 @@ printf "Copying user's shell configuration in home folder..."
 printf "\33[m"
 printf "\n"
 
+# function copyFiles() {
+#   rsync --exclude ".git/" \
+#     --exclude ".DS_Store" \
+#     --exclude "update.sh" \
+#     -avh --no-perms . ~;
+#   source ~/.bashrc;
+# }
+
 function copyFiles() {
-  rsync --exclude ".git/" \
-    --exclude ".DS_Store" \
-    --exclude "update.sh" \
-    -avh --no-perms . ~;
-  source ~/.bashrc;
+  for file in ./home/.*
+  do
+    if [[ -f $file ]]; then
+      echo $file
+    fi
+  done
+  ln -s $PWD/.bash_inc /Users/matthieu/.bash_inc
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

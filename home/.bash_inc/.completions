@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# ------------------
+# Homebrew Bash Completion
+#
+# Install
+# ```
+# brew install bash-completion@2
+# ```
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+[ -n "$PS1" ] && source ~/.bash_inc/.completion_git;

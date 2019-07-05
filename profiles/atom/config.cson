@@ -1,0 +1,39 @@
+"*":
+  core:
+    telemetryConsent: "no"
+    customFileTypes:
+      "source.js.jsx": [
+        "js"
+        "jsx"
+      ]
+  editor:
+    fontFamily: "FiraCode-Retina, Menlo, Consolas, DejaVu Sans Mono, monospace"
+    invisibles: {}
+    preferredLineLength: 100
+    showIndentGuide: true
+    showInvisibles: true
+  "exception-reporting":
+    preferredLineLength: 100
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+  "language-babel": {}
+  "linter-ui-default":
+    panelHeight: 160
+    showPanel: true
+    showTooltip: false
+  minimap:
+    plugins:
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
+      isDisabledIfNoConfigFile: true
+      showInStatusBar: true
+    prettierEslintOptions: {}
+    useEslint: true
+    useStylelint: true
+  welcome:
+    showOnStartup: false

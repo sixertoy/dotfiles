@@ -24,6 +24,7 @@
 atom-text-editor {
   // color: white;
   // background-color: hsl(180, 24%, 12%);
+  text-rendering: optimizeLegibility;
 }
 
 // style UI elements inside atom-text-editor
@@ -31,41 +32,7 @@ atom-text-editor .cursor {
   // border-color: red;
 }
 
-
-// **************************************************************
-// **************************************************************
-//
-// CUSTOM
-//
-// **************************************************************
-// **************************************************************
-
-.tree-view {
-  font-size: 0.9em;
-}
-
-.list-tree.has-collapsable-children .list-nested-item > .list-tree > li, .list-tree.has-collapsable-children .list-nested-item > .list-group > li {
-  padding-left: 12px;
-}
-
-atom-text-editor.editor {
-  @my-invisible-color: #3B4048;
-  .wrap-guide {
-    background-color: @my-invisible-color;
-  }
-}
-
-// --------------------------------------------------------
-//
-// FIRA CODE
-//
-// --------------------------------------------------------
-atom-text-editor {
-  // color: white;
-  // background-color: hsl(180, 24%, 12%);
-  text-rendering: optimizeLegibility;
-}
-
+// Turn off ligatures inside of strings and regular expressions
 atom-text-editor.editor .syntax--string.syntax--quoted,
 atom-text-editor.editor .syntax--string.syntax--regexp {
   -webkit-font-feature-settings: "liga" off, "calt" off;

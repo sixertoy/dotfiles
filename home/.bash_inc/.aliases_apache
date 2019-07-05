@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+function apache-service-start() {
+  sudo launchctl load -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+}
+
+function apache-service-stop() {
+  sudo launchctl unload -w /System/Library/LaunchDaemons/org.apache.httpd.plist
+}
+
+function apache-service-running() {
+  sudo launchctl list | grep apache
+}
+
+function apache-stop() {
+  sudo apachectl -k graceful-stop
+}
+
+function apache-start() {
+  sudo apachectl -k start
+}
+
+function apache-restart() {
+  # https://httpd.apache.org/docs/2.2/stopping.html
+  sudo apachectl -k restart
+}
