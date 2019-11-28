@@ -44,17 +44,17 @@ dk-stop-container () {
   docker stop $(docker ps -a -q)
 }
 # remove all containers - filtering exited
-dk-rm-container () {
+dk-container-rm () {
   docker rm $(docker ps -q -f status=exited)
 }
 
 # remove all containers - no filter
-dk-rm-all-containers () {
+dk-rm-containers () {
   docker rm $(docker ps -a -q)
 }
 
 # remove all images - no filter
-dk-rm-all-images () {
+dk-rm-images () {
   docker rmi $(docker images -q)
 }
 

@@ -93,3 +93,5 @@ function git-bisect-ok () {
 function git-bisect-stop () {
   git bisect reset
 }
+
+GIT_TERMINAL_PROMPT=1

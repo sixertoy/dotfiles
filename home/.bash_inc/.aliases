@@ -78,6 +78,12 @@ alias killnode='killall node'
 # Open atom with add
 alias aatom='atom --add .'
 
+# Alias for `npm run`
+alias npr='npm run'
+
+# Alias for `yarn add --dev`
+alias yarnd='yarn add --dev'
+
 
 # --------------------------------------------------
 #

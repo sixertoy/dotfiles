@@ -2,6 +2,7 @@
 
 function init-dotfiles() {
   DOTFILES_BASE=raw.githubusercontent.com/sixertoy/dotfiles/master
+
   # ----- Precommit Script
   # add to package.json in scripts section
   # { "precommit": "sh ./.scripts/hooks/precommit.sh" }
@@ -10,34 +11,52 @@ function init-dotfiles() {
   mkdir -p ./.scripts/hooks
   curl -o ./.scripts/hooks/$FILE_NAME $FILE_URL
   chmod +x ./.scripts/hooks/$FILE_NAME
+
   # ----- ESLint config
   FILE_NAME=.eslintrc.json
   FILE_URL=https://$DOTFILES_BASE/home/.eslintrc.json
   curl -o ./$FILE_NAME $FILE_URL
+
   # ----- StyleLint config
   FILE_NAME=.stylelintrc.json
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
+
   # ----- Prettier config
   FILE_NAME=.prettierrc.json
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
+
   # ----- Editor config
   FILE_NAME=.editorconfig
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
+
   # ----- Yarn config
   FILE_NAME=.yarnrc
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
+
   # ----- Prettier Ignore
   FILE_NAME=.prettierignore
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
+
   # ----- ESLint Ignore
   FILE_NAME=.eslintignore
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
+
+  # ----- Husky config
+  FILE_NAME=.huskyrc.json
+  FILE_URL=https://$DOTFILES_BASE/home/.huskyrc.json
+  curl -o ./$FILE_NAME $FILE_URL
+
+  # ----- Lintstaged config
+  FILE_NAME=.lintstagedrc.json
+  FILE_URL=https://$DOTFILES_BASE/home/.lintstagedrc.json
+  curl -o ./$FILE_NAME $FILE_URL
+
 }
 
 # gitignore.io
@@ -54,13 +73,13 @@ function init-linter() {
 
 function init-react() {
   if [ -z "$1" ]; then
-    echo "Missing project's name"
+    echo "Missing project name"
     return
   fi
-  nvm use 9.10
+  nvm use 12.13.1
   npx create-react-app $1
   cd $1;
-  mkdir -p .kiss src/app src/scss src/static.scripts/hooks
+  mkdir -p .kiss src/app src/scss src/static .scripts/hooks
   yarn add prop-types --save --exact
 }
 
