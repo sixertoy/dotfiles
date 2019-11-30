@@ -1,11 +1,1 @@
 #!/usr/bin/env bash
-
-# StartOf "LexImpact"
-function startlex() {
-  pyenv activate leximpact-server-3.7.3
-}
-
-function stoplex() {
-  pyenv deactivate leximpact-server-3.7.3
-}
-# EndOf "LexImpact"

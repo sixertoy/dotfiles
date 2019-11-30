@@ -10,6 +10,8 @@ alias rm="rm -i"
 
 alias rmrf="rm -rf"
 
+alias lns="ln -s"
+
 # Show Disc Usage informations
 alias lds="df -h"
 
@@ -17,10 +19,10 @@ alias lds="df -h"
 alias ls="command ls ${colorflag}"
 
 # List all files and hidden files
-alias ll='ls -laF ${colorflag}'
+alias ll="ls -laF ${colorflag}"
 
 # Table all files and hidden files
-alias lw='ls -AF ${colorflag}'
+alias lw="ls -AF ${colorflag}"
 
 # List all files in a tree
 alias ltree='tree -a -L 1'
@@ -30,9 +32,9 @@ alias dir="ls -lF ${colorflag} | grep --color=never '^d'"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -46,10 +48,10 @@ alias httpdump="sudo tcpdump -A -s0 -ien0 port 80"
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Show dotfiles in Finder
-alias showdot='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
+alias showdot="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
 
 # Hide dotfiles in Finder
-alias hidedot='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
+alias hidedot="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Show all desktop icons (useful when presenting)
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
@@ -67,22 +69,25 @@ alias move="mv -i"
 alias afk='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 
 # Print each PATH entry on a separate line
-alias path='echo -e ${PATH//:/\\n}'
+alias path="echo -e ${PATH//:/\\n}"
 
 # Get week number
-alias week='date +%V'
+alias week="date +%V"
 
 # Kill all NodeJS Process
-alias killnode='killall node'
+alias killnode="killall node"
 
 # Open atom with add
-alias aatom='atom --add .'
+alias aatom="atom --add ."
 
 # Alias for `npm run`
-alias npr='npm run'
+alias npr="npm run"
 
 # Alias for `yarn add --dev`
-alias yarnd='yarn add --dev'
+alias yarnd="yarn add --dev"
+
+# Alias for `yarn add --dev`
+alias docs="npm home"
 
 
 # --------------------------------------------------
@@ -160,7 +165,7 @@ function tre() {
   #
   # `less` with options to preserve color and line numbers, unless the output is
   # small enough for one screen.
-  tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+  tree -aC -I ".git|node_modules|bower_components" --dirsfirst "$@" | less -FRNX;
 }
 
 function wh() {
