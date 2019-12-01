@@ -46,6 +46,8 @@ function init-hooks() {
   FILE_NAME=.lintstagedrc.json
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
+  # Installation des dépendances
+  yarn add husky lint-staged --dev
 }
 
 function init-dotfiles() {
