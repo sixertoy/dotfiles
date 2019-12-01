@@ -12,8 +12,7 @@ function init-eslint() {
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
   # installation des dependances
-  npx install-peerdeps --dev --use-yarn eslint-config-airbnb
-  yarn add eslint-config-prettier eslint-plugin-simple-import-sort eslint-plugin-sort-destructure-keys eslint-plugin-sort-keys-fix --dev
+  yarn add eslint-config-airbnb eslint-config-prettier eslint-plugin-simple-import-sort eslint-plugin-sort-destructure-keys eslint-plugin-sort-keys-fix --dev
 }
 
 function init-prettier() {
@@ -26,10 +25,7 @@ function init-prettier() {
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
   # installation des dependances
-  npx install-peerdeps --dev prettier
-  npx install-peerdeps --dev prettier-eslint
-  npx install-peerdeps --dev prettier-stylelint
-  npx install-peerdeps --dev prettier-eslint-cli
+  yarn add prettier prettier-eslint prettier-stylelint prettier-eslint-cli --dev
 }
 
 function init-stylelint() {
@@ -38,10 +34,7 @@ function init-stylelint() {
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
   # installation des dependances
-  npx install-peerdeps --dev stylelint
-  npx install-peerdeps --dev stylelint-config-standard
-  npx install-peerdeps --dev stylelint-order
-  npx install-peerdeps --dev stylelint-scss
+  yarn add stylelint stylelint-config-standard stylelint-order stylelint-scss --dev
 }
 
 function init-hooks() {
