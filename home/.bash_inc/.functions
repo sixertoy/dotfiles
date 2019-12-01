@@ -12,11 +12,8 @@ function init-eslint() {
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
   # installation des dependances
-  npx install-peerdeps --dev eslint-config-airbnb
-  npx install-peerdeps --dev eslint-config-prettier
-  npx install-peerdeps --dev eslint-plugin-simple-import-sort
-  npx install-peerdeps --dev eslint-plugin-sort-destructure-keys
-  npx install-peerdeps --dev eslint-plugin-sort-keys-fix
+  npx install-peerdeps --dev --use-yarn eslint-config-airbnb
+  yarn add eslint-config-prettier eslint-plugin-simple-import-sort eslint-plugin-sort-destructure-keys eslint-plugin-sort-keys-fix --dev
 }
 
 function init-prettier() {
