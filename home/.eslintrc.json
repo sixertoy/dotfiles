@@ -1,73 +1,31 @@
 {
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaVersion": 9,
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "sourceType": "module"
-  },
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "extends": ["react-app", "airbnb", "prettier"],
+  "extends": [
+    "react-app",
+    "airbnb",
+    "plugin:jsx-a11y/recommended",
+    "prettier",
+    "prettier/react"
+  ],
   "plugins": [
+    "jsx-a11y",
+    "prettier",
     "simple-import-sort",
     "import",
     "sort-destructure-keys",
     "sort-keys-fix"
   ],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
   "rules": {
-    "import/first": 2,
-    "import/newline-after-import": 2,
-    "import/no-duplicates": 2,
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          ["builtin", "external"],
-          ["internal", "parent", "sibling", "index"]
-        ],
-        "newlines-between": "always"
-      }
-    ],
-    "jsx-a11y/click-events-have-key-events": 0,
-    "react/jsx-closing-bracket-location": [
-      2,
-      { "nonEmpty": "after-props", "selfClosing": false }
-    ],
-    "react/jsx-indent": [
-      2,
-      2,
-      { "checkAttributes": false, "indentLogicalExpressions": true }
-    ],
-    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
-    "react/jsx-fragments": [2, "element"],
-    "react/jsx-indent-props": [2, 2],
-    "react/jsx-one-expression-per-line": [2, { "allow": "single-child" }],
-    "react/jsx-props-no-spreading": 0,
-    "react/jsx-sort-props": [
-      2,
-      {
-        "noSortAlphabetically": false,
-        "ignoreCase": true,
-        "callbacksLast": true,
-        "shorthandFirst": true,
-        "reservedFirst": true
-      }
-    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "simple-import-sort/sort": 2,
     "sort-destructure-keys/sort-destructure-keys": 2,
     "sort-imports": "off",
     "sort-keys": [
-      2,
+      "error",
       "asc",
       { "caseSensitive": true, "natural": false, "minKeys": 2 }
     ],

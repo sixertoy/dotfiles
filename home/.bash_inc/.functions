@@ -2,20 +2,15 @@
 
 DOTFILES_BASE=raw.githubusercontent.com/sixertoy/dotfiles/master
 
-function init-eslint() {
+function init-linter() {
   # copie du fichier de configuration
-  FILE_NAME=.eslintrc.json
-  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
-  curl -o ./$FILE_NAME $FILE_URL
+  # FILE_NAME=.eslintrc.json
+  # FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  # curl -o ./$FILE_NAME $FILE_URL
   # copie du fichier Ignore
   FILE_NAME=.eslintignore
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
-  # installation des dependances
-  yarn add eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-plugin-simple-import-sort eslint-plugin-sort-destructure-keys eslint-plugin-sort-keys-fix --dev
-}
-
-function init-prettier() {
   # copie du fichier de configuration
   FILE_NAME=.prettierrc.json
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
@@ -24,17 +19,12 @@ function init-prettier() {
   FILE_NAME=.prettierignore
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
-  # installation des dependances
-  yarn add prettier prettier-eslint prettier-stylelint prettier-eslint-cli --dev
-}
-
-function init-stylelint() {
   # copie du fichier de configuration
   FILE_NAME=.stylelintrc.json
   FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
   curl -o ./$FILE_NAME $FILE_URL
   # installation des dependances
-  yarn add stylelint stylelint-config-standard stylelint-order stylelint-scss --dev
+  yarn add -D stylelint stylelint-config-standard stylelint-order stylelint-scss eslint-config-airbnb eslint-config-prettier eslint-plugin-jsx-a11y eslint-plugin-prettier prettier eslint-plugin-simple-import-sort eslint-plugin-sort-keys-fix eslint-plugin-sort-destructure-keys --dev
 }
 
 function init-hooks() {
@@ -48,6 +38,7 @@ function init-hooks() {
   curl -o ./$FILE_NAME $FILE_URL
   # Installation des dépendances
   yarn add husky lint-staged --dev
+  echo "husky: { hooks: { pre-commit: lint-staged } }\n"
 }
 
 function init-dotfiles() {
@@ -88,9 +79,7 @@ function init-babel() {
 function init-dressing() {
   init-gitignore
   init-dotfiles
-  init-eslint
-  init-prettier
-  init-stylelint
+  init-linter
   init-hooks
 }
 
@@ -104,8 +93,6 @@ function init-project() {
   yarn init -Y
   init-gitignore
   init-dotfiles
-  init-eslint
-  init-prettier
-  init-stylelint
+  init-linter
   init-hooks
 }
