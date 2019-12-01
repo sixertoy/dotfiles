@@ -85,6 +85,15 @@ function init-babel() {
   yarn add @babel/cli @babel/core @babel/node @babel/plugin-proposal-class-properties @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react --dev
 }
 
+function init-dressing() {
+  init-gitignore
+  init-dotfiles
+  init-eslint
+  init-prettier
+  init-stylelint
+  init-hooks
+}
+
 function init-project() {
   mkdir -p .kiss
   mkdir -p src/app
