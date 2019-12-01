@@ -1,19 +1,33 @@
 {
-  "extends": ["react-app", "airbnb", "prettier", "prettier/react"],
-  "plugins": ["sort-destructure-keys"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
   "env": {
-    "jest": true,
-    "node": true,
-    "mocha": true,
     "browser": true,
-    "jasmine": true
+    "es6": true,
+    "node": true
   },
-  "globals": {
-    "fixture": true
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   },
+  "extends": ["react-app", "airbnb", "prettier"],
+  "plugins": [
+    "simple-import-sort",
+    "import",
+    "sort-destructure-keys",
+    "sort-keys-fix"
+  ],
   "rules": {
-    "no-undef": [2, { "typeof": true }],
-    "jsx-a11y/label-has-for": 0,
+    "import/first": 2,
+    "import/newline-after-import": 2,
+    "import/no-duplicates": 2,
     "import/order": [
       "error",
       {
@@ -24,44 +38,41 @@
         "newlines-between": "always"
       }
     ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": [
-          "**/*.test.js",
-          "**/*.spec.js",
-          "**/*.stories.js",
-          "rollup*"
-        ]
-      }
+    "jsx-a11y/click-events-have-key-events": 0,
+    "react/jsx-closing-bracket-location": [
+      2,
+      { "nonEmpty": "after-props", "selfClosing": false }
     ],
-    "react/forbid-prop-types": [2, { "forbid": ["any"] }],
-    "react/prop-types": [2, { "skipUndeclared": false }],
-    "react/jsx-filename-extension": [
+    "react/jsx-indent": [
+      2,
+      2,
+      { "checkAttributes": false, "indentLogicalExpressions": true }
+    ],
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-fragments": [2, "element"],
+    "react/jsx-indent-props": [2, 2],
+    "react/jsx-one-expression-per-line": [2, { "allow": "single-child" }],
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-sort-props": [
       2,
       {
-        "extensions": [".js", ".jsx"]
+        "noSortAlphabetically": false,
+        "ignoreCase": true,
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "reservedFirst": true
       }
     ],
-    "sort-destructure-keys/sort-destructure-keys": [
-      2,
-      {
-        "caseSensitive": false
-      }
-    ],
+    "simple-import-sort/sort": 2,
+    "sort-destructure-keys/sort-destructure-keys": 2,
+    "sort-imports": "off",
     "sort-keys": [
       2,
       "asc",
-      {
-        "caseSensitive": true,
-        "natural": false
-      }
+      { "caseSensitive": true, "natural": false, "minKeys": 2 }
     ],
-    "sort-vars": [
-      2,
-      {
-        "ignoreCase": true
-      }
-    ]
+    "simple-import-sort/sort": 2,
+    "sort-imports": "off",
+    "sort-keys-fix/sort-keys-fix": 2
   }
 }
