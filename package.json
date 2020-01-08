@@ -1,10 +1,10 @@
 {
   "name": "dotfiles",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docs": "sh ./scripts/docs.sh"
   },
   "repository": {
     "type": "git",
@@ -16,8 +16,5 @@
     "url": "https://github.com/sixertoy/dotfiles/issues"
   },
   "homepage": "https://github.com/sixertoy/dotfiles#readme",
-  "devDependencies": {},
-  "scripts": {
-    "docs": "sh ./scripts/docs.sh"
-  }
+  "devDependencies": {}
 }
