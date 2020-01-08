@@ -187,4 +187,5 @@ function wh() {
 [ -n "$PS1" ] && source ~/.bash_inc/.aliases_apache;
 [ -n "$PS1" ] && source ~/.bash_inc/.aliases_docker;
 [ -n "$PS1" ] && source ~/.bash_inc/.aliases_git;
+[ -n "$PS1" ] && source ~/.bash_inc/.aliases_nvm;
 [ -n "$PS1" ] && source ~/.bash_inc/.extras;
