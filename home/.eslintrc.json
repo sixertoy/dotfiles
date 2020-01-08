@@ -20,7 +20,6 @@
     "node": true
   },
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "simple-import-sort/sort": 2,
     "sort-destructure-keys/sort-destructure-keys": 2,
     "sort-imports": "off",
@@ -31,6 +30,17 @@
     ],
     "simple-import-sort/sort": 2,
     "sort-imports": "off",
-    "sort-keys-fix/sort-keys-fix": 2
+    "sort-keys-fix/sort-keys-fix": 2,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "ignoreCase": true,
+        "noSortAlphabetically": false,
+        "reservedFirst": false
+      }
+    ]
   }
 }

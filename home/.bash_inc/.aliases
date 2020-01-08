@@ -5,6 +5,9 @@
 # Aliases
 # https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
 
+# Use nvm on directory change
+alias cd='cdnvm'
+
 # Remove with confirmation
 alias rm="rm -i"
 
