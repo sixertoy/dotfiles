@@ -1,0 +1,13 @@
+# NOTE Travis Config Reference
+# https://config.travis-ci.com
+language: node_js
+branches:
+  only:
+    - master
+  except:
+    - develop
+env:
+  - NODE_ENV=development
+cache:
+  directories:
+    - node_modules
