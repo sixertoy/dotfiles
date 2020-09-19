@@ -1,0 +1,165 @@
+#!/usr/bin/env bash
+
+DOTFILES_BASE=raw.githubusercontent.com/sixertoy/dotfiles/master
+
+function init-linter() {
+  # copie du fichier de configuration
+  # FILE_NAME=.eslintrc.json
+  # FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  # curl -o ./$FILE_NAME $FILE_URL
+  # copie du fichier Ignore
+  FILE_NAME=.eslintignore
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # copie du fichier de configuration
+  FILE_NAME=.prettierrc.json
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # copie du fichier Ignore
+  FILE_NAME=.prettierignore
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # copie du fichier de configuration
+  FILE_NAME=.stylelintrc.json
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # installation des dependances
+  yarn add -D stylelint stylelint-config-standard stylelint-order stylelint-scss eslint-config-airbnb eslint-config-prettier eslint-plugin-jsx-a11y eslint-plugin-prettier prettier eslint-plugin-simple-import-sort eslint-plugin-sort-keys-fix eslint-plugin-sort-destructure-keys --dev
+}
+
+function init-hooks() {
+  # copie du fichier de configuration
+  FILE_NAME=.huskyrc.json
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # copie du fichier de configuration
+  FILE_NAME=.lintstagedrc.json
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # Installation des dépendances
+  yarn add husky lint-staged --dev
+  echo "husky: { hooks: { pre-commit: lint-staged } }\n"
+}
+
+function init-dotfiles() {
+  # copie du fichier de configuration
+  FILE_NAME=.editorconfig
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # copie du fichier de configuration
+  FILE_NAME=.yarnrc
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # creation du fichier .nvmrc
+  touch .nvmrc
+  echo "v12.13.1" > .nvmrc
+}
+
+# gitignore.io
+# @see https://www.gitignore.io/docs
+function init-gitignore() {
+  curl -L -s https://www.gitignore.io/api/windows,linux,osx,macos,node,dotenv > .gitignore
+  echo ".env.loc" >> .gitignore
+  echo ".env.dev" >> .gitignore
+  echo ".env.prod" >> .gitignore
+  echo ".env.local" >> .gitignore
+  echo ".env.production" >> .gitignore
+  echo ".env.development" >> .gitignore
+}
+
+function init-babel() {
+  # copie du fichier de configuration
+  FILE_NAME=.babelrc
+  FILE_URL=https://$DOTFILES_BASE/home/$FILE_NAME
+  curl -o ./$FILE_NAME $FILE_URL
+  # installation des dependances
+  yarn add @babel/cli @babel/core @babel/node @babel/plugin-proposal-class-properties @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react --dev
+}
+
+function init-dressing() {
+  init-gitignore
+  init-dotfiles
+  init-linter
+  init-hooks
+}
+
+function init-project() {
+  mkdir -p .kiss
+  mkdir -p src/app
+  mkdir -p src/scss
+  mkdir -p src/static
+  mkdir -p .scripts/hooks
+  git init
+  yarn init -Y
+  init-gitignore
+  init-dotfiles
+  init-linter
+  init-hooks
+}
+
+# --------------------------------------------------
+# 
+# Functions
+#
+# --------------------------------------------------
+
+function fd() {
+  # Find file by name
+  find ./ -type f -name "*$@*"
+}
+
+function ff() {
+  # Find directory by name
+  find ./ -type d -name "*$@*"
+}
+
+function fs() {
+  # List files/dirs sizes
+  if du -b /dev/null > /dev/null 2>&1; then
+    local arg=-sbh;
+  else
+    local arg=-sh;
+  fi
+  if [[ -n "$@" ]]; then
+    du $arg -- "$@";
+  else
+    du $arg .[^.]* ./*;
+  fi;
+}
+
+function gg() {
+  # Open google search in default browser
+  xdg-open http://www.google.com/search?q=$1
+}
+
+function pack() {
+  # Create a .tar.gz archive
+  # using `zopfli`, `pigz` or `gzip` for compression
+  local tmpFile="${@%/}.tar";
+  tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
+  size=$(
+    stat -f"%z" "${tmpFile}" 2> /dev/null; # OS X `stat`
+    stat -c"%s" "${tmpFile}" 2> /dev/null # GNU `stat`
+  );
+  local cmd="";
+  if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
+    # the .tar file is smaller than 50 MB and Zopfli is available; use it
+    cmd="zopfli";
+  else
+    if hash pigz 2> /dev/null; then
+      cmd="pigz";
+    else
+      cmd="gzip";
+    fi;
+  fi;
+
+  echo "Compressing .tar using \`${cmd}\`…";
+  "${cmd}" -v "${tmpFile}" || return 1;
+  [ -f "${tmpFile}" ] && rm "${tmpFile}";
+  echo "${tmpFile}.gz created successfully.";
+}
+
+function meteo() {
+  # Show current location weather informations
+  curl -s http://us.wttr.in/?lang=fr
+}
