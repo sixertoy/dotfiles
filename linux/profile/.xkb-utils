@@ -1,0 +1,2 @@
+# alias kdell=xkbcomp ~/.xkb/keymap/dell $DISPLAY
+# alias kmac=xkbcomp ~/.xkb/keymap/mac $DISPLAY

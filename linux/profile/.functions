@@ -127,6 +127,11 @@ function fs() {
   fi;
 }
 
+function mkd() {
+  # Create a new directory and enter it
+  mkdir -p "$@" && cd "$_";
+}
+
 function gg() {
   # Open google search in default browser
   xdg-open http://www.google.com/search?q=$1

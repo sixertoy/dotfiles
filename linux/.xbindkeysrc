@@ -77,12 +77,12 @@
 # https://extensions.gnome.org/extension/1116/workspace-switch-wraparound/
 #
 # ----------------------------------------------
-Control+Alt + Control_L
+
+### Mouse Buttons
+# Cycle through workspaces
 "xte 'keydown Control_L' 'keydown Alt_L' 'key Up' 'keyup Alt_L' 'keyup Control_L'"
 b:9
 
-"xte 'keydown Super_L' 'keyup Super_L'"
-b:8
-
+# b:8
 # b:6
 # b:7

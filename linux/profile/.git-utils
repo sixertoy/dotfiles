@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+
+# Show current branch name
+function gitbrname() {
+  BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+  echo $BRANCH_NAME
+}
+
+# Show origin informations
+function git-origin() {
+  git remote show origin
+}
+
+# Show currents commits to be pushed
+function git-pendings() {
+  PENDING=$(git log origin/$(git rev-parse --abbrev-ref HEAD)..)
+  if [ ! -z '$PENDING' ]; then
+    echo -e '\033[0;33mNo commits waiting to be pushed\033[0m'
+  else
+    echo $PENDING
+  fi
+}
+
+# Show local git branches colored with description and last commit
+# current branch is prefixed by '*'
+function br() {
+  BRANCHES=$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')
+  for BRANCH in $BRANCHES; do
+    # recupere la description de la branche
+    DESC=$(git config branch.$BRANCH.description)
+    # recupere le dernier commit de la branche
+    DATE=$(git log --format=%cd --date=local $BRANCH -1)
+    LOG=$(git log --oneline --color $BRANCH -1)
+    # <-------
+    # ajoute une étoile * devant la branche en cours
+    if [ $BRANCH == $(git rev-parse --abbrev-ref HEAD) ]; then
+      BRANCH="\033[0;32m* $BRANCH\033[0m"
+    else
+      BRANCH="\033[0;94m $BRANCH\033[0m"
+    fi
+    # ------->
+    DESC="\033[0;36m$DESC\033[0m"
+    DATE="\033[0;90m$DATE\033[0m"
+    echo -e "$BRANCH   $DESC\n   $DATE\n   $LOG"
+  done
+}
+
+function git-tree () {
+  # NOTE see ~/.gitconfig `git tree`
+  git log --graph --all --full-history --color \
+    --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
+}
+
+function git-delremote() {
+  git push --delete origin $1
+}
+
+function git-bisect () {
+  if [ -z "$1" ]; then
+    echo "Missing argument for bad commit"
+    return
+  fi
+  if test "$#" -ne 2; then
+    GOOD_COMMIT='HEAD'
+    BAD_COMMIT=$1
+  else
+    GOOD_COMMIT=$1
+    BAD_COMMIT=$2
+  fi
+  ERROR=$(git cat-file -e $GOOD_COMMIT^{commit} 2>&1)
+  if [ -n "$ERROR" ]; then
+    echo -e "\033[31mArgument #1 is not a valid commit\033[0m $GOOD_COMMIT"
+    return
+  fi
+  ERROR=$(git cat-file -e $BAD_COMMIT^{commit} 2>&1)
+  if [ -n "$ERROR" ]; then
+    echo -e "\033[31mArgument #2 is not a valid commit\033[0m $BAD_COMMIT"
+    return
+  fi
+  git bisect start
+  git bisect bad $GOOD_COMMIT
+  git bisect good $BAD_COMMIT
+}
+
+function git-bisect-nok () {
+  git bisect bad
+}
+
+function git-bisect-ok () {
+  git bisect good
+}
+
+function git-bisect-stop () {
+  git bisect reset
+}
+
+GIT_TERMINAL_PROMPT=1

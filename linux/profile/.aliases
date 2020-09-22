@@ -18,6 +18,9 @@ alias lw="ls -AF ${colorflag}"
 # List only directories
 alias dir="ls -lF ${colorflag} | grep --color=never '^d'"
 
+# Map edit to gedit
+alias edit=gedit
+
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
