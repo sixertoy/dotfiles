@@ -1,0 +1,10 @@
+"*":
+  editor:
+    fontFamily: "\"Fira Code\", Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 18
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+  welcome:
+    showOnStartup: false
