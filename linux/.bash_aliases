@@ -2,10 +2,6 @@ if [ -f ~/profile/.aliases ]; then
     . ~/profile/.aliases
 fi
 
-if [ -f ~/profile/.xkb-utils ]; then
-    . ~/profile/.xkb-utils
-fi
-
 if [ -f ~/profile/.git-utils ]; then
     . ~/profile/.git-utils
 fi

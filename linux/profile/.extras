@@ -1,8 +1,11 @@
 # change /path/to/france/connect/worspace/ by actual path to your working directory:
-export FC_ROOT=/home/matthieu/workspaces/fc
+export FC_ROOT=/home/matthieu/workspaces/franceconnect
 
 # Ajouter un alias sur la commande docker-stack : 
 alias docker-stack=$FC_ROOT/fc-docker/docker-stack
+alias dsk=docker-stack
+
+alias dk-asqa="docker run --name asqatasun -d -p 8080:8080 asqatasun/asqatasun"
 
 # Contournement à UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=70) :
 export COMPOSE_HTTP_TIMEOUT=200

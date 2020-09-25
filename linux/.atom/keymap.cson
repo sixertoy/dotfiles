@@ -31,11 +31,11 @@
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#configuring-with-cson
 
-# 'atom-workspace atom-text-editor':
-# 'end': 'editor:move-to-end-of-screen-line'
-# 'home': 'editor:move-to-first-character-of-line'
-#  ctrl-shift-right': 'editor:select-to-end-of-line'
-#  'ctrl-shift-left': 'editor:select-to-first-character-of-line'
+'atom-workspace atom-text-editor':
+  'ctrl-alt-left': 'editor:move-to-end-of-screen-line'
+  'ctrl-alt-right': 'editor:move-to-first-character-of-line'
+# 'ctrl-shift-right': 'editor:select-to-end-of-line'
+# 'ctrl-shift-left': 'editor:select-to-first-character-of-line'
 
 # 'atom-workspace atom-text-editor:not([mini])':
 #   'ctrl-cmd-up': 'editor:move-line-up'

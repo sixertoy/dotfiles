@@ -1,0 +1,17 @@
+<schemalist gettext-domain="tweaks-system-menu">
+  <schema id="org.gnome.shell.extensions.tweaks-system-menu" path="/org/gnome/shell/extensions/tweaks-system-menu/">
+    <key name="position" type="i">
+      <default>-1</default>
+      <range min="-1" max="99"/>
+      <summary>Position of the button.</summary>
+      <description>If set to -1, the position is automatic: Tweaks
+      will show up after Settings.  If set to zero or more, the actual
+      launcher position on the system menu.</description>
+    </key>
+    <key name="debug" type="b">
+      <default>false</default>
+      <summary>Debugging.</summary>
+      <description>Enable debugging for the extension.</description>
+    </key>
+  </schema>
+</schemalist>
