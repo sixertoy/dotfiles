@@ -1,35 +1,28 @@
-# --------------------------------
-# Aliases
-# https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
-
 # Show Disc Usage informations
 alias lds="df -h"
 
 # Always use color output for `ls`
-alias ls="command ls ${colorflag}"
+alias ls="command ls --color=auto"
 
 # List all files and hidden files
-alias ll="ls -laF ${colorflag}"
+alias ll="ls -dUl -- .* *"
 
 # Table all files and hidden files
-alias lw="ls -AF ${colorflag}"
+alias lt="ls -AF"
 
 # List only directories
-alias dir="ls -lF ${colorflag} | grep --color=never '^d'"
-
-# Map edit to gedit
-alias edit=subl
+alias dir="ls -lF | grep --color=never '^d'"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
-# Get week number
 alias week="date +%V"
-
 alias killnode="killall node"
 alias npr="npm run"
 alias reload="exec $SHELL -l"
 alias rm="rm -i"
 alias rmrf="rm -rf"
+alias nodejs=node
+alias edit=subl
