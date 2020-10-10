@@ -1,0 +1,17 @@
+.tree-view .list-tree {
+  font-size: 1.45rem;
+}
+
+.list-group li:not(.list-nested-item), .list-tree li:not(.list-nested-item), .list-group li.list-nested-item > .list-item, .list-tree li.list-nested-item > .list-item {
+    line-height: 1.7em;
+}
+
+atom-text-editor {
+  text-rendering: optimizeLegibility;
+}
+
+atom-text-editor.editor .syntax--string.syntax--quoted,
+atom-text-editor.editor .syntax--string.syntax--regex {
+  -webkit-font-feature-settings: "liga" off, "calt": off;
+}
+

@@ -1,0 +1,33 @@
+'atom-workspace atom-text-editor':
+  'ctrl-shift-L': 'editor:split-selections-into-lines'
+  'alt-left': 'editor:move-to-first-character-of-line'
+  'alt-right': 'editor:move-to-end-of-screen-line'
+  'alt-shift-right': 'editor:select-to-end-of-line'
+  'alt-shift-left': 'editor:select-to-first-character-of-line'
+  'ctrl-shift-up': 'core:select-to-top'
+  'ctrl-shift-down': 'core:select-to-bottom'
+  'ctrl-up': 'core:move-to-top'
+  'ctrl-down': 'core:move-to-bottom'
+  'ctrl-cmd-up': 'editor:move-line-up'
+  'ctrl-cmd-down': 'editor:move-line-down'
+  'ctrl-left': 'editor:move-to-previous-subword-boundary'
+  'ctrl-right': 'editor:move-to-next-subword-boundary'
+  'ctrl-shift-left': 'editor:select-to-beginning-of-word'
+  'ctrl-shift-right': 'editor:select-to-end-of-word'
+# editor:move-to-beginning-of-next-paragraph
+# editor:move-to-beginning-of-previous-paragraph
+# editor:move-to-beginning-of-screen-line
+# editor:move-to-beginning-of-line
+# editor:move-to-end-of-line
+# editor:move-to-first-character-of-line
+# editor:move-to-beginning-of-next-word
+# editor:move-to-previous-word-boundary
+# editor:move-to-next-word-boundary
+# editor:select-to-beginning-of-next-paragraph
+# editor:select-to-beginning-of-previous-paragraph
+# editor:select-to-end-of-line
+# editor:select-to-beginning-of-line
+# editor:select-to-beginning-of-next-word
+# editor:select-to-next-word-boundary
+# editor:select-to-previous-word-boundary
+

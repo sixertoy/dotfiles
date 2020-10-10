@@ -1,0 +1,54 @@
+{
+    "child": {
+        "child1": {
+            "directory": "\/home\/matthieu\/workspaces\/franceconnect",
+            "height": 982,
+            "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+            "readOnly": false,
+            "synchronizedInput": false,
+            "type": "Terminal",
+            "uuid": "fce3672a-1b89-4006-bb87-deacac8303ca",
+            "width": 829
+        },
+        "child2": {
+            "child1": {
+                "directory": "\/home\/matthieu",
+                "height": 491,
+                "overrideCommand": "ctop -a",
+                "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                "readOnly": false,
+                "synchronizedInput": true,
+                "title": "ctop",
+                "type": "Terminal",
+                "uuid": "5a11d376-440b-4aca-855b-86a883360549",
+                "width": 736
+            },
+            "child2": {
+                "directory": "\/home\/matthieu",
+                "height": 486,
+                "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                "readOnly": false,
+                "synchronizedInput": true,
+                "title": "home",
+                "type": "Terminal",
+                "uuid": "dc278ece-05ed-44e8-8ca4-103f99285bff",
+                "width": 736
+            },
+            "orientation": 1,
+            "position": 50,
+            "ratio": 0.5,
+            "type": "Paned"
+        },
+        "orientation": 0,
+        "position": 52,
+        "ratio": 0.528025477707006363,
+        "type": "Paned"
+    },
+    "height": 982,
+    "name": "Terminal",
+    "synchronizedInput": false,
+    "type": "Session",
+    "uuid": "cc2eda02-c218-42f7-b1e6-8cb6971b2135",
+    "version": "1.0",
+    "width": 1570
+}

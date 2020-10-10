@@ -1,0 +1,26 @@
+# ######################################################
+#
+# INSTALL
+# ---------------------
+# sudo apt-get install xbindkeys xautomation x11-utils
+# https://extensions.gnome.org/extension/1116/workspace-switch-wraparound/
+#
+# TEST KEYS
+# ---------------------
+# `xbindkeys -mk`
+#
+# RELOAD
+# ---------------------
+# `killall xbindkeys && xbindkeys`
+#
+# ######################################################
+
+### Mouse Buttons
+
+# Show overview
+"xdotool key 'Super_L+s'"
+b:9
+
+# b:8
+# b:6
+# b:7

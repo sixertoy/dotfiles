@@ -1,0 +1,79 @@
+[alias]
+  st = status
+  br = branch -v
+  ci = commit
+  co = checkout
+  aadd = add -p
+  rbi = rebase -i
+  cr = cherry-pick
+  mg = merge --no-ff
+  plr = pull --rebase
+  cclean = clean -i -d
+  sstash = stash save -u
+  # secured push force
+  pushf = push --force-with-lease
+  # edite la description du dernier commit
+  amend = commit --amend
+  # edite le dernier commit sans editer sa description
+  aamend = commit --amend --no-edit
+  # annule le dernier ajout dans le stage
+  undo = checkout --
+  # cancel du dernier commit
+  rewind = reset HEAD~1
+  # cancel du cancel du dernier commit
+  cancel-rewind = reset HEAD@{1}
+  # annule les derniers ajout dans le stage
+  unstage = reset HEAD --
+  llog = log -1
+  # show files changed with status
+  changed = show --name-status
+  # show logs as tree
+  tree = log --graph --full-history --color \
+  --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
+  # show branch origin informations
+  infos = remote show origin
+  # show user name
+  whoami = config --get user.name
+  # ajout une description a une branche
+  desc = branch --edit-description
+  # show commit files and stats (delete/add)
+  cis = show --stat --oneline
+  # show logs for a single file
+  logf = log -p
+  # show git tag with annotation
+  atag = tag -l -n
+  # show submodules status
+  stsub = git submodule status --recursive
+  # update all submodules
+  pullsub = submodule update --init --recursive
+  # pull all submodules
+  pushsub = submodule foreach git push -u origin master
+[color]
+  ui = true
+[core]
+  encoding = utf8
+  autocrlf = input
+  editor = subl -w
+  whitespace = -trailing-space
+  excludesfile = /Users/xxxxx/.gitignore
+[diff]
+  mnemonicPrefix = true
+[format]
+  pretty = %C(green)%ad %an %C(yellow)%h\n%Creset%B
+[gui]
+  encoding = utf-8
+[log]
+  date = format:%a %v %T
+[pull]
+  rebase = preserve
+[push]
+  default = simple
+  followTags = true
+[tag]
+  sort=-creatordate
+  # sort = version:refname
+[user]
+  name = matthieu
+  email = sixertoy.github@gmail.com
+[status]
+  showUntrackedFiles = all
