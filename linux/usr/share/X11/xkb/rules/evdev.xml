@@ -3218,7 +3218,7 @@
     </layout><layout>
       <configItem>
         <name>magic</name>
-        <shortDescription>MK</shortDescription>
+        <shortDescription>mac</shortDescription>
         <description>French (Magic Keyboard)</description>
         <languageList>
           <iso639Id>fra</iso639Id>

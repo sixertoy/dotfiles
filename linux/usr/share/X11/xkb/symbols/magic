@@ -90,7 +90,7 @@ xkb_symbols "extended" {
     key <AB10> {	[     equal,	plus,		notequal,		plusminus	]	};
 
     key <SPCE> {	[     space,	space,		nobreakspace,		nobreakspace	]	};
-
+    
     include "level3(ralt_switch)"
 };
 
