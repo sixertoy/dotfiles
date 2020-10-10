@@ -1,26 +1,37 @@
-# ######################################################
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 1.8.6
+#
+# To specify a key, you can use 'xbindkeys --key' or
+# 'xbindkeys --multikey' and put one of the two lines in this file.
+#
+# List of modifier:
+#   Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
+#
+# The release modifier is not a standard X modifier, but you can
+# use it if you want to catch release events instead of press events
 #
 # INSTALL
-# ---------------------
+# -------------------------
 # sudo apt-get install xbindkeys xautomation x11-utils
-# https://extensions.gnome.org/extension/1116/workspace-switch-wraparound/
 #
-# TEST KEYS
-# ---------------------
-# `xbindkeys -mk`
-#
-# RELOAD
-# ---------------------
-# `killall xbindkeys && xbindkeys`
-#
-# ######################################################
 
-### Mouse Buttons
+# By defaults, xbindkeys does not pay attention with the modifiers
+# NumLock, CapsLock and ScrollLock.
+# Uncomment the lines above if you want to pay attention to them.
 
-# Show overview
-"xdotool key 'Super_L+s'"
-b:9
+#keystate_numlock = enable
+#keystate_capslock = enable
+#keystate_scrolllock= enable
 
-# b:8
-# b:6
-# b:7
+###########################
+
+# Show XBind Keybindings
+"xbindkeys_show"
+  control+shift + q
+
+# "xdotool key super"
+# b:9
