@@ -18,10 +18,6 @@ if [ -f ~/profile/.extras ]; then
     . ~/profile/.extras
 fi
 
-if [ -f ~/profile/.tmux ]; then
-    . ~/profile/.tmux
-fi
-
 if [ -f ~/profile/.prompt ]; then
     . ~/profile/.prompt
 fi
