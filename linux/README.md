@@ -76,3 +76,7 @@ https://askubuntu.com/questions/26056/where-are-gnome-keyboard-shortcuts-stored
 **Select next hightlighted word**
 
 `ctrl+d`
+
+## Touchpad
+
+https://doc.ubuntu-fr.org/touchpad#configurer_les_gestes
