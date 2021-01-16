@@ -28,41 +28,41 @@
 
 ### Depuis le web
 
-[ ] [Atom](https://atom.io/)
-[ ] [Opera Browser](https://www.opera.com/fr/download)
-[ ] [Google chrome](https://www.google.com/chrome/)
-[ ] [Dropbox](https://www.dropbox.com/fr/install-linux) 
+- [ ] [Atom](https://atom.io/)
+- [ ] [Opera Browser](https://www.opera.com/fr/download)
+- [ ] [Google chrome](https://www.google.com/chrome/)
+- [ ] [Dropbox](https://www.dropbox.com/fr/install-linux) 
 
 ### Depuis le store Ubuntu
 
-[ ] ClamTK
-[ ] Tilix
-[ ] Gnome Tweak
-[ ] Dropbox
-[ ] Dconf
-[ ] Spotify
-[ ] Steam
-[ ] Mattermost
-[ ] Discord
+- [ ] ClamTK
+- [ ] Tilix
+- [ ] Gnome Tweak
+- [ ] Dropbox
+- [ ] Dconf
+- [ ] Spotify
+- [ ] Steam
+- [ ] Mattermost
+- [ ] Discord
 
 ## Tweaks
 
 https://extensions.gnome.org/
 
-- User themes
-- Open weather
-- Panel OSD
-- Dash To Dock
-- Sound input & Output device chooser
-- Tweaks in system menu
-- System-monitor
+- [ ] User themes
+- [ ] Open weather
+- [ ] Panel OSD
+- [ ] Dash To Dock
+- [ ] Sound input & Output device chooser
+- [ ] Tweaks in system menu
+- [ ] System-monitor
   ```
   sudo apt install gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0
   ```
 
 ### Depuis un repository
 
-- Sublime Text 3
+- [ ] Sublime Text 3
   ```
   wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
   sudo apt-get install apt-transport-https
@@ -71,7 +71,7 @@ https://extensions.gnome.org/
   sudo apt-get install sublime-text
   ```
 
-- Brave Browser
+- [ ] Brave Browser
   ```
   sudo apt install apt-transport-https curl gnupg
   curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
@@ -80,12 +80,12 @@ https://extensions.gnome.org/
   sudo apt install brave-browser
   ```
   
-- htop
+- [ ] htop
   ```
   sudo apt-get install htop
   ```
   
-- ctop
+- [ ] ctop
   ```
   echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
   wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
@@ -93,21 +93,21 @@ https://extensions.gnome.org/
   sudo apt install docker-ctop
   ```
   
-- NVM
+- [ ] NVM
   ```
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
   ```
 
-- Yarn
+- [ ] Yarn
   ```
   sudo apt-get update && sudo apt-get install --no-install-recommends yarn
   ```
   
-- Docker
+- [ ] Docker
 
-- GIT
+- [ ] GIT
 
-- Fira Code Fonts
+- [ ] Fira Code Fonts
   ```
   sudo add-apt-repository universe
   sudo apt install fonts-firacode
