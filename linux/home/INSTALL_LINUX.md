@@ -35,6 +35,7 @@
 ### Depuis le store Ubuntu
 
 - ClamTK
+- Tilix
 - Ajustements (Gnome Tweak)
 - Dropbox
 - Editeur Dconf `org/gnome/shell/extensions/dash-to-dock`
