@@ -40,6 +40,8 @@
 
 ## Tweaks
 
+https://extensions.gnome.org/
+
 - User themes
 - Open weather
 - Panel OSD
