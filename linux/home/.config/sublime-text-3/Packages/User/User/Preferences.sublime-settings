@@ -74,10 +74,10 @@
     "spell_check": false,
 
     // The number of spaces a tab is considered equal to
-    "tab_size": 4,
+    "tab_size": 2,
 
     // Set to true to insert spaces when tab is pressed
-    "translate_tabs_to_spaces": false,
+    "translate_tabs_to_spaces": true,
 
     // If translate_tabs_to_spaces is true, use_tab_stops will make tab and
     // backspace insert/delete up to the next tabstop
@@ -104,11 +104,11 @@
     // Disables horizontal scrolling if enabled.
     // May be set to true, false, or "auto", where it will be disabled for
     // source code, and otherwise enabled.
-    "word_wrap": "auto",
+    "word_wrap": true,
 
     // Set to a value other than 0 to force wrapping at that column rather than the
     // window width
-    "wrap_width": 0,
+    "wrap_width": 80,
 
     // Set to false to prevent word wrapped lines from being indented to the same
     // level
@@ -212,7 +212,7 @@
 
     // Set to true to ensure the last line of the file ends in a newline
     // character when saving
-    "ensure_newline_at_eof_on_save": false,
+    "ensure_newline_at_eof_on_save": true,
 
     // Set to true to automatically save files when switching to a different file
     // or application
@@ -308,7 +308,7 @@
 
     // When drag_text is enabled, clicking on selected text will begin a
     // drag-drop operation. This is not currently implemented under Linux.
-    "drag_text": true,
+    "drag_text": false,
 
     //
     // User Interface Settings
@@ -384,7 +384,7 @@
     // remember_full_screen will allow Sublime Text to start in full screen
     // mode if it was exited in full screen mode. When set to false, Sublime
     // Text will never start in full screen mode.
-    "remember_full_screen": false,
+    "remember_full_screen": true,
 
     // Mac only. If the user's default shell should be invoked to obtain the
     // user's customized environment variables. May be a boolean, or a string
@@ -400,10 +400,10 @@
 
     // Mac only: When files are opened from finder, or by dragging onto the
     // dock icon, this controls if a new window is created or not.
-    "open_files_in_new_window": true,
+    "open_files_in_new_window": false,
 
     // Mac only: This controls if an empty window is created at startup or not.
-    "create_window_at_startup": true,
+    "create_window_at_startup": false,
 
     // Mac only: Show recent files on the Touch Bar.
     "show_navigation_bar": true,
