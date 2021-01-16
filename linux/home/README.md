@@ -35,7 +35,7 @@
 - [Discord](https://discord.com/)
 - [Mattermost](https://mattermost.com/download/)
 - [Dropbox](https://www.dropbox.com/fr/install-linux)
-- [Steam](https://store.steampowered.com/)
+- [Steam](https://store.steampowered.com/about/)
 
 ### Depuis le store Ubuntu
 
