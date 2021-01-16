@@ -123,10 +123,6 @@ https://extensions.gnome.org/
 1. Clone le repository `dotfiles`
 1. Arrêter le serveur Apache par défaut
   - `sudo systemctl disable apache2 && sudo systemctl stop apache2`
-1. NVM
-  - `nvm install --lts`
-1. Yarn
-  - `sudo apt-get update && sudo apt-get install --no-install-recommends yarn`
 1. Docker
 1. Docker Compose
 1. Add ssh key to Gitlab
