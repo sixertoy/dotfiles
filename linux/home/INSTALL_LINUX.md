@@ -36,14 +36,9 @@
 
 - ClamTK
 - Tilix
-- Ajustements (Gnome Tweak)
+- Gnome Tweak
 - Dropbox
-- Editeur Dconf `org/gnome/shell/extensions/dash-to-dock`
-  - custom-theme-running-dots-color: #FFFFFF
-  - dash-max-icon-size: 64
-  - extend-height: false
-  - show-apps-at-top: true
-  - show-trash: true
+- Dconf
 - Spotify
 - Steam
 - Mattermost
