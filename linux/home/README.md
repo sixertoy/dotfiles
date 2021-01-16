@@ -33,7 +33,7 @@
 - [Google chrome](https://www.google.com/chrome/)
 - [Dropbox](https://www.dropbox.com/fr/install-linux) 
 - [Discord](https://discord.com/)
-- [Mattermost](https://mattermost.com/download/)
+- [Mattermost](https://docs.mattermost.com/install/desktop.html?src=dl#linux)
 - [Dropbox](https://www.dropbox.com/fr/install-linux)
 - [Steam](https://store.steampowered.com/about/)
 
