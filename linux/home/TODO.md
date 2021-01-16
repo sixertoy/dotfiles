@@ -28,7 +28,7 @@
 
 ### Depuis le web
 
-- [-] [Atom](https://atom.io/)
+- [ ] [Atom](https://atom.io/)
 - [ ] [Opera Browser](https://www.opera.com/fr/download)
 - [ ] [Google chrome](https://www.google.com/chrome/)
 - [ ] [Dropbox](https://www.dropbox.com/fr/install-linux) 
