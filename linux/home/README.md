@@ -106,12 +106,20 @@ https://extensions.gnome.org/
 
 - [ ] Yarn
   ```
+  sudo apt remove cmdtest
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   sudo apt-get update && sudo apt-get install --no-install-recommends yarn
   ```
   
 - [ ] Docker
 
-- [ ] GIT
+- [ ] GIT (update)
+  ```
+  sudo add-apt-repository -y ppa:git-core/ppa
+  sudo apt-get update
+  sudo apt-get install git -y
+  ```
 
 - [ ] Fira Code Fonts
   ```
