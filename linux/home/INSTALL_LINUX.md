@@ -56,6 +56,7 @@ https://extensions.gnome.org/
 - User themes
 - Open weather
 - Panel OSD
+- Dash To Dock
 - Sound input & Output device chooser
 - Tweaks in system menu
 - System-monitor
@@ -65,7 +66,6 @@ https://extensions.gnome.org/
 
 - Sublime Text 3
 - Brave Browser
-- Tilix
 - CTOP.sh
 - NVM
 - Yarn
