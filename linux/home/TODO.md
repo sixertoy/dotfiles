@@ -28,34 +28,34 @@
 
 ### Depuis le web
 
-- [ ] [Atom](https://atom.io/)
-- [ ] [Opera Browser](https://www.opera.com/fr/download)
-- [ ] [Google chrome](https://www.google.com/chrome/)
-- [ ] [Dropbox](https://www.dropbox.com/fr/install-linux) 
+- [Atom](https://atom.io/)
+- [Opera Browser](https://www.opera.com/fr/download)
+- [Google chrome](https://www.google.com/chrome/)
+- [Dropbox](https://www.dropbox.com/fr/install-linux) 
+- [Discord](https://discord.com/)
+- [Mattermost](https://mattermost.com/download/)
+- [Dropbox](https://www.dropbox.com/fr/install-linux)
 
 ### Depuis le store Ubuntu
 
-- [ ] ClamTK
-- [ ] Tilix
-- [ ] Gnome Tweak
-- [ ] Dropbox
-- [ ] Dconf
-- [ ] Spotify
-- [ ] Steam
-- [ ] Mattermost
-- [ ] Discord
+- ClamTK
+- Tilix
+- Gnome Tweak
+- Dconf
+- Spotify
+- Steam
 
 ## Tweaks
 
 https://extensions.gnome.org/
 
-- [ ] User themes
-- [ ] Open weather
-- [ ] Panel OSD
-- [ ] Dash To Dock
-- [ ] Sound input & Output device chooser
-- [ ] Tweaks in system menu
-- [ ] System-monitor
+- User themes
+- Open weather
+- Panel OSD
+- Dash To Dock
+- Sound input & Output device chooser
+- Tweaks in system menu
+- System-monitor
   ```
   sudo apt install gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0
   ```
