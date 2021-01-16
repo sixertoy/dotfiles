@@ -60,11 +60,20 @@ https://extensions.gnome.org/
 - Sound input & Output device chooser
 - Tweaks in system menu
 - System-monitor
-  - `sudo apt install gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0`
+  ```
+  sudo apt install gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0
+  ```
 
 ### Depuis un repository
 
 - Sublime Text 3
+  ```
+  wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+  sudo apt-get install apt-transport-https
+  echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+  sudo apt-get update
+  sudo apt-get install sublime-text
+  ```
 
 - Brave Browser
   ```
@@ -74,14 +83,29 @@ https://extensions.gnome.org/
   sudo apt update
   sudo apt install brave-browser
   ```
+  
 - CTOP.sh
+  ```
+  echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
+  wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
+  sudo apt update
+  sudo apt install docker-ctop
+  ```
+  
 - NVM
+  ```
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+  ```
 
 - Yarn
-  `sudo apt-get update && sudo apt-get install --no-install-recommends yarn`
+  ```
+  sudo apt-get update && sudo apt-get install --no-install-recommends yarn
+  ```
   
 - Docker
+
 - GIT
+
 - Fira Code Fonts
 
 ## Development
