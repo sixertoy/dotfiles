@@ -13,9 +13,49 @@
   - **Souris et pavé tactile**  Désactiver défilement naturel, Désactiver taper pour cliquer
   - **Média amovibles** Cocher `Ne jamais demander...`
 1. Installer l'extension gnome-extensions pour Firefox
-1. Installer Opera browser
-  - Activer la synchronisation
-  - Se connecter à Dashlane
+
+## Applications
+
+### Depuis le web
+
+- Atom
+- Opera Browser
+- Google chrome
+
+### Depuis le store Ubuntu
+
+- ClamTK
+- Ajustements (Gnome Tweak)
+- Dropbox
+- Editeur Dconf `org/gnome/shell/extensions/dash-to-dock`
+  - custom-theme-running-dots-color: #FFFFFF
+  - dash-max-icon-size: 64
+  - extend-height: false
+  - show-apps-at-top: true
+  - show-trash: true
+- Visual Studio Code
+- Spotify
+- Steam
+- Mattermost
+- Discord
+
+## Tweaks
+
+https://extensions.gnome.org/
+
+- User themes
+- Open weather
+- Panel OSD
+- Sound input & Output device chooser
+- Tweaks in system menu
+- System-monitor
+  - `sudo apt install gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0`
+
+### Depuis un repository
+
+- Sublime Text 3
+- Brave Browser
+
 
 ## Development
 
@@ -37,58 +77,7 @@
 1. Docker Compose
 1. Add ssh key to Gitlab
   - `xclip -sel clip < ~/.ssh/github_rsa.pub`
-
-## Tweaks
-
-https://extensions.gnome.org/
-
-- User themes
-- Open weather
-- Panel OSD
-- Sound input & Output device chooser
-- Tweaks in system menu
-- System-monitor
-  - `sudo apt install gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0`
-
-## Applications
-
-### Depuis le web
-
-- Atom
-- Google chrome
-  - Activer la synchronisation
-  - Se connecter à Dashlane
-
-### Depuis le store Ubuntu
-
-- ClamTK
-- Ajustements (Gnome Tweak)
-- Dropbox
-- Editeur Dconf `org/gnome/shell/extensions/dash-to-dock`
-  - custom-theme-running-dots-color: #FFFFFF
-  - dash-max-icon-size: 64
-  - extend-height: false
-  - show-apps-at-top: true
-  - show-trash: true
-- Visual Studio Code
-- Spotify
-- Steam
-- Mattermost
-- Discord
-
-### Depuis un repository
-
-- Noson
-- Sublime Text 3
-- Brave Browser
-
-## Spectacle
-
-```bash
-# ~/.bashrc
-export PATH="/home/matthieu/.bin:$PATH"
-```
-
+  
 ## keyboard & Shortcuts
 
 ### Installer clavier Apple Magic Keyboard
