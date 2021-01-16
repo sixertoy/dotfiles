@@ -5,14 +5,24 @@
 1. Installer les mise à jour système
 1. Installer les mise à jour logiciels depuis le store
 1. Configurer les paramèters Ubuntu
-  - **Bluetooth**  Souris MX Ergo
-  - **Apparence**  mode sombre, afficher le dock sur tous les écrans, afficher le dock en bas, masquer le dock automatiquement
-  - **Notifications**  Désactiver sur l'écran de verrouillage
-  - **Energie**  Désactiver luminosité automatique
-  - **Ecrans**  affichage 1680x1050 (16:10)
-  - **Souris et pavé tactile**  Désactiver défilement naturel, Désactiver taper pour cliquer
-  - **Média amovibles** Cocher `Ne jamais demander...`
-1. Installer l'extension gnome-extensions pour Firefox
+  - **Bluetooth**
+    - Souris MX Ergo
+  - **Apparence**
+    - Mode sombre
+    - Afficher le dock sur tous les écrans
+    - Afficher le dock en bas
+    - Masquer le dock automatiquement
+  - **Notifications**
+    - Désactiver sur l'écran de verrouillage
+  - **Energie**
+    - Désactiver luminosité automatique
+  - **Ecrans**
+    - Affichage 1680x1050 (16:10)
+  - **Souris et pavé tactile**
+    - Désactiver défilement naturel
+    - Désactiver taper pour cliquer
+  - **Média amovibles**
+    - Cocher `Ne jamais demander...`
 
 ## Applications
 
@@ -33,7 +43,6 @@
   - extend-height: false
   - show-apps-at-top: true
   - show-trash: true
-- Visual Studio Code
 - Spotify
 - Steam
 - Mattermost
@@ -55,7 +64,13 @@ https://extensions.gnome.org/
 
 - Sublime Text 3
 - Brave Browser
-
+- Tilix
+- CTOP.sh
+- NVM
+- Yarn
+- Docker
+- GIT
+- Fira Code Fonts
 
 ## Development
 
@@ -67,8 +82,6 @@ https://extensions.gnome.org/
 1. Clone le repository `dotfiles`
 1. Arrêter le serveur Apache par défaut
   - `sudo systemctl disable apache2 && sudo systemctl stop apache2`
-1. Fira Code fonts
-1. ctop.sh
 1. NVM
   - `nvm install --lts`
 1. Yarn
