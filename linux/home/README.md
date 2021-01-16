@@ -35,6 +35,7 @@
 - [Discord](https://discord.com/)
 - [Mattermost](https://mattermost.com/download/)
 - [Dropbox](https://www.dropbox.com/fr/install-linux)
+- [Steam](https://store.steampowered.com/)
 
 ### Depuis le store Ubuntu
 
@@ -42,8 +43,6 @@
 - Tilix
 - Gnome Tweak
 - Dconf
-- Spotify
-- Steam
 
 ## Tweaks
 
