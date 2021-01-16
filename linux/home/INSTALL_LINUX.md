@@ -47,7 +47,6 @@ https://extensions.gnome.org/
 - Panel OSD
 - Sound input & Output device chooser
 - Tweaks in system menu
-- No activities button
 - System-monitor
   - `sudo apt install gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0`
 
