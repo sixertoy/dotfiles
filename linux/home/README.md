@@ -126,6 +126,16 @@ https://extensions.gnome.org/
   sudo add-apt-repository universe
   sudo apt install fonts-firacode
   ```
+  
+## SSH Keys
+
+```
+sudo apt-get install xclip
+ssh-keygen -t rsa -b 4096 -C "<myemail>"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/github_rsa
+xclip -selection clipboard < ~/.ssh/github_rsa.pub
+```
 
 ## Development
 
