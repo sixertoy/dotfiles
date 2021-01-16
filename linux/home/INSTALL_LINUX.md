@@ -28,21 +28,22 @@
 
 ### Depuis le web
 
-- Atom
-- Opera Browser
-- Google chrome
+[ ] [Atom](https://atom.io/)
+[ ] [Opera Browser](https://www.opera.com/fr/download)
+[ ] [Google chrome](https://www.google.com/chrome/)
+[ ] [Dropbox](https://www.dropbox.com/fr/install-linux) 
 
 ### Depuis le store Ubuntu
 
-- ClamTK
-- Tilix
-- Gnome Tweak
-- Dropbox
-- Dconf
-- Spotify
-- Steam
-- Mattermost
-- Discord
+[ ] ClamTK
+[ ] Tilix
+[ ] Gnome Tweak
+[ ] Dropbox
+[ ] Dconf
+[ ] Spotify
+[ ] Steam
+[ ] Mattermost
+[ ] Discord
 
 ## Tweaks
 
