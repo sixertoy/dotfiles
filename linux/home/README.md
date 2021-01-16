@@ -148,19 +148,8 @@ xclip -selection clipboard < ~/.ssh/github_rsa.pub
 ```
 
 ## Development
-
-1. Installer Tilix
-  - Changer l'icone en éditant le fichier dans `/usr/share/applications`
-  - Importer les préférences
-1. Install GIT
-  - Ajouter la clé SSH
-1. Clone le repository `dotfiles`
 1. Arrêter le serveur Apache par défaut
   - `sudo systemctl disable apache2 && sudo systemctl stop apache2`
-1. Docker
-1. Docker Compose
-1. Add ssh key to Gitlab
-  - `xclip -sel clip < ~/.ssh/github_rsa.pub`
   
 ## keyboard & Shortcuts
 
