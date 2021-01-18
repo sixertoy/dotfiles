@@ -12,8 +12,8 @@
   'ctrl-cmd-down': 'editor:move-line-down'
   'ctrl-left': 'editor:move-to-previous-subword-boundary'
   'ctrl-right': 'editor:move-to-next-subword-boundary'
-  'ctrl-shift-left': 'editor:select-to-beginning-of-word'
-  'ctrl-shift-right': 'editor:select-to-end-of-word'
+  'ctrl-shift-left': 'editor:select-to-previous-subword-boundary'
+  'ctrl-shift-right': 'editor:select-to-next-subword-boundary'
 
 '.platform-linux atom-text-editor':
   'alt-shift-b': 'bookmarks:toggle-bookmark'

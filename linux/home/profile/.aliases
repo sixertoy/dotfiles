@@ -26,3 +26,4 @@ alias rm="rm -i"
 alias rmrf="rm -rf"
 alias nodejs=node
 alias edit=subl
+alias git='LC_ALL=en_US git'

@@ -5,12 +5,10 @@
 // example, in Packages/User/Python.sublime-settings for python files.
 {
     // Sets the colors used within the text area
-    "color_scheme": "Monokai.sublime-color-scheme",
     // Note that the font_face and font_size are overridden in the platform
     // specific settings file, for example, "Preferences (Linux).sublime-settings".
     // Because of this, setting them here will have no effect: you must set them
     // in your User File Preferences.
-    "font_face": "",
     "font_size": 10,
 
     // Valid options on all platforms are:
@@ -104,7 +102,7 @@
     // Disables horizontal scrolling if enabled.
     // May be set to true, false, or "auto", where it will be disabled for
     // source code, and otherwise enabled.
-    "word_wrap": true,
+    "word_wrap": "auto",
 
     // Set to a value other than 0 to force wrapping at that column rather than the
     // window width
@@ -469,5 +467,8 @@
     // List any packages to ignore here. When removing entries from this list,
     // a restart may be required if the package contains plugins.
     "ignored_packages": ["Vintage"],
-    "draw_white_space": "all"
+    "draw_white_space": "all",
+    "font_face": "Fira Code Medium",
+    "font_options":["gray_antialias"],
+    "color_scheme": "Monokai.sublime-color-scheme"
 }

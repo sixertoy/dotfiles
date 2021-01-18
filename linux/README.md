@@ -80,3 +80,14 @@ https://askubuntu.com/questions/26056/where-are-gnome-keyboard-shortcuts-stored
 ## Touchpad
 
 https://doc.ubuntu-fr.org/touchpad#configurer_les_gestes
+
+
+## DConf Settings
+
+**Save**
+
+`dconf dump / > dconf-settings.ini`
+
+**Restore**
+
+`dconf load / < dconf-settings.ini` 

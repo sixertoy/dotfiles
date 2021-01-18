@@ -1,10 +1,35 @@
 "*":
+  "atom-typescript":
+    autocompleteParens: true
+  core:
+    projectHome: "/home/matthieu/workspaces"
+    telemetryConsent: "no"
   editor:
+    defaultFontSize: 18
     fontFamily: "\"Fira Code\", Menlo, Consolas, DejaVu Sans Mono, monospace"
     fontSize: 18
+    preferredLineLength: 100
     showIndentGuide: true
     showInvisibles: true
     softWrap: true
     softWrapAtPreferredLineLength: true
+  "exception-reporting":
+    userId: "f4b460ff-dcac-427e-839a-accaf48d6520"
+  "git-blame":
+    colorCommitAuthors: true
+    ignoreWhiteSpaceDiffs: true
+  "highlight-selected":
+    hideHighlightOnSelectedWord: true
+    highlightBackground: true
+  minimap:
+    absoluteMode: true
+    adjustAbsoluteModeHeight: true
+    plugins:
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
+      showInStatusBar: true
   welcome:
     showOnStartup: false
