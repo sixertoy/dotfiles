@@ -1,5 +1,11 @@
 # Linux Tips
 
+## Keyboard Backlight
+
+```
+subl /sys/devices/platform/dell-laptop/leds/dell\:\:kbd_backlight/stop_timeout
+```
+
 ## Pair Apple Magic Keyboard A1644
 
 - Open Terminal
