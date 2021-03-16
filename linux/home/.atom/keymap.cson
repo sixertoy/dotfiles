@@ -17,3 +17,6 @@
 
 '.platform-linux atom-text-editor':
   'alt-shift-b': 'bookmarks:toggle-bookmark'
+
+'atom-workspace':
+  'alt-/': 'jsx-comment:toggleComment'

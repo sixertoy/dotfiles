@@ -63,7 +63,7 @@
 [gui]
   encoding = utf-8
 [log]
-  date = format:%a %v %T
+  date = format:%Y-%m-%d %H:%M:%S
 [pull]
   rebase = preserve
 [push]

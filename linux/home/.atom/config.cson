@@ -1,13 +1,30 @@
 "*":
+  "atom-beautify":
+    css:
+      disabled: true
+    js:
+      disabled: true
+    json:
+      disabled: true
+    tsx:
+      disabled: true
+    typescript:
+      disabled: true
   "atom-typescript":
     autocompleteParens: true
+    preferBuiltinOccurrenceHighlight: true
+    preferBuiltinSigHelp: true
+    preferBuiltinTooltips: true
+    sigHelpDisplayOnChange: false
+    sigHelpPosition: "bottom"
+    tooltipPosition: "top"
   core:
     projectHome: "/home/matthieu/workspaces"
     telemetryConsent: "no"
   editor:
     defaultFontSize: 18
     fontFamily: "\"Fira Code\", Menlo, Consolas, DejaVu Sans Mono, monospace"
-    fontSize: 18
+    fontSize: 21
     preferredLineLength: 100
     showIndentGuide: true
     showInvisibles: true
@@ -17,12 +34,34 @@
     userId: "f4b460ff-dcac-427e-839a-accaf48d6520"
   "git-blame":
     colorCommitAuthors: true
+    columnWidth: 392
     ignoreWhiteSpaceDiffs: true
   "highlight-selected":
     hideHighlightOnSelectedWord: true
-    highlightBackground: true
+    highlightInPanes: false
+  hyperclick:
+    linuxTriggerKeys: "ctrlKey,altKey"
+  "linter-eslint":
+    autofix:
+      fixOnSave: true
+    scopes: [
+      "source.js"
+      "source.jsx"
+      "source.js.jsx"
+      "source.flow"
+      "source.babel"
+      "source.js-semantic"
+      "source.ts"
+      "source.tsx"
+    ]
+  "linter-tslint":
+    fixOnSave: true
+  "linter-ui-default":
+    hidePanelWhenEmpty: false
+    panelHeight: 176
+    showPanel: true
+    showTooltip: false
   minimap:
-    absoluteMode: true
     adjustAbsoluteModeHeight: true
     plugins:
       "git-diff": true
@@ -31,5 +70,8 @@
     formatOnSaveOptions:
       enabled: true
       showInStatusBar: true
+    prettierEslintOptions: {}
+    useEslint: true
+    useStylelint: true
   welcome:
     showOnStartup: false
