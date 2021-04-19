@@ -1,22 +1,22 @@
 'atom-workspace atom-text-editor':
   'ctrl-shift-L': 'editor:split-selections-into-lines'
-  'alt-left': 'editor:move-to-first-character-of-line'
-  'alt-right': 'editor:move-to-end-of-screen-line'
-  'alt-shift-right': 'editor:select-to-end-of-line'
-  'alt-shift-left': 'editor:select-to-first-character-of-line'
   'ctrl-shift-up': 'core:select-to-top'
   'ctrl-shift-down': 'core:select-to-bottom'
   'ctrl-up': 'core:move-to-top'
   'ctrl-down': 'core:move-to-bottom'
   'ctrl-cmd-up': 'editor:move-line-up'
   'ctrl-cmd-down': 'editor:move-line-down'
-  'ctrl-left': 'editor:move-to-previous-subword-boundary'
-  'ctrl-right': 'editor:move-to-next-subword-boundary'
-  'ctrl-shift-left': 'editor:select-to-previous-subword-boundary'
-  'ctrl-shift-right': 'editor:select-to-next-subword-boundary'
+  'ctrl-left': 'editor:move-to-first-character-of-line'
+  'ctrl-right': 'editor:move-to-end-of-screen-line'
+  'alt-left': 'editor:move-to-previous-subword-boundary'
+  'alt-right': 'editor:move-to-next-subword-boundary'
+  'alt-shift-left': 'editor:select-to-previous-subword-boundary'
+  'alt-shift-right': 'editor:select-to-next-subword-boundary'
+  'ctrl-shift-right': 'editor:select-to-end-of-line'
+  'ctrl-shift-left': 'editor:select-to-first-character-of-line'
+
+'atom-workspace':
+  'ctrl-§': 'jsx-comment:toggleComment'
 
 '.platform-linux atom-text-editor':
   'alt-shift-b': 'bookmarks:toggle-bookmark'
-
-'atom-workspace':
-  'alt-/': 'jsx-comment:toggleComment'
