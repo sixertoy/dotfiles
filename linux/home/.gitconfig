@@ -65,7 +65,7 @@
 [log]
   date = format:%Y-%m-%d %H:%M:%S
 [pull]
-  rebase = preserve
+  rebase = merges
 [push]
   default = simple
   followTags = true
