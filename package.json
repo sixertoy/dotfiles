@@ -1,0 +1,18 @@
+{
+  "name": "dotfiles",
+  "author": "Matthieu Lassalvy",
+  "version": "1.2.0",
+  "description": "Dotfiles pour la stack de développement",
+  "homepage": "https://github.com/sixertoy/dotfiles#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sixertoy/dotfiles.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sixertoy/dotfiles/issues"
+  },
+  "scripts": {
+    "build": "docker compose -f docker/compose.yaml build",
+    "shell": "docker compose -f docker/compose.yaml run --rm ubuntu"
+  }
+}
