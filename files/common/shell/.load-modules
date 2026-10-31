@@ -1,0 +1,16 @@
+# Portable bash (Ubuntu) / zsh (macOS) — à sourcer, ne pas exécuter.
+# Prérequis : DOTFILES_ROOT, DOTFILES_OS (ubuntu|macos)
+
+MODULES=(aliases functions docker-utils extras git-utils node-version-manager)
+
+for name in "${MODULES[@]}"; do
+  [ -f "$DOTFILES_ROOT/files/common/shell/.$name" ] && . "$DOTFILES_ROOT/files/common/shell/.$name"
+
+  [ -f "$DOTFILES_ROOT/files/${DOTFILES_OS}/shell/.$name" ] && . "$DOTFILES_ROOT/files/${DOTFILES_OS}/shell/.$name"
+done
+
+unset MODULES name
+
+[ -f "$DOTFILES_ROOT/files/common/shell/.prompt" ] && . "$DOTFILES_ROOT/files/common/shell/.prompt"
+
+[ -f "$DOTFILES_ROOT/files/${DOTFILES_OS}/shell/.prompt" ] && . "$DOTFILES_ROOT/files/${DOTFILES_OS}/shell/.prompt"

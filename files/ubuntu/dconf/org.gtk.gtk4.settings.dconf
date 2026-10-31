@@ -1,0 +1,4 @@
+[file-chooser]
+show-hidden=true
+sort-directories-first=true
+view-type='list'

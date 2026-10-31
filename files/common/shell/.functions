@@ -1,0 +1,170 @@
+# Portable bash (Ubuntu) / zsh (macOS) — à sourcer, ne pas exécuter.
+
+# Git helper for ~/.dotfiles (ex. `dotfiles status`, `dotfiles pull`)
+dotfiles() {
+  local root="${DOTFILES_ROOT:-$HOME/.dotfiles}"
+  if [ $# -eq 0 ]; then
+    git -C "$root" status
+  else
+    git -C "$root" "$@"
+  fi
+}
+
+# --------------------------------------------------
+#
+# Private Functions
+#
+# --------------------------------------------------
+
+function _ips() {
+  # Public IPv4 + local IPv4/IPv6 (Linux iproute2 or BSD/macOS ifconfig)
+  local public=""
+  public=$(curl -4 -fsS --max-time 5 https://api.ipify.org 2>/dev/null) || true
+  echo "public: ${public:-unavailable}"
+
+  echo "local:"
+  if command ip -V >/dev/null 2>&1; then
+    command ip -4 -o addr show | awk '{ print "  " $4 }' | cut -d/ -f1
+    command ip -6 -o addr show | awk '{ print "  " $4 }' | cut -d/ -f1
+  elif command -v ifconfig >/dev/null 2>&1; then
+    ifconfig -a | awk '
+      /inet /  { gsub("addr:", "", $2); print "  " $2 }
+      /inet6 / { print "  " $2 }
+    '
+  else
+    echo "  (need iproute2 or ifconfig)" >&2
+    return 1
+  fi
+}
+
+# Copy to clipboard (intelligent support for macOS and Linux)
+function _copy_to_clipboard() {
+    if command -v pbcopy >/dev/null 2>&1; then
+        pbcopy < "$1"
+    elif command -v wl-copy >/dev/null 2>&1; then
+        wl-copy < "$1"
+    elif command -v xclip >/dev/null 2>&1; then
+        xclip -selection clipboard < "$1"
+    else
+        echo "Erreur : Aucun outil de presse-papiers trouvé (pbcopy, wl-copy, xclip)." >&2
+        return 1
+    fi
+}
+
+# --------------------------------------------------
+#
+# Public Functions
+#
+# --------------------------------------------------
+
+function mkd() {
+  # Create a new directory and enter it
+  mkdir -p "$@" && cd "$_"
+}
+
+function meteo() {
+  # Show current location weather informations
+  curl -s http://us.wttr.in/?lang=fr
+}
+
+function findname() {
+  # Usage: findname [-d|-f] <pattern>
+  # -f (default): files ; -d: directories
+  # Prefers fd (or fdfind) when available, else find
+  local type=f
+  case "$1" in
+    -d) type=d; shift ;;
+    -f) type=f; shift ;;
+  esac
+
+  if command -v fd >/dev/null 2>&1; then
+    fd -t "$type" -- "$*"
+  elif command -v fdfind >/dev/null 2>&1; then
+    fdfind -t "$type" -- "$*"
+  else
+    find ./ -type "$type" -name "*$**"
+  fi
+}
+
+function fs() {
+  # List files/dirs sizes
+  local arg du_gnu=0
+  if du -b /dev/null >/dev/null 2>&1; then
+    arg=-sbh
+  else
+    arg=-sh
+  fi
+  # GNU du accepts -- ; BSD (macOS) does not
+  if du --version >/dev/null 2>&1; then
+    du_gnu=1
+  fi
+
+  if [[ -n "$@" ]]; then
+    if [[ "$du_gnu" -eq 1 ]]; then
+      du $arg -- "$@"
+    else
+      du $arg "$@"
+    fi
+    return
+  fi
+
+  # Empty globs must not error under zsh (NOMATCH) or bash failglob
+  if [[ -n "${ZSH_VERSION:-}" ]]; then
+    setopt local_options null_glob
+  else
+    local nullglob_was_on=0
+    shopt -q nullglob && nullglob_was_on=1
+    shopt -s nullglob
+  fi
+
+  if [[ "$du_gnu" -eq 1 ]]; then
+    du $arg -- .[^.]* ./*
+  else
+    du $arg .[^.]* ./*
+  fi
+
+  if [[ -z "${ZSH_VERSION:-}" && "$nullglob_was_on" -eq 0 ]]; then
+    shopt -u nullglob
+  fi
+}
+
+function pack() {
+  # Create a .tar.gz archive
+  # using `zopfli`, `pigz` or `gzip` for compression
+  local tmpFile="${1%/}.tar"
+  tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1
+  size=$(
+    stat -f"%z" "${tmpFile}" 2>/dev/null # OS X `stat`
+    stat -c"%s" "${tmpFile}" 2>/dev/null # GNU `stat`
+  )
+  local cmd=""
+  if (( size < 52428800 )) && hash zopfli 2>/dev/null; then
+    # the .tar file is smaller than 50 MB and Zopfli is available; use it
+    cmd="zopfli"
+  else
+    if hash pigz 2>/dev/null; then
+      cmd="pigz"
+    else
+      cmd="gzip"
+    fi
+  fi
+
+  echo "Compressing .tar using \`${cmd}\`…"
+  "${cmd}" -v "${tmpFile}" || return 1
+  [ -f "${tmpFile}" ] && rm "${tmpFile}"
+  echo "${tmpFile}.gz created successfully."
+}
+
+function alias-docker() {
+  # Show docker related aliases / functions (dk / dk-*)
+  echo "Available Docker aliases / functions"
+  alias | grep -E '^dk(=|-)' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/" | sed "s/['\"]//g" | sort
+  declare -F | grep -E ' dk-' | sed 's/^declare -f /fn: /' | sort
+}
+
+function alias-git() {
+  # Show git related aliases / functions
+  echo "Available Git aliases / functions"
+  alias | grep 'git' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/" | sed "s/['\"]//g" | sort
+  declare -F | grep 'git-' | sed 's/^declare -f /fn: /' | sort
+}

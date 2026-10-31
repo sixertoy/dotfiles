@@ -1,0 +1,11 @@
+node_modules/
+
+# Ignorer tout le contenu de .ssh par défaut
+.ssh/*
+
+# Autoriser uniquement la configuration et les clés publiques
+!.ssh/config
+!.ssh/config.d/
+!.ssh/config.d/*
+!.ssh/*.pub
+!.ssh/authorized_keys

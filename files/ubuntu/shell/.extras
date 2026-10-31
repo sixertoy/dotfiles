@@ -1,0 +1,16 @@
+# bash — à sourcer, ne pas exécuter.
+# change /path/to/ by actual path to your working directory:
+export FC_ROOT=/home/matthieu/workspaces
+
+# Ajouter un alias sur la commande docker-stack :
+alias docker-stack=$FC_ROOT/fc/docker/docker-stack
+alias docker-stack-legacy=$FC_ROOT/fc-docker/docker-stack
+
+alias dsk=docker-stack
+alias dskl=docker-stack-legacy
+
+# Contournement à UnixHTTPConnectionPool(host='localhost', port=None): Read timed out. (read timeout=70) :
+export COMPOSE_HTTP_TIMEOUT=200
+
+# Makes cypress aware of root path, not having to create relative path from e2E test file
+export CYPRESS_FC_ROOT=$FC_ROOT

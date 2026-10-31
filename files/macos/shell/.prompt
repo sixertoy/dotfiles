@@ -1,0 +1,35 @@
+# zsh — à sourcer, ne pas exécuter.
+# Prompt Solarized Dark. Helpers : files/common/shell/.prompt-lib
+
+PROMPT_LIB="${DOTFILES_ROOT:-$HOME/.dotfiles}/files/common/shell/.prompt-lib"
+if [[ -f "${PROMPT_LIB}" ]]; then
+  # shellcheck source=/dev/null
+  . "${PROMPT_LIB}"
+else
+  return 0
+fi
+
+setopt PROMPT_SUBST
+
+# Terminal title (cwd basename) — $'...' so \e / \a are real escapes
+PROMPT=$'%{\e]0;%1~\a%}'
+PROMPT+="%{${bold}%}"
+# Time HH:MM:SS
+PROMPT+="%{${grey}%}%D{%H:%M:%S} "
+# username (PROMPT_USER: git user.name, else whoami — see .prompt-lib)
+PROMPT+="%{${userStyle}%}${PROMPT_USER}"
+PROMPT+="%{${white}%}@"
+# host (short)
+PROMPT+="%{${hostStyle}%}%m"
+PROMPT+="%{${white}%}: "
+# working directory (with ~)
+PROMPT+="%{${green}%}%~"
+# NodeJS version (n)
+PROMPT+="%{${cyan}%} \$(node_version)%{${reset}%}"
+# Git repository details
+PROMPT+="\$(prompt_git \"%{${white}%} %{${violet}%}\" \"%{${blue}%}\")"
+PROMPT+=$'\n'
+# `$` (and reset color)
+PROMPT+="%{${white}%}$ %{${reset}%}"
+
+PS2="%{${yellow}%}→ %{${reset}%}"

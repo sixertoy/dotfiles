@@ -1,0 +1,19 @@
+# Portable bash (Ubuntu) / zsh (macOS) — à sourcer, ne pas exécuter.
+# Fast Node Manager (fnm) — switch auto au cd (.nvmrc / .node-version)
+
+# Emplacements typiques si fnm n'est pas encore dans PATH (install script --skip-shell)
+if ! command -v fnm >/dev/null 2>&1; then
+  if [[ -x "${HOME}/.local/share/fnm/fnm" ]]; then
+    export PATH="${HOME}/.local/share/fnm:${PATH}"
+  elif [[ -x "${HOME}/Library/Application Support/fnm/fnm" ]]; then
+    export PATH="${HOME}/Library/Application Support/fnm:${PATH}"
+  fi
+fi
+
+if command -v fnm >/dev/null 2>&1; then
+  if [[ -n "${ZSH_VERSION:-}" ]]; then
+    eval "$(fnm env --use-on-cd --shell zsh)"
+  else
+    eval "$(fnm env --use-on-cd --shell bash)"
+  fi
+fi

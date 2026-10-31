@@ -1,0 +1,18 @@
+# bash — à sourcer, ne pas exécuter.
+
+# Local disk / filesystem usage (GNU df)
+alias lds="df -hT -x tmpfs -x devtmpfs -x squashfs --total"
+
+# Always use color output for `ls` / grep (GNU)
+alias ls="command ls --color=auto"
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+
+# List all files and hidden files
+alias ll='ls -lUA --color=auto'
+alias la="ls -A"
+alias l="ls -CF"
+
+# List only directories
+alias dir="ls -lF | grep --color=never '^d'"

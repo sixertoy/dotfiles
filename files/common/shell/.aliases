@@ -1,0 +1,22 @@
+# Portable bash (Ubuntu) / zsh (macOS) — à sourcer, ne pas exécuter.
+
+# Public + local IP addresses (see `_ips` in .functions)
+alias myip="_ips"
+
+# Show week number
+alias week="date +%V"
+
+# Always `rm` with confirmation
+alias rm="rm -i"
+
+# Default Git CLI language en_US
+alias git='LC_ALL=en_US.UTF-8 git'
+
+# Reload the shell
+alias reload='exec "$SHELL" -l'
+
+# Remove directory and files recursively
+alias rmrf="rm -rf"
+
+# Copy to clipboard
+alias cpy='_copy_to_clipboard'

@@ -1,0 +1,10 @@
+# zsh (macOS) — à sourcer, ne pas exécuter.
+
+# Local disk / filesystem usage (BSD df)
+alias lds="df -hl"
+
+# Always use color output for `ls` (BSD)
+alias ls="command ls -G"
+
+# List all files and hidden files
+alias ll="ls -lhAF"

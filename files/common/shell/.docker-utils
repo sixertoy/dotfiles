@@ -1,0 +1,241 @@
+# Portable bash (Ubuntu) / zsh (macOS) — à sourcer, ne pas exécuter.
+# Helpers Docker (sans Compose / Machine). Lister : alias-docker
+
+alias dk='docker'
+
+# --------------------------------------------------
+#
+# Private Functions
+#
+# --------------------------------------------------
+
+# docker <args…> + IDs multilignes → argv séparés (bash + zsh, sans word-splitting).
+_dk_docker_on_id_list() {
+  local ids="$1"
+  shift
+  local id
+  local -a id_list
+  id_list=()
+  while IFS= read -r id || [[ -n "$id" ]]; do
+    [[ -n "$id" ]] && id_list+=("$id")
+  done <<< "$ids"
+  ((${#id_list[@]})) || return 0
+  docker "$@" "${id_list[@]}"
+}
+
+# Run `docker <action…>` on IDs from `docker <query…>`.
+# Usage: _dk_run_on_ids [--empty-msg <msg>] <action…> -- <query…>
+_dk_run_on_ids() {
+  local empty_msg="Rien à traiter"
+  if [[ "${1:-}" == "--empty-msg" ]]; then
+    empty_msg="${2:?}"
+    shift 2
+  fi
+
+  local -a action_args query_args
+  local seen_sep=0 arg
+  action_args=()
+  query_args=()
+  for arg in "$@"; do
+    if [[ "$seen_sep" -eq 0 && "$arg" == "--" ]]; then
+      seen_sep=1
+      continue
+    fi
+    if [[ "$seen_sep" -eq 0 ]]; then
+      action_args+=("$arg")
+    else
+      query_args+=("$arg")
+    fi
+  done
+
+  if [[ "$seen_sep" -eq 0 || ${#action_args[@]} -eq 0 || ${#query_args[@]} -eq 0 ]]; then
+    echo "_dk_run_on_ids: usage: [--empty-msg MSG] <action…> -- <query…>" >&2
+    return 2
+  fi
+
+  local ids
+  ids=$(docker "${query_args[@]}" 2>/dev/null) || true
+  if [[ -z "$ids" ]]; then
+    echo "$empty_msg"
+    return 0
+  fi
+  _dk_docker_on_id_list "$ids" "${action_args[@]}"
+}
+
+# Stop all containers
+_dk_stop_all() {
+  _dk_run_on_ids stop -- ps -aq
+}
+
+# List container names (one per line), including stopped.
+_dk_container_names() {
+  docker container ls --all --format '{{.Names}}' 2>/dev/null || true
+}
+
+# List images as "ID Repository:Tag" (one per line).
+_dk_image_lines() {
+  docker images --format '{{.ID}} {{.Repository}}:{{.Tag}}' 2>/dev/null || true
+}
+
+# Generic fzf pick. Lines on stdin.
+# Usage: … | _dk_fzf_pick <prompt> <with_all 0|1> <preselect> <empty_msg>
+_dk_fzf_pick() {
+  local prompt="$1" with_all="$2" preselect="${3:-}" empty_msg="$4"
+  local lines selected
+
+  if [[ -n "$preselect" ]]; then
+    printf '%s\n' "$preselect"
+    return 0
+  fi
+  if ! command -v fzf >/dev/null 2>&1; then
+    echo "fzf requis (sudo apt install fzf / brew install fzf)" >&2
+    return 1
+  fi
+
+  lines=$(cat)
+  if [[ -z "$lines" ]]; then
+    echo "$empty_msg" >&2
+    return 1
+  fi
+
+  # ALL en dernier : Entrée rapide ne sélectionne pas ALL par défaut (curseur en tête)
+  if [[ "$with_all" == "1" ]]; then
+    selected=$(printf '%s\nALL\n' "$lines" | fzf --prompt "$prompt") || return 1
+  else
+    selected=$(printf '%s\n' "$lines" | fzf --prompt "$prompt") || return 1
+  fi
+  [[ -n "$selected" ]] || return 1
+  printf '%s\n' "$selected"
+}
+
+# Confirmation explicite pour les actions ALL destructives (défaut: non)
+_dk_confirm() {
+  local msg="$1" reply
+  printf '%s [y/N] ' "$msg" >&2
+  read -r reply || return 1
+  case "$reply" in
+    y|Y|yes|YES) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+# Normalize image fzf line → ID (or ALL / raw preselect).
+_dk_image_id_from_pick() {
+  local selected="$1"
+  if [[ "$selected" == "ALL" ]]; then
+    printf '%s\n' "ALL"
+  elif [[ "$selected" == *" "* ]]; then
+    printf '%s\n' "${selected%% *}"
+  else
+    printf '%s\n' "$selected"
+  fi
+}
+
+# with_all: 0|1 — preselect optionnel
+_dk_pick_container_base() {
+  _dk_container_names | _dk_fzf_pick 'container> ' "$1" "${2:-}" 'Aucun conteneur'
+}
+
+_dk_pick_image_base() {
+  local selected
+  selected=$(_dk_image_lines | _dk_fzf_pick 'image> ' "$1" "${2:-}" 'Aucune image') || return $?
+  _dk_image_id_from_pick "$selected"
+}
+
+_dk_pick_container() { _dk_pick_container_base 0 "${1:-}"; }
+_dk_pick_container_or_all() { _dk_pick_container_base 1 "${1:-}"; }
+_dk_pick_image() { _dk_pick_image_base 0 "${1:-}"; }
+_dk_pick_image_or_all() { _dk_pick_image_base 1 "${1:-}"; }
+
+# --------------------------------------------------
+#
+# Public Functions
+#
+# --------------------------------------------------
+
+# Build a Docker image
+function dk-build() {
+  local tag="${1:?usage: dk-build <tag>}"
+  echo "Build Docker image '$tag'"
+  docker build -t "$tag" .
+}
+
+# Stop one container or all: dk-stop [name] (fzf + ALL if omitted)
+function dk-stop() {
+  local target
+  target=$(_dk_pick_container_or_all "${1:-}") || return $?
+  if [[ "$target" == "ALL" ]]; then
+    _dk_confirm "Stopper TOUS les containers ?" || return 1
+    _dk_stop_all
+  else
+    docker stop "$target"
+  fi
+}
+
+# Remove one container or all: dk-nuke-containers [name] (fzf + ALL if omitted)
+function dk-nuke-containers() {
+  local target
+  target=$(_dk_pick_container_or_all "${1:-}") || return $?
+  if [[ "$target" == "ALL" ]]; then
+    _dk_confirm "Supprimer de force TOUS les containers (rm -f / SIGKILL) ?" || return 1
+    _dk_run_on_ids rm -f -- ps -aq
+  else
+    docker rm -f "$target"
+  fi
+}
+
+# Remove one image or all: dk-nuke-images [id|ref] (fzf + ALL if omitted)
+function dk-nuke-images() {
+  local target
+  target=$(_dk_pick_image_or_all "${1:-}") || return $?
+  if [[ "$target" == "ALL" ]]; then
+    _dk_confirm "Supprimer TOUTES les images ?" || return 1
+    _dk_run_on_ids rmi -- images -q
+  else
+    docker rmi "$target"
+  fi
+}
+
+# Stop all + prune everything
+function dk-nuke() {
+  _dk_confirm "Nuke Docker complet (stop all + prune -af --volumes) ?" || return 1
+  _dk_stop_all
+  docker system prune -af --volumes
+}
+
+# Soft cleanup: exited containers + dangling volumes
+function dk-cleanup() {
+  _dk_run_on_ids rm -- ps -q -f status=exited
+  _dk_run_on_ids --empty-msg "Aucun volume dangling" volume rm -- volume ls -qf dangling=true
+}
+
+# Show container IP(s): dk-ip [container] (fzf if omitted)
+function dk-ip() {
+  local id ips
+  id=$(_dk_pick_container "${1:-}") || return $?
+  ips=$(docker inspect --format '{{range $k,$v := .NetworkSettings.Networks}}{{$k}}={{.IPAddress}} {{end}}' "$id" 2>/dev/null) || true
+  if [[ -z "${ips// }" ]]; then
+    echo "Pas d'IP pour '$id'" >&2
+    return 1
+  fi
+  echo "$id  $ips"
+}
+
+# Open a shell in a container: dk-bash [container] (fzf if omitted)
+# Prefers /bin/bash, falls back to /bin/sh (Alpine / BusyBox)
+function dk-bash() {
+  local id
+  id=$(_dk_pick_container "${1:-}") || return $?
+  echo "$id selected..."
+  docker exec -it "$id" /bin/sh -c 'if [ -x /bin/bash ]; then exec /bin/bash; else exec /bin/sh; fi'
+}
+
+# Run a container from an image: dk-run [image] [host_port] [container_port] (fzf if image omitted)
+function dk-run() {
+  local image host_port container_port
+  image=$(_dk_pick_image "${1:-}") || return $?
+  host_port="${2:-3000}"
+  container_port="${3:-$host_port}"
+  echo "Run '$image' on ${host_port}:${container_port}"
+  docker run --rm -it -p "${host_port}:${container_port}" -e NODE_ENV=development "$image"
+}
