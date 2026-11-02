@@ -1,0 +1,14 @@
+# zsh (macOS) — à sourcer, ne pas exécuter.
+# Sauvegarde automatisée Homebrew + Mackup vers iCloud
+function sysbackup() {
+  echo "\033[1;34m==>\033[0m \033[1m1. Génération du Brewfile...\033[0m"
+  brew bundle dump --file="$HOME/.Brewfile" --force --verbose
+
+  echo "\n\033[1;34m==>\033[0m \033[1m2. Sauvegarde Mackup vers iCloud...\033[0m"
+  mackup backup --force --verbose
+
+  echo "\n\033[1;34m==>\033[0m \033[1m3. Vérification des liens (Local -> iCloud)...\033[0m"
+  ls -la "$HOME/.Brewfile" "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Mackup/.Brewfile" 2>/dev/null
+
+  echo "\n\033[1;32m✔\033[0m \033[1mSauvegarde terminée avec succès.\033[0m\n"
+}
