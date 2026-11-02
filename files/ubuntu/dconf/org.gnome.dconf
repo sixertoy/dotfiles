@@ -1,0 +1,78 @@
+[Loupe]
+show-properties=true
+
+[TextEditor]
+custom-font='Fira Code 11'
+draw-spaces=['space', 'tab', 'newline', 'nbsp', 'leading', 'text', 'trailing']
+highlight-current-line=true
+indent-style='space'
+show-line-numbers=true
+show-map=true
+show-right-margin=true
+style-scheme='Adwaita-dark'
+tab-width=uint32 2
+use-system-font=false
+
+[desktop/calendar]
+show-weekdate=true
+
+[desktop/interface]
+clock-show-weekday=true
+color-scheme='prefer-dark'
+gtk-theme='Yaru-dark'
+icon-theme='Yaru-dark'
+show-battery-percentage=true
+
+[desktop/notifications]
+show-banners=true
+show-in-lock-screen=false
+
+[desktop/peripherals/mouse]
+natural-scroll=false
+
+[desktop/peripherals/touchpad]
+natural-scroll=false
+tap-to-click=false
+two-finger-scrolling-enabled=true
+
+[desktop/wm/keybindings]
+switch-input-source=@as []
+switch-input-source-backward=@as []
+
+[mutter]
+edge-tiling=false
+
+[mutter/keybindings]
+toggle-tiled-left=@as []
+toggle-tiled-right=@as []
+
+[nautilus/icon-view]
+default-zoom-level='small-plus'
+
+[nautilus/list-view]
+default-zoom-level='small'
+
+[nautilus/preferences]
+date-time-format='simple'
+default-folder-viewer='list-view'
+migrated-gtk-settings=true
+
+[settings-daemon/plugins/color]
+night-light-enabled=true
+night-light-schedule-automatic=false
+night-light-temperature=uint32 1800
+
+[settings-daemon/plugins/power]
+ambient-enabled=true
+
+[shell/extensions/dash-to-dock]
+dock-fixed=false
+dock-position='BOTTOM'
+extend-height=false
+multi-monitor=true
+show-apps-at-top=true
+show-mounts-only-mounted=true
+show-show-apps-button=false
+
+[shell/keybindings]
+toggle-application-view=['<Super>space']
