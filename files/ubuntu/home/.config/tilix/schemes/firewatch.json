@@ -1,0 +1,33 @@
+{
+  "name": "Firewatch",
+  "comment": "Firewatch Scheme",
+  "foreground-color": "#9ba2b2",
+  "background-color": "#1e2027",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#f6f7ec",
+  "cursor-background-color": "#1e2027",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#585f6d",
+    "#d95360",
+    "#5ab977",
+    "#dfb563",
+    "#4d89c4",
+    "#d55119",
+    "#44a8b6",
+    "#e6e5ff",
+    "#585f6d",
+    "#d95360",
+    "#5ab977",
+    "#dfb563",
+    "#4c89c5",
+    "#d55119",
+    "#44a8b6",
+    "#e6e5ff"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Cobalt Next",
+  "comment": "Cobalt Next Scheme",
+  "foreground-color": "#d7deea",
+  "background-color": "#162c35",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#ffc64c",
+  "cursor-background-color": "#162c35",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#000000",
+    "#ff527b",
+    "#8cc98f",
+    "#ffc64c",
+    "#409dd4",
+    "#cba3c7",
+    "#37b5b4",
+    "#d7deea",
+    "#62747f",
+    "#e47e8b",
+    "#baddbb",
+    "#ffdc91",
+    "#7ac0eb",
+    "#f3ccef",
+    "#84e4e3",
+    "#ffffff"
+  ]
+}

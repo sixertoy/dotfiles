@@ -1,0 +1,33 @@
+{
+  "name": "GitHub Dark Dimmed",
+  "comment": "GitHub Dark Dimmed Scheme",
+  "foreground-color": "#adbac7",
+  "background-color": "#22272e",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#539bf5",
+  "cursor-background-color": "#22272e",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#545d68",
+    "#f47067",
+    "#57ab5a",
+    "#c69026",
+    "#539bf5",
+    "#b083f0",
+    "#39c5cf",
+    "#909dab",
+    "#636e7b",
+    "#ff938a",
+    "#6bc46d",
+    "#daaa3f",
+    "#6cb6ff",
+    "#dcbdfb",
+    "#56d4dd",
+    "#cdd9e5"
+  ]
+}

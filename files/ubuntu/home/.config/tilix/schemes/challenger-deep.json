@@ -1,0 +1,33 @@
+{
+  "name": "Challenger Deep",
+  "comment": "Challenger Deep Scheme",
+  "foreground-color": "#cbe1e7",
+  "background-color": "#1e1c31",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#fbfcfc",
+  "cursor-background-color": "#1e1c31",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#141228",
+    "#ff5458",
+    "#62d196",
+    "#ffb378",
+    "#65b2ff",
+    "#906cff",
+    "#63f2f1",
+    "#a6b3cc",
+    "#565575",
+    "#ff8080",
+    "#95ffa4",
+    "#ffe9aa",
+    "#91ddff",
+    "#c991e1",
+    "#aaffe4",
+    "#cbe3e7"
+  ]
+}

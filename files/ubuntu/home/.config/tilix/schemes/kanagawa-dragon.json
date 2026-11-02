@@ -1,0 +1,33 @@
+{
+  "name": "Kanagawa Dragon",
+  "comment": "Kanagawa Dragon Scheme",
+  "foreground-color": "#c5c9c5",
+  "background-color": "#181616",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#c8c093",
+  "cursor-background-color": "#181616",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#0d0c0c",
+    "#c4746e",
+    "#8a9a7b",
+    "#c4b28a",
+    "#8ba4b0",
+    "#a292a3",
+    "#8ea4a2",
+    "#c8c093",
+    "#a6a69c",
+    "#e46876",
+    "#87a987",
+    "#e6c384",
+    "#7fb4ca",
+    "#938aa9",
+    "#7aa89f",
+    "#c5c9c5"
+  ]
+}

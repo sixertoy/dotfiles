@@ -1,0 +1,33 @@
+{
+  "name": "Dracula",
+  "comment": "Dracula Scheme",
+  "foreground-color": "#f8f8f2",
+  "background-color": "#282a36",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#f8f8f2",
+  "cursor-background-color": "#282a36",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#21222c",
+    "#ff5555",
+    "#50fa7b",
+    "#f1fa8c",
+    "#bd93f9",
+    "#ff79c6",
+    "#8be9fd",
+    "#f8f8f2",
+    "#6272a4",
+    "#ff6e6e",
+    "#69ff94",
+    "#ffffa5",
+    "#d6acff",
+    "#ff92df",
+    "#a4ffff",
+    "#ffffff"
+  ]
+}

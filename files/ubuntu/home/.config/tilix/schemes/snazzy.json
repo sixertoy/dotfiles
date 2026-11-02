@@ -1,0 +1,33 @@
+{
+  "name": "Snazzy",
+  "comment": "Snazzy Scheme",
+  "foreground-color": "#ebece6",
+  "background-color": "#1e1f29",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#e4e4e4",
+  "cursor-background-color": "#1e1f29",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#000000",
+    "#fc4346",
+    "#50fb7c",
+    "#f0fb8c",
+    "#49baff",
+    "#fc4cb4",
+    "#8be9fe",
+    "#ededec",
+    "#555555",
+    "#fc4346",
+    "#50fb7c",
+    "#f0fb8c",
+    "#49baff",
+    "#fc4cb4",
+    "#8be9fe",
+    "#ededec"
+  ]
+}

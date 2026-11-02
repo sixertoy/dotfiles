@@ -1,0 +1,33 @@
+{
+  "name": "Django",
+  "comment": "Django Scheme",
+  "foreground-color": "#f8f8f8",
+  "background-color": "#0b2f20",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#336442",
+  "cursor-background-color": "#0b2f20",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#000000",
+    "#fd6209",
+    "#41a83e",
+    "#ffe862",
+    "#315d3f",
+    "#f8f8f8",
+    "#9df39f",
+    "#ffffff",
+    "#585858",
+    "#ff943b",
+    "#73da70",
+    "#ffff94",
+    "#568264",
+    "#ffffff",
+    "#cfffd1",
+    "#ffffff"
+  ]
+}

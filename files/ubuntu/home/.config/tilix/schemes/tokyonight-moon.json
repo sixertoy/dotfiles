@@ -1,0 +1,33 @@
+{
+  "name": "TokyoNight Moon",
+  "comment": "TokyoNight Moon Scheme",
+  "foreground-color": "#c8d3f5",
+  "background-color": "#222436",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#c8d3f5",
+  "cursor-background-color": "#222436",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#1b1d2b",
+    "#ff757f",
+    "#c3e88d",
+    "#ffc777",
+    "#82aaff",
+    "#c099ff",
+    "#86e1fc",
+    "#828bb8",
+    "#444a73",
+    "#ff757f",
+    "#c3e88d",
+    "#ffc777",
+    "#82aaff",
+    "#c099ff",
+    "#86e1fc",
+    "#c8d3f5"
+  ]
+}

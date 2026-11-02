@@ -1,0 +1,33 @@
+{
+  "name": "Earthsong",
+  "comment": "Earthsong Scheme",
+  "foreground-color": "#e5c7a9",
+  "background-color": "#292520",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#f6f7ec",
+  "cursor-background-color": "#292520",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#121418",
+    "#c94234",
+    "#85c54c",
+    "#f5ae2e",
+    "#1398b9",
+    "#d0633d",
+    "#509552",
+    "#e5c6aa",
+    "#675f54",
+    "#ff645a",
+    "#98e036",
+    "#e0d561",
+    "#5fdaff",
+    "#ff9269",
+    "#84f088",
+    "#f6f7ec"
+  ]
+}

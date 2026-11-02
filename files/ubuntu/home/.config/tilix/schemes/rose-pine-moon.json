@@ -1,0 +1,33 @@
+{
+  "name": "Rose Pine Moon",
+  "comment": "Rose Pine Moon Scheme",
+  "foreground-color": "#e0def4",
+  "background-color": "#232136",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#e0def4",
+  "cursor-background-color": "#232136",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#393552",
+    "#eb6f92",
+    "#3e8fb0",
+    "#f6c177",
+    "#9ccfd8",
+    "#c4a7e7",
+    "#ea9a97",
+    "#e0def4",
+    "#6e6a86",
+    "#eb6f92",
+    "#3e8fb0",
+    "#f6c177",
+    "#9ccfd8",
+    "#c4a7e7",
+    "#ea9a97",
+    "#e0def4"
+  ]
+}

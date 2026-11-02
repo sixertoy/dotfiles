@@ -1,0 +1,33 @@
+{
+  "name": "Andromeda",
+  "comment": "Andromeda Scheme",
+  "foreground-color": "#e5e5e5",
+  "background-color": "#262a33",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#f8f8f0",
+  "cursor-background-color": "#262a33",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#000000",
+    "#cd3131",
+    "#05bc79",
+    "#e5e512",
+    "#2472c8",
+    "#bc3fbc",
+    "#0fa8cd",
+    "#e5e5e5",
+    "#666666",
+    "#cd3131",
+    "#05bc79",
+    "#e5e512",
+    "#2472c8",
+    "#bc3fbc",
+    "#0fa8cd",
+    "#e5e5e5"
+  ]
+}

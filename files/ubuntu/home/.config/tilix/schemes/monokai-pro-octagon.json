@@ -1,0 +1,33 @@
+{
+  "name": "Monokai Pro Octagon",
+  "comment": "Monokai Pro Octagon Scheme",
+  "foreground-color": "#eaf2f1",
+  "background-color": "#282a3a",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#b2b9bd",
+  "cursor-background-color": "#282a3a",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#282a3a",
+    "#ff657a",
+    "#bad761",
+    "#ffd76d",
+    "#ff9b5e",
+    "#c39ac9",
+    "#9cd1bb",
+    "#eaf2f1",
+    "#696d77",
+    "#ff657a",
+    "#bad761",
+    "#ffd76d",
+    "#ff9b5e",
+    "#c39ac9",
+    "#9cd1bb",
+    "#eaf2f1"
+  ]
+}

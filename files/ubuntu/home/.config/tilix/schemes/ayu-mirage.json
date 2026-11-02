@@ -1,0 +1,33 @@
+{
+  "name": "Ayu Mirage",
+  "comment": "Ayu Mirage Scheme",
+  "foreground-color": "#cccac2",
+  "background-color": "#1f2430",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#ffcc66",
+  "cursor-background-color": "#1f2430",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#171b24",
+    "#ed8274",
+    "#87d96c",
+    "#facc6e",
+    "#6dcbfa",
+    "#dabafa",
+    "#90e1c6",
+    "#c7c7c7",
+    "#686868",
+    "#f28779",
+    "#d5ff80",
+    "#ffd173",
+    "#73d0ff",
+    "#dfbfff",
+    "#95e6cb",
+    "#ffffff"
+  ]
+}

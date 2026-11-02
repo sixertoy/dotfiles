@@ -1,0 +1,33 @@
+{
+  "name": "Atom One Dark",
+  "comment": "Atom One Dark Scheme",
+  "foreground-color": "#abb2bf",
+  "background-color": "#21252b",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#abb2bf",
+  "cursor-background-color": "#21252b",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#21252b",
+    "#e06c75",
+    "#98c379",
+    "#e5c07b",
+    "#61afef",
+    "#c678dd",
+    "#56b6c2",
+    "#abb2bf",
+    "#767676",
+    "#e06c75",
+    "#98c379",
+    "#e5c07b",
+    "#61afef",
+    "#c678dd",
+    "#56b6c2",
+    "#abb2bf"
+  ]
+}

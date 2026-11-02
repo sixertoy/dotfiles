@@ -1,0 +1,33 @@
+{
+  "name": "Fairyfloss",
+  "comment": "Fairyfloss Scheme",
+  "foreground-color": "#f8f8f2",
+  "background-color": "#5a5475",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#f8f8f0",
+  "cursor-background-color": "#5a5475",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#040303",
+    "#f92672",
+    "#c2ffdf",
+    "#e6c000",
+    "#c2ffdf",
+    "#ffb8d1",
+    "#c5a3ff",
+    "#f8f8f0",
+    "#6090cb",
+    "#ff857f",
+    "#c2ffdf",
+    "#ffea00",
+    "#c2ffdf",
+    "#ffb8d1",
+    "#c5a3ff",
+    "#f8f8f0"
+  ]
+}

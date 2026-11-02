@@ -1,0 +1,33 @@
+{
+  "name": "Sonokai",
+  "comment": "Sonokai Scheme",
+  "foreground-color": "#e2e2e3",
+  "background-color": "#2c2e34",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#e2e2e3",
+  "cursor-background-color": "#2c2e34",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#181819",
+    "#fc5d7c",
+    "#9ed072",
+    "#e7c664",
+    "#76cce0",
+    "#b39df3",
+    "#f39660",
+    "#e2e2e3",
+    "#7f8490",
+    "#fc5d7c",
+    "#9ed072",
+    "#e7c664",
+    "#76cce0",
+    "#b39df3",
+    "#f39660",
+    "#e2e2e3"
+  ]
+}

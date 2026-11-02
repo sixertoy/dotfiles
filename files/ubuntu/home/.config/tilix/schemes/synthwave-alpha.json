@@ -1,0 +1,33 @@
+{
+  "name": "Synthwave Alpha",
+  "comment": "Synthwave Alpha Scheme",
+  "foreground-color": "#f2f2e3",
+  "background-color": "#241b30",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#f2f2e3",
+  "cursor-background-color": "#241b30",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#241b30",
+    "#e60a70",
+    "#00986c",
+    "#adad3e",
+    "#6e29ad",
+    "#b300ad",
+    "#00b0b1",
+    "#b9b1bc",
+    "#7f7094",
+    "#e60a70",
+    "#0ae4a4",
+    "#f9f972",
+    "#aa54f9",
+    "#ff00f6",
+    "#00fbfd",
+    "#f2f2e3"
+  ]
+}

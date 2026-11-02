@@ -1,0 +1,31 @@
+[Desktop Entry]
+Version=1.0
+Name=Tilix
+Comment=A tiling terminal for GNOME
+Keywords=shell;prompt;command;commandline;cmd;terminal;
+Exec=tilix --session=/home/matthieu/.config/tilix/tilix.session.json
+Terminal=false
+Type=Application
+StartupNotify=true
+StartupWMClass=Tilix
+Categories=System;TerminalEmulator;X-GNOME-Utilities;
+Icon=org.gnome.Terminal
+DBusActivatable=false
+# Actions=new-window;new-session;preferences;tiles;
+Actions=new-window;new-session;preferences
+
+[Desktop Action new-window]
+Name=New Window
+Exec=tilix --action=app-new-window
+
+[Desktop Action new-session]
+Name=New Session
+Exec=tilix --action=app-new-session
+
+[Desktop Action preferences]
+Name=Preferences
+Exec=tilix --preferences
+
+# [Desktop Action tiles]
+# Name=Tiles
+# Exec=tilix --new-process --session=/home/matthieu/.config/tilix/tilix.session.json

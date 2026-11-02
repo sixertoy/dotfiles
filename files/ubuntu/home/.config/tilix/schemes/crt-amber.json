@@ -1,0 +1,33 @@
+{
+  "name": "CRT Amber",
+  "comment": "CRT Amber Scheme",
+  "foreground-color": "#fff3c4",
+  "background-color": "#1a1005",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#fff3c4",
+  "cursor-background-color": "#1a1005",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#4c422f",
+    "#ef4444",
+    "#84cc16",
+    "#fde68a",
+    "#c084fc",
+    "#f97316",
+    "#f59e0b",
+    "#d8a657",
+    "#544435",
+    "#f26969",
+    "#9dd645",
+    "#fdeb9f",
+    "#cd9dfd",
+    "#fa8f45",
+    "#f7b13c",
+    "#fff3c4"
+  ]
+}

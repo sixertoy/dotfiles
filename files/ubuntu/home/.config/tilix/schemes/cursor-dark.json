@@ -1,0 +1,33 @@
+{
+  "name": "Cursor Dark",
+  "comment": "Cursor Dark Scheme",
+  "foreground-color": "#d4d4d4",
+  "background-color": "#141414",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#d4d4d4",
+  "cursor-background-color": "#141414",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#242424",
+    "#fc6b83",
+    "#3fa266",
+    "#d2943e",
+    "#81a1c1",
+    "#b48ead",
+    "#88c0d0",
+    "#e4e4e4",
+    "#4a4a4a",
+    "#fc6b83",
+    "#70b489",
+    "#f1b467",
+    "#87a6c4",
+    "#b48ead",
+    "#88c0d0",
+    "#e4e4e4"
+  ]
+}

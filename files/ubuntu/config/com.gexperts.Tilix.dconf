@@ -1,0 +1,23 @@
+[/]
+advanced-paste-replace-tabs=true
+advanced-paste-space-count=2
+enable-wide-handle=true
+prompt-on-delete-profile=true
+sidebar-on-right=false
+theme-variant='system'
+use-tabs=false
+
+[keybindings]
+session-add-down='<Primary><Shift>d'
+session-add-right='<Primary>d'
+session-save='disabled'
+
+[profiles]
+list=['2b7c4080-0ddd-46c5-8f23-563fd3ba789d']
+
+[profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
+background-transparency-percent=6
+font='Fira Code weight=450 12'
+show-scrollbar=true
+use-system-font=false
+visible-name='Matthieu'

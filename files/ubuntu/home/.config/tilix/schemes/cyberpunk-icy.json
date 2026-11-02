@@ -1,0 +1,33 @@
+{
+  "name": "cyberpunk-icy",
+  "comment": "cyberpunk-icy Scheme",
+  "foreground-color": "#d4b3f7",
+  "background-color": "#0a0a0f",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#00ffff",
+  "cursor-background-color": "#0a0a0f",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#1a1a2e",
+    "#ff0055",
+    "#00ff9f",
+    "#fffc00",
+    "#7b2fff",
+    "#ff00ff",
+    "#00ffff",
+    "#d4b3f7",
+    "#444468",
+    "#ff3377",
+    "#33ffb2",
+    "#fffe33",
+    "#9955ff",
+    "#ff55ff",
+    "#55ffff",
+    "#ffffff"
+  ]
+}

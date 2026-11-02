@@ -1,0 +1,33 @@
+{
+  "name": "Catppuccin Mocha",
+  "comment": "Catppuccin Mocha Scheme",
+  "foreground-color": "#cdd6f4",
+  "background-color": "#1e1e2e",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#f5e0dc",
+  "cursor-background-color": "#1e1e2e",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#45475a",
+    "#f38ba8",
+    "#a6e3a1",
+    "#f9e2af",
+    "#89b4fa",
+    "#f5c2e7",
+    "#94e2d5",
+    "#bac2de",
+    "#585b70",
+    "#f7aec2",
+    "#c2ecbf",
+    "#fcd682",
+    "#aeccfc",
+    "#f398da",
+    "#b1eae1",
+    "#a6adc8"
+  ]
+}

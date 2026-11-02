@@ -1,0 +1,69 @@
+{
+  "child": {
+    "child1": {
+      "child1": {
+        "directory": "\/home\/matthieu",
+        "overrideCommand": "htop",
+        "height": 243,
+        "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+        "readOnly": false,
+        "synchronizedInput": true,
+        "type": "Terminal",
+        "uuid": "aac23040-d303-4bd4-8de3-5b56cf1421b0",
+        "width": 840
+      },
+      "child2": {
+        "directory": "\/home\/matthieu\/workspaces",
+        "height": 723,
+        "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+        "readOnly": false,
+        "synchronizedInput": true,
+        "type": "Terminal",
+        "uuid": "4d580547-e9f8-4146-906d-75bf483a19aa",
+        "width": 840
+      },
+      "orientation": 1,
+      "position": 25,
+      "ratio": 0.250257466529351158,
+      "type": "Paned"
+    },
+    "child2": {
+      "child1": {
+        "directory": "\/home\/matthieu",
+        "overrideCommand": "ctop -a",
+        "height": 243,
+        "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+        "readOnly": false,
+        "synchronizedInput": true,
+        "type": "Terminal",
+        "uuid": "500ee5a8-edcd-42de-973d-d6996ed2fd8d",
+        "width": 835
+      },
+      "child2": {
+        "directory": "\/home\/matthieu\/workspaces",
+        "height": 723,
+        "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+        "readOnly": false,
+        "synchronizedInput": true,
+        "type": "Terminal",
+        "uuid": "9cc72354-2295-435f-b8b0-9f0e24eb6aaa",
+        "width": 835
+      },
+      "orientation": 1,
+      "position": 25,
+      "ratio": 0.250257466529351158,
+      "type": "Paned"
+    },
+    "orientation": 0,
+    "position": 50,
+    "ratio": 0.5,
+    "type": "Paned"
+  },
+  "height": 971,
+  "name": "${title}",
+  "synchronizedInput": false,
+  "type": "Session",
+  "uuid": "95010024-9529-46c4-9471-9855b847261f",
+  "version": "1.0",
+  "width": 1680
+}

@@ -1,0 +1,43 @@
+# bash — à sourcer, ne pas exécuter.
+# Prompt Solarized Dark. Helpers : files/common/shell/.prompt-lib
+# Screenshot: http://i.imgur.com/EkEtphC.png
+# Heavily inspired by @necolas’s prompt: https://github.com/necolas/dotfiles
+# iTerm → Profiles → Text → use 13pt Monaco with 1.1 vertical spacing.
+#
+# --------------------------------------------------
+
+PROMPT_LIB="${DOTFILES_ROOT:-$HOME/.dotfiles}/files/common/shell/.prompt-lib"
+if [ -f "${PROMPT_LIB}" ]; then
+  # shellcheck source=/dev/null
+  . "${PROMPT_LIB}"
+else
+  return 0 2>/dev/null || exit 0
+fi
+
+# Set the terminal title and prompt.
+# working directory base name
+PS1="\[\033]0;\W\007\]"
+# newline
+# PS1+="\[${bold}\]\n"
+PS1+="\[${bold}\]"
+# Times (requires bash ≥ 4)
+PS1+="\[${grey}\]\D{%T} "
+# username (PROMPT_USER: git user.name, else whoami — see .prompt-lib)
+PS1+="\[${userStyle}\]\$PROMPT_USER"
+PS1+="\[${white}\]@"
+# host
+PS1+="\[${hostStyle}\]\h"
+PS1+="\[${white}\]: "
+# working directory full path
+PS1+="\[${green}\]\w"
+# NodeJS version
+PS1+="\[${cyan}\] \$(node_version)\[${reset}\]"
+# Git repository details
+PS1+="\$(prompt_git \"\[${white}\] \[${violet}\]\" \"\[${blue}\]\")"
+PS1+=$'\n'
+# `$` (and reset color)
+PS1+="\[${white}\]\$ \[${reset}\]"
+export PS1
+
+PS2="\[${yellow}\]→ \[${reset}\]"
+export PS2

@@ -1,0 +1,33 @@
+{
+  "name": "Monokai Pro",
+  "comment": "Monokai Pro Scheme",
+  "foreground-color": "#fcfcfa",
+  "background-color": "#2d2a2e",
+  "use-theme-colors": false,
+  "use-highlight-color": false,
+  "highlight-foreground-color": "#ffffff",
+  "highlight-background-color": "#a348b1",
+  "use-cursor-color": false,
+  "cursor-foreground-color": "#c1c0c0",
+  "cursor-background-color": "#2d2a2e",
+  "use-badge-color": true,
+  "badge-color": "#ac7ea8",
+  "palette": [
+    "#2d2a2e",
+    "#ff6188",
+    "#a9dc76",
+    "#ffd866",
+    "#fc9867",
+    "#ab9df2",
+    "#78dce8",
+    "#fcfcfa",
+    "#727072",
+    "#ff6188",
+    "#a9dc76",
+    "#ffd866",
+    "#fc9867",
+    "#ab9df2",
+    "#78dce8",
+    "#fcfcfa"
+  ]
+}
