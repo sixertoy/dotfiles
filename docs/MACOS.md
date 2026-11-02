@@ -63,16 +63,6 @@
 
 ## 2. Préparation Système & SSH
 
-- [x] **Créer l'espace de travail et renommer la machine**
-
-```bash
-mkdir -p ~/Workspaces
-
-sudo scutil --set ComputerName "apres-le-mini-golf"
-sudo scutil --set LocalHostName "apres-le-mini-golf"
-sudo scutil --set HostName "apres-le-mini-golf"
-```
-
 - [x] **Installer Homebrew**
 
 Sur macOS le shell interactif est **zsh**. L’env login vit dans `~/.zprofile` ; la config interactive (modules dotfiles, prompt) dans `~/.zshrc`. Après `./install/setup.sh macos`, ces deux fichiers sont gérés par le dépôt — ne pas y append manuellement en double.
@@ -85,6 +75,10 @@ eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 # echo 'eval "$(/opt/homebrew/bin/brew shellenv zsh)"' >> ~/.zprofile
 # echo 'export HOMEBREW_BUNDLE_FILE_GLOBAL="$HOME/.Brewfile"' >> ~/.zprofile
 ```
+
+- [x] **Créer l'espace de travail et renommer la machine**
+
+Appliqué automatiquement par `./install/setup.sh macos` via `ensure_config_macos` (`hostname` défini dans [`install/lib/ensure-config-macos.sh`](../install/lib/ensure-config-macos.sh)).
 
 ---
 
@@ -100,17 +94,6 @@ Installés automatiquement par `./install/setup.sh macos` depuis :
 
 ```bash
 softwareupdate --install-rosetta --agree-to-license
-```
-
-- [x] **Installer et configurer fnm, Node LTS & Yarn**
-
-```bash
-# brew install fnm
-eval "$(fnm env --shell zsh)"
-fnm install --lts
-fnm use lts-latest
-fnm default lts-latest
-npm install -g yarn --allow-scripts=yarn
 ```
 
 - [x] **Configurer Git, GitHub CLI & Clé SSH**

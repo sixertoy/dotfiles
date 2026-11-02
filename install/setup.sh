@@ -20,7 +20,8 @@ for f in \
   link-machine-files \
   parse-ini-section \
   ensure-packages \
-  ensure-dconf-ubuntu \
+  ensure-config-ubuntu \
+  ensure-config-macos \
   ensure-fnm \
   ensure-npm-token \
   ensure-ssh-key \
@@ -46,6 +47,11 @@ fi
 
 require_machine "$MACHINE"
 
+if [[ "$MACHINE" == "macos" ]]; then
+  log_step "ensure_config_macos"
+  ensure_config_macos
+fi
+
 log_step "ensure_packages $MACHINE"
 ensure_packages "$MACHINE"
 
@@ -59,8 +65,8 @@ log_step "ensure_ssh_key"
 ensure_ssh_key
 
 if [[ "$MACHINE" == "ubuntu" ]]; then
-  log_step "ensure_dconf_ubuntu"
-  ensure_dconf_ubuntu
+  log_step "ensure_config_ubuntu"
+  ensure_config_ubuntu
 fi
 
 log_step "bootstrap_node $MACHINE"

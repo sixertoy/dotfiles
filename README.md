@@ -9,7 +9,7 @@ Configuration shell partagée entre **Linux (Ubuntu)** et **macOS**.
 ```bash
 sudo apt update
 sudo apt install -y git
-``` 
+```
 
 **macOS**
 
@@ -18,7 +18,7 @@ sudo apt install -y git
 eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 source ~/.zshrc
 brew install git
-``` 
+```
 
 ## Installation
 
@@ -60,7 +60,7 @@ dotfiles checkout
 │   └── setup.sh     # scripts d'installation
 ├── files/
 │   ├── common/      # fichiers communs ubuntu / macos
-│   ├── ubuntu/      # overlay Ubuntu
+│   ├── ubuntu/      # overlay Ubuntu (config/ = dumps dconf)
 │   └── macos/       # overlay macOS
 ├── apps/            # artefacts spécifique apps à importer manuellement
 │   ├── astra-monitor/

@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# Charge files/ubuntu/dconf/*.dconf via dconf load (nom → /chemin/)
+# Charge files/ubuntu/config/*.dconf via dconf load (nom → /chemin/)
 # Hors session graphique (Docker headless) : skip si machine-id / bus indisponibles,
 # sinon enveloppe avec dbus-run-session.
 
@@ -25,8 +25,8 @@ _dconf_load() {
   fi
 }
 
-ensure_dconf_ubuntu() {
-  local dconf_dir="${DOTFILES_ROOT}/files/ubuntu/dconf"
+ensure_config_ubuntu() {
+  local config_dir="${DOTFILES_ROOT}/files/ubuntu/config"
   local file name stem path count=0
 
   if ! command -v dconf >/dev/null 2>&1; then
@@ -34,7 +34,7 @@ ensure_dconf_ubuntu() {
     return 1
   fi
 
-  [[ -d "$dconf_dir" ]] || return 0
+  [[ -d "$config_dir" ]] || return 0
 
   if ! _dconf_machine_id_ok; then
     log_warn "machine-id invalide ou absent — dconf skip (normal en conteneur headless)."
@@ -47,7 +47,7 @@ ensure_dconf_ubuntu() {
   fi
 
   shopt -s nullglob
-  for file in "$dconf_dir"/*.dconf; do
+  for file in "$config_dir"/*.dconf; do
     name="$(basename "$file")"
     stem="${name%.dconf}"
     path="/${stem//.//}/"
@@ -63,7 +63,7 @@ ensure_dconf_ubuntu() {
   shopt -u nullglob
 
   if [[ "$count" -eq 0 ]]; then
-    log_info "Aucun fichier .dconf dans $dconf_dir — skip."
+    log_info "Aucun fichier .dconf dans $config_dir — skip."
     return 0
   fi
 
