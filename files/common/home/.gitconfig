@@ -1,0 +1,96 @@
+[alias]
+  # supprime les fichiers qui ne sont pas encore ajoutés
+  cleanupf = clean --force --dry-run --interactive
+  cleanup = clean --interactive --dry-run
+
+  st = status
+  br = branch --verbose
+  ci = commit
+  co = checkout
+  rbi = rebase --interactive
+  cr = cherry-pick
+  rewind = reset HEAD~1
+  unstage = reset HEAD --
+  showf = show --name-status
+  pushf = push --force-with-lease
+  amend = commit --amend
+  aamend = commit --amend --no-edit
+  abort = !git rebase --abort
+  continue = !git add -A . && git rebase --continue
+
+  # set a note to a git branch
+  note = "!git config branch.$(git rev-parse --abbrev-ref HEAD).note $1"
+  # fixup
+  # FZF is required `sudo apt install fzf`
+  fip = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+
+  # show logs as tree (all branches)
+  tree = log --graph --all --full-history --color \
+  --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
+
+  # bisect helpers (ex-fonctions shell git-bisect-*)
+  bisect-nok = bisect bad
+  bisect-ok = bisect good
+  bisect-stop = bisect reset
+
+  # rebase with yarn lint and yarn prettier
+  rebase-lint = rebase --exec 'yarn lint && yarn prettier'
+
+  # preview des conflits avant un pull
+  conflicts = !git fetch && git diff HEAD..@{u}
+
+  sstash = stash save --include-untracked
+  # annule le dernier ajout dans le stage
+  undo = checkout --
+  # cancel du cancel du dernier commit
+  cancel-rewind = reset HEAD@{1}
+  # show files changed with status
+  changed = show --name-status
+  # show conflicted files
+  showc = diff --name-only --diff-filter=U
+  # show user name
+  whoami = config --get user.name
+  # ajout une description a une branche
+  desc = branch --edit-description
+  # show commit files and stats (delete/add)
+  cis = show --stat --oneline
+  # show logs for a single file
+  logf = log --patch
+  # show git tag with annotation
+  atag = tag --list --no-verify
+  # show submodules status
+  stsub = git submodule status --recursive
+  # update all submodules
+  pullsub = submodule update --init --recursive
+  # pull all submodules
+  pushsub = submodule foreach git push --set-upstream origin master
+[color]
+  ui = true
+[core]
+  encoding = utf8
+  autocrlf = input
+  editor = subl -w
+  whitespace = -trailing-space
+  excludesfile = ~/.gitignore
+[diff]
+  mnemonicPrefix = true
+[format]
+  pretty = %C(green)%ad %an %C(yellow)%h\n%Creset%B
+[gui]
+  encoding = utf-8
+[log]
+  date = format:%Y-%m-%d %H:%M:%S
+[pull]
+  rebase = true
+  default = simple
+  followTags = true
+[rebase]
+  autosquash = true
+[tag]
+  sort=-creatordate
+  # sort = version:refname
+[user]
+  name = matthieu
+  email = sixertoy.github@gmail.com
+[status]
+  showUntrackedFiles = all

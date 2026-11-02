@@ -1,0 +1,71 @@
+# Portable bash (Ubuntu) / zsh (macOS) — à sourcer, ne pas exécuter.
+# Alias Git simples → files/common/home/.gitconfig [alias]
+
+# Helper privé — nom de branche courant (SHA court si detached HEAD)
+function _git-branch-name() {
+  git symbolic-ref --quiet --short HEAD 2>/dev/null || \
+    git rev-parse --short HEAD 2>/dev/null
+}
+
+function git-show-origin() {
+  git remote show origin
+}
+
+function git-delremote() {
+  git push --delete origin "$1"
+}
+
+function git-bisect () {
+  # Usage: git-bisect <good> [<bad>]
+  #   1 arg  → known-good commit, HEAD is bad
+  #   2 args → good then bad
+  local GOOD_COMMIT BAD_COMMIT ERROR
+  if [ -z "$1" ]; then
+    echo "Missing argument for good commit"
+    return 1
+  fi
+  if test "$#" -ne 2; then
+    GOOD_COMMIT="$1"
+    BAD_COMMIT='HEAD'
+  else
+    GOOD_COMMIT="$1"
+    BAD_COMMIT="$2"
+  fi
+  ERROR=$(git cat-file -e "$GOOD_COMMIT^{commit}" 2>&1)
+  if [ -n "$ERROR" ]; then
+    echo -e "\033[31mArgument #1 is not a valid commit\033[0m $GOOD_COMMIT"
+    return 1
+  fi
+  ERROR=$(git cat-file -e "$BAD_COMMIT^{commit}" 2>&1)
+  if [ -n "$ERROR" ]; then
+    echo -e "\033[31mArgument #2 is not a valid commit\033[0m $BAD_COMMIT"
+    return 1
+  fi
+  git bisect start
+  git bisect bad "$BAD_COMMIT"
+  git bisect good "$GOOD_COMMIT"
+}
+
+# Show local git branches colored with description and last commit
+# current branch is prefixed by '*'
+function br() {
+  local current_branch branch desc date log prefix branches
+  current_branch=$(_git-branch-name) || return $?
+  branches=$(git for-each-ref --format='%(refname:short)' refs/heads/)
+
+  while IFS= read -r branch; do
+    [[ -z "$branch" ]] && continue
+    desc=$(git config "branch.${branch}.description" || true)
+    date=$(git log --format=%cd --date=local "$branch" -1)
+    log=$(git log --oneline --color "$branch" -1)
+
+    if [[ "$branch" == "$current_branch" ]]; then
+      prefix="\033[0;32m* ${branch}\033[0m"
+    else
+      prefix="\033[0;94m  ${branch}\033[0m"
+    fi
+
+    printf "%b   \033[0;36m%s\033[0m\n   \033[0;90m%s\033[0m\n   %s\n" \
+      "$prefix" "$desc" "$date" "$log"
+  done <<< "$branches"
+}
