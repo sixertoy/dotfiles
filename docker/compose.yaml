@@ -1,0 +1,18 @@
+# Conteneur Ubuntu 26.04 (user ubuntu + sudo) pour tester l'install des dotfiles.
+# Depuis la racine du dépôt :
+#   yarn build
+#   yarn shell
+
+services:
+  ubuntu:
+    build: .
+    image: dotfiles-ubuntu:26.04
+    container_name: dotfiles-ubuntu
+    user: ubuntu
+    volumes:
+      - ..:/mnt/dotfiles:ro
+    working_dir: /home/ubuntu
+    environment:
+      HOME: /home/ubuntu
+    stdin_open: true
+    tty: true
