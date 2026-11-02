@@ -3,7 +3,6 @@
 
 bootstrap_node() {
   local machine="${1:-}"
-  local shell_name
 
   require_machine "$machine" || return 1
 
@@ -27,13 +26,8 @@ bootstrap_node() {
     return 1
   fi
 
-  # Mapping OS → shell interactif (setup.sh tourne en bash même sur macOS)
-  case "$machine" in
-    macos) shell_name="zsh" ;;
-    *) shell_name="bash" ;;
-  esac
-
-  eval "$(fnm env --shell "$shell_name")"
+  # setup.sh tourne en bash même sur macOS — pas le shell interactif (zsh)
+  eval "$(fnm env --shell bash)"
   fnm install --lts
   fnm use lts-latest
   fnm default lts-latest
