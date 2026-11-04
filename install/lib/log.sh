@@ -43,7 +43,7 @@ log_ok() {
 }
 
 log_warn() {
-  echo "${DF_YELLOW}!${DF_RESET} $*"
+  echo "${DF_YELLOW}⚠${DF_RESET} $*"
 }
 
 log_err() {

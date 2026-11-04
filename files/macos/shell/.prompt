@@ -1,4 +1,4 @@
-# zsh — à sourcer, ne pas exécuter.
+# zsh (macOS) — à sourcer, ne pas exécuter.
 # Prompt Solarized Dark. Helpers : files/common/shell/.prompt-lib
 
 PROMPT_LIB="${DOTFILES_ROOT:-$HOME/.dotfiles}/files/common/shell/.prompt-lib"

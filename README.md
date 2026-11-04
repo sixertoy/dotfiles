@@ -14,10 +14,10 @@ sudo apt install -y git
 **macOS**
 
 ```bash
+xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(/opt/homebrew/bin/brew shellenv zsh)"
-source ~/.zshrc
-brew install git
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# source ~/.zshrc
 ```
 
 ## Installation
@@ -31,12 +31,6 @@ cd ~/.dotfiles
 Pendant l’install (TTY) :
 - **npm** : prompt pour le token registry → écrit dans un `~/.npmrc` **local** (copie, pas le template du dépôt). Entrée vide = skip.
 - **SSH** : contrôle de `~/.ssh/id_ed25519` ; si absente, warning — voir [docs/SSH.md](docs/SSH.md) pour la restaurer (ne pas régénérer).
-
-**Post-install**
-
-Appliquer la configuration dans le terminal :
-- **macOS** : `source ~/.zshrc`
-- **Ubuntu** : `source ~/.bash_aliases`
 
 ### Usage
 
